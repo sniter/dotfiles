@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias utor='aria2c --seed-time=0'
 
 [ -f "/Users/ilya/.ghcup/env" ] && source "/Users/ilya/.ghcup/env" # ghcup-env
 
