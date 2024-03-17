@@ -1,0 +1,3 @@
+[WARN  Sun 17 Mar 23:36:02 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because an unnamed buffer is modified. Please save or discard this file.
+[WARN  Sun 17 Mar 23:36:13 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because an unnamed buffer is modified. Please save or discard this file.
+[WARN  Sun 17 Mar 23:43:23 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because an unnamed buffer is modified. Please save or discard this file.
