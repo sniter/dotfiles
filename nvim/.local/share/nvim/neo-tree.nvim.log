@@ -2,3 +2,5 @@
 [WARN  Sun 17 Mar 23:36:13 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because an unnamed buffer is modified. Please save or discard this file.
 [WARN  Sun 17 Mar 23:43:23 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because an unnamed buffer is modified. Please save or discard this file.
 [WARN  Sun 17 Mar 23:46:08 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because one of the files is modified. Please save or discard changes.
+[INFO  Sun 17 Mar 23:53:38 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups
+[INFO  Sun 17 Mar 23:53:40 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups

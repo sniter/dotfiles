@@ -6,10 +6,10 @@ vim.opt.showcmd = true
 vim.opt.laststatus = 2
 vim.opt.autowrite = true
 vim.opt.cursorline = true
-vim.opt.autoread = true 
+vim.opt.autoread = true
 
 -- Color Scheme
-vim.cmd.colorscheme("evening")
+vim.cmd.colorscheme("desert")
 
 -- vim.opt.mouse = ""
 
@@ -24,4 +24,8 @@ vim.opt.expandtab = true
 
 vim.api.nvim_create_autocmd("VimEnter", {
     command = "set nornu nonu | Neotree toggle",
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    command = "set rnu nu",
 })
