@@ -9,7 +9,7 @@ vim.opt.cursorline = true
 vim.opt.autoread = true 
 
 -- Color Scheme
-vim.cmd.colorscheme("slate")
+vim.cmd.colorscheme("evening")
 
 -- vim.opt.mouse = ""
 
@@ -21,3 +21,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    command = "set nornu nonu | Neotree toggle",
+})
