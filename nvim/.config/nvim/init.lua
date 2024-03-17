@@ -1,2 +1,4 @@
 require("bootstrap")
-require("lazy").setup("plugins")
+require("lazy").setup({
+    { import = "plugins" },
+})

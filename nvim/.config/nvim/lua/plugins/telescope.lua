@@ -32,8 +32,8 @@ return {
             vim.keymap.set('n', '<leader>tf', builtin.find_files, {})
             vim.keymap.set('n', '<leader>tg', builtin.live_grep, {})
             vim.keymap.set('n', '<leader>tgc', builtin.git_commits, {})
-            vim.keymap.set('n', '<leader>tgs', builtin.git_stash, {})
-            vim.keymap.set('n', '<leader>tgss', builtin.git_status, {})
+            vim.keymap.set('n', '<leader>tgS', builtin.git_stash, {})
+            vim.keymap.set('n', '<leader>tgs', builtin.git_status, {})
             vim.keymap.set('n', '<leader>tb', builtin.buffers, {})
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 		end,
