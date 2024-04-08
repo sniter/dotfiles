@@ -37,3 +37,12 @@
 [submodule "nvim/.local/share/nvim/lazy/which-key.nvim"]
 	path = nvim/.local/share/nvim/lazy/which-key.nvim
 	url = git@github.com:folke/which-key.nvim.git
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "tmux/.tmux/plugins/tmux-continuum"]
+	path = tmux/.tmux/plugins/tmux-continuum
+	url = git@github.com:tmux-plugins/tmux-continuum.git
+[submodule "tmux/.tmux/plugins/tmux-resurrect"]
+	path = tmux/.tmux/plugins/tmux-resurrect
+	url = git@github.com:tmux-plugins/tmux-resurrect.git
