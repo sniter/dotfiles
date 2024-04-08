@@ -1,0 +1,39 @@
+[submodule "nvim/.local/share/nvim/lazy/lazy.nvim"]
+	path = nvim/.local/share/nvim/lazy/lazy.nvim
+	url = https://github.com/folke/lazy.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/gitsigns.nvim"]
+	path = nvim/.local/share/nvim/lazy/gitsigns.nvim
+	url = git@github.com:lewis6991/gitsigns.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/lualine.nvim"]
+	path = nvim/.local/share/nvim/lazy/lualine.nvim
+	url = git@github.com:nvim-lualine/lualine.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/neo-tree.nvim"]
+	path = nvim/.local/share/nvim/lazy/neo-tree.nvim
+	url = git@github.com:nvim-neo-tree/neo-tree.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/neodev.nvim"]
+	path = nvim/.local/share/nvim/lazy/neodev.nvim
+	url = git@github.com:folke/neodev.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/nui.nvim"]
+	path = nvim/.local/share/nvim/lazy/nui.nvim
+	url = git@github.com:MunifTanjim/nui.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/nvim-treesitter"]
+	path = nvim/.local/share/nvim/lazy/nvim-treesitter
+	url = git@github.com:nvim-treesitter/nvim-treesitter.git
+[submodule "nvim/.local/share/nvim/lazy/nvim-web-devicons"]
+	path = nvim/.local/share/nvim/lazy/nvim-web-devicons
+	url = git@github.com:nvim-tree/nvim-web-devicons.git
+[submodule "nvim/.local/share/nvim/lazy/plenary.nvim"]
+	path = nvim/.local/share/nvim/lazy/plenary.nvim
+	url = git@github.com:nvim-lua/plenary.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/telescope-fzf-native.nvim"]
+	path = nvim/.local/share/nvim/lazy/telescope-fzf-native.nvim
+	url = git@github.com:nvim-telescope/telescope-fzf-native.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/telescope.nvim"]
+	path = nvim/.local/share/nvim/lazy/telescope.nvim
+	url = git@github.com:nvim-telescope/telescope.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/vim-fugitive"]
+	path = nvim/.local/share/nvim/lazy/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "nvim/.local/share/nvim/lazy/which-key.nvim"]
+	path = nvim/.local/share/nvim/lazy/which-key.nvim
+	url = git@github.com:folke/which-key.nvim.git
