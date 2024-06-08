@@ -49,3 +49,42 @@
 [submodule "zsh/.oh-my-zsh"]
 	path = zsh/.oh-my-zsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
+[submodule "nvim/.local/share/nvim/lazy/cmp-buffer"]
+	path = nvim/.local/share/nvim/lazy/cmp-buffer
+	url = git@github.com:hrsh7th/cmp-buffer.git
+[submodule "nvim/.local/share/nvim/lazy/cmp-nvim-lsp"]
+	path = nvim/.local/share/nvim/lazy/cmp-nvim-lsp
+	url = git@github.com:hrsh7th/cmp-nvim-lsp.git
+[submodule "nvim/.local/share/nvim/lazy/cmp-nvim-lsp-signature-help"]
+	path = nvim/.local/share/nvim/lazy/cmp-nvim-lsp-signature-help
+	url = git@github.com:hrsh7th/cmp-nvim-lsp-signature-help.git
+[submodule "nvim/.local/share/nvim/lazy/cmp-path"]
+	path = nvim/.local/share/nvim/lazy/cmp-path
+	url = git@github.com:hrsh7th/cmp-path.git
+[submodule "nvim/.local/share/nvim/lazy/cmp-vsnip"]
+	path = nvim/.local/share/nvim/lazy/cmp-vsnip
+	url = git@github.com:hrsh7th/cmp-vsnip.git
+[submodule "nvim/.local/share/nvim/lazy/fidget.nvim"]
+	path = nvim/.local/share/nvim/lazy/fidget.nvim
+	url = git@github.com:j-hui/fidget.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/nvim-cmp"]
+	path = nvim/.local/share/nvim/lazy/nvim-cmp
+	url = git@github.com:hrsh7th/nvim-cmp.git
+[submodule "nvim/.local/share/nvim/lazy/nvim-dap"]
+	path = nvim/.local/share/nvim/lazy/nvim-dap
+	url = git@github.com:mfussenegger/nvim-dap.git
+[submodule "nvim/.local/share/nvim/lazy/nvim-lspconfig"]
+	path = nvim/.local/share/nvim/lazy/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git
+[submodule "nvim/.local/share/nvim/lazy/nvim-metals"]
+	path = nvim/.local/share/nvim/lazy/nvim-metals
+	url = git@github.com:scalameta/nvim-metals.git
+[submodule "nvim/.local/share/nvim/lazy/popup.nvim"]
+	path = nvim/.local/share/nvim/lazy/popup.nvim
+	url = git@github.com:nvim-lua/popup.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/telescope-fzy-native.nvim"]
+	path = nvim/.local/share/nvim/lazy/telescope-fzy-native.nvim
+	url = git@github.com:nvim-telescope/telescope-fzy-native.nvim.git
+[submodule "nvim/.local/share/nvim/lazy/vim-vsnip"]
+	path = nvim/.local/share/nvim/lazy/vim-vsnip
+	url = git@github.com:hrsh7th/vim-vsnip.git

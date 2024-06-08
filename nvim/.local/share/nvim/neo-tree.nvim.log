@@ -4,3 +4,409 @@
 [WARN  Sun 17 Mar 23:46:08 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because one of the files is modified. Please save or discard changes.
 [INFO  Sun 17 Mar 23:53:38 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups
 [INFO  Sun 17 Mar 23:53:40 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups
+[WARN  Sat Jun  8 09:57:54 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because one of the files is modified. Please save or discard changes.
+[ERROR Sat Jun  8 10:14:50 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:132: debounce  filesystem_navigate  error:  .../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: Failed to spawn process: {
+  _additional_on_exit_callbacks = {},
+  _shutdown_check = <userdata 1>,
+  _stderr_results = {},
+  _stdout_results = {},
+  _user_on_exit = <function 1>,
+  _user_on_start = <function 2>,
+  args = { "-C", "/Users/ilya/dotfiles/nvim/.config/nvim", "check-ignore", "--stdin" },
+  command = "git",
+  enable_handlers = true,
+  enable_recording = true,
+  interactive = true,
+  pid = "EMFILE: too many open files",
+  stderr = <userdata 2>,
+  stdin = <userdata 3>,
+  stdout = <userdata 4>,
+  user_data = {},
+  writer = { "/Users/ilya/dotfiles/nvim/.config/nvim/init.lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lazy-lock.json" },
+  <metatable> = <1>{
+    __index = <table 1>,
+    _create_uv_options = <function 3>,
+    _execute = <function 4>,
+    _pipes_are_closed = <function 5>,
+    _prepare_pipes = <function 6>,
+    _reset = <function 7>,
+    _shutdown = <function 8>,
+    _stop = <function 9>,
+    add_on_exit_callback = <function 10>,
+    after = <function 11>,
+    after_failure = <function 12>,
+    after_success = <function 13>,
+    and_then = <function 14>,
+    and_then_on_failure = <function 15>,
+    and_then_on_failure_wrap = <function 16>,
+    and_then_on_success = <function 17>,
+    and_then_on_success_wrap = <function 18>,
+    and_then_wrap = <function 19>,
+    chain = <function 20>,
+    chain_status = <function 21>,
+    co_wait = <function 22>,
+    is_job = <function 23>,
+    join = <function 24>,
+    new = <function 25>,
+    pid = <function 26>,
+    result = <function 27>,
+    send = <function 28>,
+    shutdown = <function 29>,
+    start = <function 30>,
+    stderr_result = <function 31>,
+    sync = <function 32>,
+    wait = <function 33>
+  }
+}
+stack traceback:
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: in function '_execute'
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:448: in function 'start'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:120: in function 'run_more_jobs'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:159: in function 'mark_ignored'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:158: in function 'job_complete'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:426: in function 'sync_scan'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:541: in function 'handle_refresh_or_up'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:578: in function 'get_items'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:150: in function '_navigate_internal'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:171: in function <...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:126: in function 'debounce'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170: in function 'navigate'
+	...nvim/lazy/neo-tree.nvim/lua/neo-tree/sources/manager.lua:487: in function 'navigate'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:204: in function 'do_show_or_focus'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:162: in function 'execute'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:170: in function '_command'
+	[string ":lua"]:1: in main chunk
+[ERROR Sat Jun  8 10:15:24 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:132: debounce  filesystem_navigate  error:  .../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: Failed to spawn process: {
+  _additional_on_exit_callbacks = {},
+  _shutdown_check = <userdata 1>,
+  _stderr_results = {},
+  _stdout_results = {},
+  _user_on_exit = <function 1>,
+  _user_on_start = <function 2>,
+  args = { "-C", "/Users/ilya/projects/scala/json-serde", "check-ignore", "--stdin" },
+  command = "git",
+  enable_handlers = true,
+  enable_recording = true,
+  interactive = true,
+  pid = "EMFILE: too many open files",
+  stderr = <userdata 2>,
+  stdin = <userdata 3>,
+  stdout = <userdata 4>,
+  user_data = {},
+  writer = { "/Users/ilya/projects/scala/json-serde/project", "/Users/ilya/projects/scala/json-serde/.gitignore", "/Users/ilya/projects/scala/json-serde/build.sbt", "/Users/ilya/projects/scala/json-serde/src" },
+  <metatable> = <1>{
+    __index = <table 1>,
+    _create_uv_options = <function 3>,
+    _execute = <function 4>,
+    _pipes_are_closed = <function 5>,
+    _prepare_pipes = <function 6>,
+    _reset = <function 7>,
+    _shutdown = <function 8>,
+    _stop = <function 9>,
+    add_on_exit_callback = <function 10>,
+    after = <function 11>,
+    after_failure = <function 12>,
+    after_success = <function 13>,
+    and_then = <function 14>,
+    and_then_on_failure = <function 15>,
+    and_then_on_failure_wrap = <function 16>,
+    and_then_on_success = <function 17>,
+    and_then_on_success_wrap = <function 18>,
+    and_then_wrap = <function 19>,
+    chain = <function 20>,
+    chain_status = <function 21>,
+    co_wait = <function 22>,
+    is_job = <function 23>,
+    join = <function 24>,
+    new = <function 25>,
+    pid = <function 26>,
+    result = <function 27>,
+    send = <function 28>,
+    shutdown = <function 29>,
+    start = <function 30>,
+    stderr_result = <function 31>,
+    sync = <function 32>,
+    wait = <function 33>
+  }
+}
+stack traceback:
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: in function '_execute'
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:448: in function 'start'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:120: in function 'run_more_jobs'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:159: in function 'mark_ignored'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:158: in function 'job_complete'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:426: in function 'sync_scan'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:541: in function 'handle_refresh_or_up'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:578: in function 'get_items'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:150: in function '_navigate_internal'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:171: in function <...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:126: in function 'debounce'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170: in function 'navigate'
+	...nvim/lazy/neo-tree.nvim/lua/neo-tree/sources/manager.lua:487: in function 'navigate'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:204: in function 'do_show_or_focus'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:162: in function 'execute'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:170: in function '_command'
+	[string ":lua"]:1: in main chunk
+[ERROR Sat Jun  8 10:18:31 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:132: debounce  filesystem_navigate  error:  .../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: Failed to spawn process: {
+  _additional_on_exit_callbacks = {},
+  _shutdown_check = <userdata 1>,
+  _stderr_results = {},
+  _stdout_results = {},
+  _user_on_exit = <function 1>,
+  _user_on_start = <function 2>,
+  args = { "-C", "/Users/ilya/dotfiles/nvim/.config/nvim", "check-ignore", "--stdin" },
+  command = "git",
+  enable_handlers = true,
+  enable_recording = true,
+  interactive = true,
+  pid = "EMFILE: too many open files",
+  stderr = <userdata 2>,
+  stdin = <userdata 3>,
+  stdout = <userdata 4>,
+  user_data = {},
+  writer = { "/Users/ilya/dotfiles/nvim/.config/nvim/init.lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lazy-lock.json" },
+  <metatable> = <1>{
+    __index = <table 1>,
+    _create_uv_options = <function 3>,
+    _execute = <function 4>,
+    _pipes_are_closed = <function 5>,
+    _prepare_pipes = <function 6>,
+    _reset = <function 7>,
+    _shutdown = <function 8>,
+    _stop = <function 9>,
+    add_on_exit_callback = <function 10>,
+    after = <function 11>,
+    after_failure = <function 12>,
+    after_success = <function 13>,
+    and_then = <function 14>,
+    and_then_on_failure = <function 15>,
+    and_then_on_failure_wrap = <function 16>,
+    and_then_on_success = <function 17>,
+    and_then_on_success_wrap = <function 18>,
+    and_then_wrap = <function 19>,
+    chain = <function 20>,
+    chain_status = <function 21>,
+    co_wait = <function 22>,
+    is_job = <function 23>,
+    join = <function 24>,
+    new = <function 25>,
+    pid = <function 26>,
+    result = <function 27>,
+    send = <function 28>,
+    shutdown = <function 29>,
+    start = <function 30>,
+    stderr_result = <function 31>,
+    sync = <function 32>,
+    wait = <function 33>
+  }
+}
+stack traceback:
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: in function '_execute'
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:448: in function 'start'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:120: in function 'run_more_jobs'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:159: in function 'mark_ignored'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:158: in function 'job_complete'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:426: in function 'sync_scan'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:541: in function 'handle_refresh_or_up'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:578: in function 'get_items'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:150: in function '_navigate_internal'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:171: in function <...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:126: in function 'debounce'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170: in function 'navigate'
+	...nvim/lazy/neo-tree.nvim/lua/neo-tree/sources/manager.lua:487: in function 'navigate'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:204: in function 'do_show_or_focus'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:162: in function 'execute'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:170: in function '_command'
+	[string ":lua"]:1: in main chunk
+[ERROR Sat Jun  8 10:21:11 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:132: debounce  filesystem_navigate  error:  .../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: Failed to spawn process: {
+  _additional_on_exit_callbacks = {},
+  _shutdown_check = <userdata 1>,
+  _stderr_results = {},
+  _stdout_results = {},
+  _user_on_exit = <function 1>,
+  _user_on_start = <function 2>,
+  args = { "-C", "/Users/ilya/dotfiles/nvim/.config/nvim", "check-ignore", "--stdin" },
+  command = "git",
+  enable_handlers = true,
+  enable_recording = true,
+  interactive = true,
+  pid = "EMFILE: too many open files",
+  stderr = <userdata 2>,
+  stdin = <userdata 3>,
+  stdout = <userdata 4>,
+  user_data = {},
+  writer = { "/Users/ilya/dotfiles/nvim/.config/nvim/init.lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lazy-lock.json" },
+  <metatable> = <1>{
+    __index = <table 1>,
+    _create_uv_options = <function 3>,
+    _execute = <function 4>,
+    _pipes_are_closed = <function 5>,
+    _prepare_pipes = <function 6>,
+    _reset = <function 7>,
+    _shutdown = <function 8>,
+    _stop = <function 9>,
+    add_on_exit_callback = <function 10>,
+    after = <function 11>,
+    after_failure = <function 12>,
+    after_success = <function 13>,
+    and_then = <function 14>,
+    and_then_on_failure = <function 15>,
+    and_then_on_failure_wrap = <function 16>,
+    and_then_on_success = <function 17>,
+    and_then_on_success_wrap = <function 18>,
+    and_then_wrap = <function 19>,
+    chain = <function 20>,
+    chain_status = <function 21>,
+    co_wait = <function 22>,
+    is_job = <function 23>,
+    join = <function 24>,
+    new = <function 25>,
+    pid = <function 26>,
+    result = <function 27>,
+    send = <function 28>,
+    shutdown = <function 29>,
+    start = <function 30>,
+    stderr_result = <function 31>,
+    sync = <function 32>,
+    wait = <function 33>
+  }
+}
+stack traceback:
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: in function '_execute'
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:448: in function 'start'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:120: in function 'run_more_jobs'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:159: in function 'mark_ignored'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:158: in function 'job_complete'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:426: in function 'sync_scan'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:541: in function 'handle_refresh_or_up'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:578: in function 'get_items'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:150: in function '_navigate_internal'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:171: in function <...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:126: in function 'debounce'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170: in function 'navigate'
+	...nvim/lazy/neo-tree.nvim/lua/neo-tree/sources/manager.lua:487: in function 'navigate'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:204: in function 'do_show_or_focus'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:162: in function 'execute'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:170: in function '_command'
+	[string ":lua"]:1: in main chunk
+[ERROR Sat Jun  8 10:26:40 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:132: debounce  filesystem_navigate  error:  .../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: Failed to spawn process: {
+  _additional_on_exit_callbacks = {},
+  _shutdown_check = <userdata 1>,
+  _stderr_results = {},
+  _stdout_results = {},
+  _user_on_exit = <function 1>,
+  _user_on_start = <function 2>,
+  args = { "-C", "/Users/ilya/dotfiles/nvim/.config/nvim", "check-ignore", "--stdin" },
+  command = "git",
+  enable_handlers = true,
+  enable_recording = true,
+  interactive = true,
+  pid = "EMFILE: too many open files",
+  stderr = <userdata 2>,
+  stdin = <userdata 3>,
+  stdout = <userdata 4>,
+  user_data = {},
+  writer = { "/Users/ilya/dotfiles/nvim/.config/nvim/init.lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lua", "/Users/ilya/dotfiles/nvim/.config/nvim/lazy-lock.json" },
+  <metatable> = <1>{
+    __index = <table 1>,
+    _create_uv_options = <function 3>,
+    _execute = <function 4>,
+    _pipes_are_closed = <function 5>,
+    _prepare_pipes = <function 6>,
+    _reset = <function 7>,
+    _shutdown = <function 8>,
+    _stop = <function 9>,
+    add_on_exit_callback = <function 10>,
+    after = <function 11>,
+    after_failure = <function 12>,
+    after_success = <function 13>,
+    and_then = <function 14>,
+    and_then_on_failure = <function 15>,
+    and_then_on_failure_wrap = <function 16>,
+    and_then_on_success = <function 17>,
+    and_then_on_success_wrap = <function 18>,
+    and_then_wrap = <function 19>,
+    chain = <function 20>,
+    chain_status = <function 21>,
+    co_wait = <function 22>,
+    is_job = <function 23>,
+    join = <function 24>,
+    new = <function 25>,
+    pid = <function 26>,
+    result = <function 27>,
+    send = <function 28>,
+    shutdown = <function 29>,
+    start = <function 30>,
+    stderr_result = <function 31>,
+    sync = <function 32>,
+    wait = <function 33>
+  }
+}
+stack traceback:
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:405: in function '_execute'
+	.../.local/share/nvim/lazy/plenary.nvim/lua/plenary/job.lua:448: in function 'start'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:120: in function 'run_more_jobs'
+	...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/git/ignored.lua:159: in function 'mark_ignored'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:158: in function 'job_complete'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:426: in function 'sync_scan'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:541: in function 'handle_refresh_or_up'
+	...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:578: in function 'get_items'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:150: in function '_navigate_internal'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:171: in function <...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:126: in function 'debounce'
+	...y/neo-tree.nvim/lua/neo-tree/sources/filesystem/init.lua:170: in function 'navigate'
+	...nvim/lazy/neo-tree.nvim/lua/neo-tree/sources/manager.lua:487: in function 'navigate'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:204: in function 'do_show_or_focus'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:162: in function 'execute'
+	...re/nvim/lazy/neo-tree.nvim/lua/neo-tree/command/init.lua:170: in function '_command'
+	[string ":lua"]:1: in main chunk
+[ERROR Sat Jun  8 10:34:15 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:752: Error opening file: vim/_editor.lua:0: nvim_exec2()..BufReadPost Autocommands for "*": Vim(append):Error executing lua callback: /opt/local/share/nvim/runtime/filetype.lua:35: Error executing lua: /opt/local/share/nvim/runtime/filetype.lua:36: nvim_exec2()..BufReadPost Autocommands for "*"..FileType Autocommands for "*"..function <SNR>1_LoadFTPlugin[20]..script /opt/local/share/nvim/runtime/ftplugin/lua.lua: Vim(runtime):E5113: Error while calling lua chunk: ...local/share/nvim/runtime/lua/vim/treesitter/language.lua:107: no parser for 'lua' language, see :help treesitter-parsers
+stack traceback:
+	[C]: in function 'error'
+	...local/share/nvim/runtime/lua/vim/treesitter/language.lua:107: in function 'add'
+	...l/share/nvim/runtime/lua/vim/treesitter/languagetree.lua:111: in function 'new'
+	/opt/local/share/nvim/runtime/lua/vim/treesitter.lua:41: in function '_create_parser'
+	/opt/local/share/nvim/runtime/lua/vim/treesitter.lua:108: in function 'get_parser'
+	/opt/local/share/nvim/runtime/lua/vim/treesitter.lua:416: in function 'start'
+	/opt/local/share/nvim/runtime/ftplugin/lua.lua:2: in main chunk
+	[C]: in function 'nvim_cmd'
+	/opt/local/share/nvim/runtime/filetype.lua:36: in function </opt/local/share/nvim/runtime/filetype.lua:35>
+	[C]: in function 'nvim_buf_call'
+	/opt/local/share/nvim/runtime/filetype.lua:35: in function </opt/local/share/nvim/runtime/filetype.lua:10>
+	[C]: in function 'nvim_exec2'
+	vim/_editor.lua: in function <vim/_editor.lua:0>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:732: in function 'open_file'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:729: in function 'open'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:751: in function 'open_with_cmd'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:760: in function 'open'
+	...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:184: in function <...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:183>
+stack traceback:
+	[C]: in function 'nvim_cmd'
+	/opt/local/share/nvim/runtime/filetype.lua:36: in function </opt/local/share/nvim/runtime/filetype.lua:35>
+	[C]: in function 'nvim_buf_call'
+	/opt/local/share/nvim/runtime/filetype.lua:35: in function </opt/local/share/nvim/runtime/filetype.lua:10>
+	[C]: in function 'nvim_exec2'
+	vim/_editor.lua: in function <vim/_editor.lua:0>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:732: in function 'open_file'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:729: in function 'open'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:751: in function 'open_with_cmd'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:760: in function 'open'
+	...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:184: in function <...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:183>
+stack traceback:
+	[C]: in function 'nvim_buf_call'
+	/opt/local/share/nvim/runtime/filetype.lua:35: in function </opt/local/share/nvim/runtime/filetype.lua:10>
+	[C]: in function 'nvim_exec2'
+	vim/_editor.lua: in function <vim/_editor.lua:0>
+	[C]: in function 'pcall'
+	...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/utils/init.lua:732: in function 'open_file'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:729: in function 'open'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:751: in function 'open_with_cmd'
+	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:760: in function 'open'
+	...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:184: in function <...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:183>

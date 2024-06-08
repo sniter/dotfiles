@@ -114,3 +114,6 @@ alias utor='aria2c --seed-time=0'
 
 # opam configuration
 [[ ! -r /Users/ilya/.opam/opam-init/init.zsh ]] || source /Users/ilya/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# JDK from ports
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21-oracle-openjdk.jdk/Contents/Home
