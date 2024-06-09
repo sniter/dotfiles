@@ -4,7 +4,7 @@ local setup = function ()
         "filesystem",
         "buffers",
         "git_status",
-        -- "document_symbols",
+        "document_symbols",
     },
     close_if_last_window = true,
     default_component_configs = {

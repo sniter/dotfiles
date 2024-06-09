@@ -8,8 +8,8 @@ local indent = 2
 -- --------------------------------------------------------------------------
 --  Setup
 -- --------------------------------------------------------------------------
-vim.g.mapleader = ' ' -- Make sure to set `mapleader` before lazy so your mappings are correct
-vim.g.maplocalleader = ' '
+vim.g.mapleader = ',' -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.maplocalleader = ','
 
 -- Color Scheme
 vim.cmd.colorscheme("desert")
