@@ -46,9 +46,6 @@
 [submodule "tmux/.tmux/plugins/tmux-resurrect"]
 	path = tmux/.tmux/plugins/tmux-resurrect
 	url = git@github.com:tmux-plugins/tmux-resurrect.git
-[submodule "zsh/.oh-my-zsh"]
-	path = zsh/.oh-my-zsh
-	url = git@github.com:ohmyzsh/ohmyzsh.git
 [submodule "nvim/.local/share/nvim/lazy/cmp-buffer"]
 	path = nvim/.local/share/nvim/lazy/cmp-buffer
 	url = git@github.com:hrsh7th/cmp-buffer.git
