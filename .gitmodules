@@ -91,3 +91,6 @@
 [submodule "tmux/.tmux/plugins/vim-tmux-navigator"]
 	path = tmux/.tmux/plugins/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "nvim/.local/share/nvim/lazy/catppuccin"]
+	path = nvim/.local/share/nvim/lazy/catppuccin
+	url = https://github.com/catppuccin/nvim.git

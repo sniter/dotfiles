@@ -2,6 +2,14 @@ local api = vim.api
 local cmd = vim.cmd
 
 return require("lazy").setup({
+  { 
+    "catppuccin/nvim", 
+    name = "catppuccin", 
+    priority = 1000,
+    config = function(self, opts)
+      cmd.colorscheme "catppuccin-mocha"
+    end
+  },
   {"folke/neodev.nvim", lazy = true}, 
   "folke/which-key.nvim",
   {
