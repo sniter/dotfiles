@@ -410,3 +410,7 @@ stack traceback:
 	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:751: in function 'open_with_cmd'
 	...y/neo-tree.nvim/lua/neo-tree/sources/common/commands.lua:760: in function 'open'
 	...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:184: in function <...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:183>
+[INFO  Wed Aug 28 19:08:43 2024] ....nvim/lua/neo-tree/sources/filesystem/lib/fs_actions.lua:513: Deleted directory  /Users/ilya/dotfiles/powerlevel10k
+[WARN  Wed Aug 28 21:20:41 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because one of the files is modified. Please save or discard changes.
+[INFO  Wed Aug 28 21:21:44 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups
+[INFO  Wed Aug 28 21:21:49 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups

@@ -110,5 +110,11 @@ return require("lazy").setup({
     config = function()
       require("plugins.git.gitsigns").setup()
     end
-  }
+  },
+  -- Rust
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
 })

@@ -88,3 +88,9 @@
 [submodule "nvim/.local/share/nvim/lazy/vim-vsnip"]
 	path = nvim/.local/share/nvim/lazy/vim-vsnip
 	url = git@github.com:hrsh7th/vim-vsnip.git
+[submodule "tmux/.tmux/plugins/tmux"]
+	path = tmux/.tmux/plugins/tmux
+	url = https://git::@github.com/catppuccin/tmux
+[submodule "tmux/.tmux/plugins/vim-tmux-navigator"]
+	path = tmux/.tmux/plugins/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
