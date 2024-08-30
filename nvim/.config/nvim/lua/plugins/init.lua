@@ -34,14 +34,16 @@ return require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = { 
       { "nvim-lua/popup.nvim" },
-      { 
-        "folke/which-key.nvim", 
-        config = function() 
-          require("plugins.telescope.which_key").setup()
-        end
-      },
+      { "folke/which-key.nvim" },
       { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope-fzy-native.nvim" },
+      { 'nvim-telescope/telescope-ui-select.nvim' },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
     },
     config = function()
       require("plugins.telescope.config").setup()
@@ -54,31 +56,49 @@ return require("lazy").setup({
       require("plugins.treesitter.config").setup()
     end
   },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-        "MunifTanjim/nui.nvim",
-        -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    },
-    keys = {
-      { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-    },
-    opts = {
-      filesystem = {
-        window = {
-          mappings = {
-            ['\\'] = 'close_window',
-          },
-        },
-      },
-    },
-    -- config = function(plugin, opts)
-    --   require("plugins.neo_tree.config").setup()
-    -- end,
-  },
+  require 'plugins.neo_tree',
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v3.x",
+  --   dependencies = {
+  --       "nvim-lua/plenary.nvim",
+  --       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --       "MunifTanjim/nui.nvim",
+  --       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+  --   },
+  --   keys = {
+  --     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+  --   },
+  --   opts = {
+  --     default_component_configs = {
+  --       git_status = {
+  --           symbols = {
+  --               -- Change type
+  --               added     = "✚",
+  --               deleted   = "✖",
+  --               modified  = "",
+  --               renamed   = "󰁕",
+  --               -- Status type
+  --               untracked = "",
+  --               ignored   = "",
+  --               unstaged  = "󰄱",
+  --               staged    = "",
+  --               conflict  = "",
+  --           }
+  --         }
+  --     },
+  --     filesystem = {
+  --       window = {
+  --         mappings = {
+  --           ['\\'] = 'close_window',
+  --         },
+  --       },
+  --     },
+  --   },
+  --   -- config = function(plugin, opts)
+  --   --   require("plugins.neo_tree.config").setup()
+  --   -- end,
+  -- },
   {
     "scalameta/nvim-metals",
     dependencies = {
@@ -117,6 +137,7 @@ return require("lazy").setup({
     end
   },
   -- GIT Related
+  require 'plugins.git.gitsigns',
   {
     "tpope/vim-fugitive",
     cmd = { "Git", "Gread" },
@@ -124,17 +145,17 @@ return require("lazy").setup({
       return require("plugins.git.fugitive").keys
     end
   },
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("plugins.git.gitsigns").setup()
-    end
-  },
+  -- {
+  --   "lewis6991/gitsigns.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("plugins.git.gitsigns").setup()
+  --   end
+  -- },
   -- Rust
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
+  -- {
+  --   'mrcjkb/rustaceanvim',
+  --   version = '^5', -- Recommended
+  --   lazy = false, -- This plugin is already lazy
+  -- },
 })

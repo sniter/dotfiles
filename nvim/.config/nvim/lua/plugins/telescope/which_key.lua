@@ -1,20 +1,14 @@
 local setup = function()
   local wk = require("which-key")
-  wk.register({
-      t = {
-          name = "Telescope",
-          f = { "Find File" },
-          g = { "Grep in files" },
-          c = { "Show commits" },
-          S = { "Show git stash" },
-          s = { "Show git status" },
-          b = { "Show nvim buffers" },
-          h = { "Show help tags" },
-      }
-  }, {
-      mode = "n",
-      prefix = "<leader>",
-      nowait = false,
+  wk.add({
+    { "<leader>t", group = "Telescope", nowait = false },
+    { "<leader>tS", desc = "Show git stash", nowait = false },
+    { "<leader>tb", desc = "Show nvim buffers", nowait = false },
+    { "<leader>tc", desc = "Show commits", nowait = false },
+    { "<leader>tf", desc = "Find File", nowait = false },
+    { "<leader>tg", desc = "Grep in files", nowait = false },
+    { "<leader>th", desc = "Show help tags", nowait = false },
+    { "<leader>ts", desc = "Show git status", nowait = false },
   })
   end
 

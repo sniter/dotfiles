@@ -27,7 +27,7 @@
 	url = git@github.com:nvim-lua/plenary.nvim.git
 [submodule "nvim/.local/share/nvim/lazy/telescope-fzf-native.nvim"]
 	path = nvim/.local/share/nvim/lazy/telescope-fzf-native.nvim
-	url = git@github.com:nvim-telescope/telescope-fzf-native.nvim.git
+	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim.git
 [submodule "nvim/.local/share/nvim/lazy/telescope.nvim"]
 	path = nvim/.local/share/nvim/lazy/telescope.nvim
 	url = git@github.com:nvim-telescope/telescope.nvim.git
@@ -94,3 +94,6 @@
 [submodule "nvim/.local/share/nvim/lazy/catppuccin"]
 	path = nvim/.local/share/nvim/lazy/catppuccin
 	url = https://github.com/catppuccin/nvim.git
+[submodule "nvim/.local/share/nvim/lazy/telescope-ui-select.nvim"]
+	path = nvim/.local/share/nvim/lazy/telescope-ui-select.nvim
+	url = https://github.com/nvim-telescope/telescope-ui-select.nvim.git
