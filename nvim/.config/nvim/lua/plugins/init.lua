@@ -63,9 +63,21 @@ return require("lazy").setup({
         "MunifTanjim/nui.nvim",
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    config = function(plugin, opts)
-      require("plugins.neo_tree.config").setup()
-    end,
+    keys = {
+      { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    },
+    opts = {
+      filesystem = {
+        window = {
+          mappings = {
+            ['\\'] = 'close_window',
+          },
+        },
+      },
+    },
+    -- config = function(plugin, opts)
+    --   require("plugins.neo_tree.config").setup()
+    -- end,
   },
   {
     "scalameta/nvim-metals",

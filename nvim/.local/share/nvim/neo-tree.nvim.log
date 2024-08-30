@@ -414,3 +414,8 @@ stack traceback:
 [WARN  Wed Aug 28 21:20:41 2024] ...hare/nvim/lazy/neo-tree.nvim/lua/neo-tree/setup/init.lua:308: Cannot close because one of the files is modified. Please save or discard changes.
 [INFO  Wed Aug 28 21:21:44 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups
 [INFO  Wed Aug 28 21:21:49 2024] ...ree.nvim/lua/neo-tree/sources/filesystem/lib/fs_scan.lua:110: No items, skipping git ignored/status lookups
+[INFO  Wed Aug 28 23:01:36 2024] ...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:245: Toggling hidden files: true
+[INFO  Wed Aug 28 23:58:06 2024] ...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:245: Toggling hidden files: true
+[INFO  Thu Aug 29 05:53:34 2024] ...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:245: Toggling hidden files: false
+[INFO  Thu Aug 29 05:53:34 2024] ...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:245: Toggling hidden files: true
+[INFO  Thu Aug 29 05:53:43 2024] ...o-tree.nvim/lua/neo-tree/sources/filesystem/commands.lua:245: Toggling hidden files: false
