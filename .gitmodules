@@ -1,42 +1,3 @@
-[submodule "nvim/.local/share/nvim/lazy/lazy.nvim"]
-	path = nvim/.local/share/nvim/lazy/lazy.nvim
-	url = https://github.com/folke/lazy.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/gitsigns.nvim"]
-	path = nvim/.local/share/nvim/lazy/gitsigns.nvim
-	url = git@github.com:lewis6991/gitsigns.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/lualine.nvim"]
-	path = nvim/.local/share/nvim/lazy/lualine.nvim
-	url = git@github.com:nvim-lualine/lualine.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/neo-tree.nvim"]
-	path = nvim/.local/share/nvim/lazy/neo-tree.nvim
-	url = git@github.com:nvim-neo-tree/neo-tree.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/neodev.nvim"]
-	path = nvim/.local/share/nvim/lazy/neodev.nvim
-	url = git@github.com:folke/neodev.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/nui.nvim"]
-	path = nvim/.local/share/nvim/lazy/nui.nvim
-	url = git@github.com:MunifTanjim/nui.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/nvim-treesitter"]
-	path = nvim/.local/share/nvim/lazy/nvim-treesitter
-	url = git@github.com:nvim-treesitter/nvim-treesitter.git
-[submodule "nvim/.local/share/nvim/lazy/nvim-web-devicons"]
-	path = nvim/.local/share/nvim/lazy/nvim-web-devicons
-	url = git@github.com:nvim-tree/nvim-web-devicons.git
-[submodule "nvim/.local/share/nvim/lazy/plenary.nvim"]
-	path = nvim/.local/share/nvim/lazy/plenary.nvim
-	url = git@github.com:nvim-lua/plenary.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/telescope-fzf-native.nvim"]
-	path = nvim/.local/share/nvim/lazy/telescope-fzf-native.nvim
-	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/telescope.nvim"]
-	path = nvim/.local/share/nvim/lazy/telescope.nvim
-	url = git@github.com:nvim-telescope/telescope.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/vim-fugitive"]
-	path = nvim/.local/share/nvim/lazy/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
-[submodule "nvim/.local/share/nvim/lazy/which-key.nvim"]
-	path = nvim/.local/share/nvim/lazy/which-key.nvim
-	url = git@github.com:folke/which-key.nvim.git
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
@@ -46,54 +7,9 @@
 [submodule "tmux/.tmux/plugins/tmux-resurrect"]
 	path = tmux/.tmux/plugins/tmux-resurrect
 	url = git@github.com:tmux-plugins/tmux-resurrect.git
-[submodule "nvim/.local/share/nvim/lazy/cmp-buffer"]
-	path = nvim/.local/share/nvim/lazy/cmp-buffer
-	url = git@github.com:hrsh7th/cmp-buffer.git
-[submodule "nvim/.local/share/nvim/lazy/cmp-nvim-lsp"]
-	path = nvim/.local/share/nvim/lazy/cmp-nvim-lsp
-	url = git@github.com:hrsh7th/cmp-nvim-lsp.git
-[submodule "nvim/.local/share/nvim/lazy/cmp-nvim-lsp-signature-help"]
-	path = nvim/.local/share/nvim/lazy/cmp-nvim-lsp-signature-help
-	url = git@github.com:hrsh7th/cmp-nvim-lsp-signature-help.git
-[submodule "nvim/.local/share/nvim/lazy/cmp-path"]
-	path = nvim/.local/share/nvim/lazy/cmp-path
-	url = git@github.com:hrsh7th/cmp-path.git
-[submodule "nvim/.local/share/nvim/lazy/cmp-vsnip"]
-	path = nvim/.local/share/nvim/lazy/cmp-vsnip
-	url = git@github.com:hrsh7th/cmp-vsnip.git
-[submodule "nvim/.local/share/nvim/lazy/fidget.nvim"]
-	path = nvim/.local/share/nvim/lazy/fidget.nvim
-	url = git@github.com:j-hui/fidget.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/nvim-cmp"]
-	path = nvim/.local/share/nvim/lazy/nvim-cmp
-	url = git@github.com:hrsh7th/nvim-cmp.git
-[submodule "nvim/.local/share/nvim/lazy/nvim-dap"]
-	path = nvim/.local/share/nvim/lazy/nvim-dap
-	url = git@github.com:mfussenegger/nvim-dap.git
-[submodule "nvim/.local/share/nvim/lazy/nvim-lspconfig"]
-	path = nvim/.local/share/nvim/lazy/nvim-lspconfig
-	url = git@github.com:neovim/nvim-lspconfig.git
-[submodule "nvim/.local/share/nvim/lazy/nvim-metals"]
-	path = nvim/.local/share/nvim/lazy/nvim-metals
-	url = git@github.com:scalameta/nvim-metals.git
-[submodule "nvim/.local/share/nvim/lazy/popup.nvim"]
-	path = nvim/.local/share/nvim/lazy/popup.nvim
-	url = git@github.com:nvim-lua/popup.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/telescope-fzy-native.nvim"]
-	path = nvim/.local/share/nvim/lazy/telescope-fzy-native.nvim
-	url = git@github.com:nvim-telescope/telescope-fzy-native.nvim.git
-[submodule "nvim/.local/share/nvim/lazy/vim-vsnip"]
-	path = nvim/.local/share/nvim/lazy/vim-vsnip
-	url = git@github.com:hrsh7th/vim-vsnip.git
 [submodule "tmux/.tmux/plugins/tmux"]
 	path = tmux/.tmux/plugins/tmux
 	url = https://git::@github.com/catppuccin/tmux
 [submodule "tmux/.tmux/plugins/vim-tmux-navigator"]
 	path = tmux/.tmux/plugins/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "nvim/.local/share/nvim/lazy/catppuccin"]
-	path = nvim/.local/share/nvim/lazy/catppuccin
-	url = https://github.com/catppuccin/nvim.git
-[submodule "nvim/.local/share/nvim/lazy/telescope-ui-select.nvim"]
-	path = nvim/.local/share/nvim/lazy/telescope-ui-select.nvim
-	url = https://github.com/nvim-telescope/telescope-ui-select.nvim.git
