@@ -11,8 +11,8 @@ return {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
-    sources = { "filesystem", "buffers", "git_status", "document_symbols" },
-    open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
+    sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
+    open_files_do_not_replace_types = { 'terminal', 'Trouble', 'trouble', 'qf', 'Outline' },
     filesystem = {
       window = {
         mappings = {
@@ -24,8 +24,8 @@ return {
   init = function()
     if vim.fn.argc(-1) == 1 then
       local stat = vim.loop.fs_stat(vim.fn.argv(0))
-      if stat and stat.type == "directory" then
-        require("neo-tree")
+      if stat and stat.type == 'directory' then
+        require 'neo-tree'
       end
     end
   end,
