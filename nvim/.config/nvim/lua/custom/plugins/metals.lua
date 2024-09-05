@@ -80,29 +80,27 @@ return {
       map('n', '<leader>rn', vim.lsp.buf.rename)
       map('n', '<leader>f', vim.lsp.buf.format)
       map('n', '<leader>ca', vim.lsp.buf.code_action)
-      map('n', '<leader>sm', function()
-        require('telescope').extensions.metals.commands()
-      end, { desc = '[S]earch [M]etals commands' })
 
-      map('n', '<leader>ws', function()
+      map('n', '<leader>mc', function()
+        require('telescope').extensions.metals.commands()
+      end, { desc = '[M]etals [C]ommands' })
+
+      map('n', '<leader>mwh', function()
         require('metals').hover_worksheet()
-      end)
+      end, { desc = '[M]etals open [W]orksheet' })
 
       -- all workspace diagnostics
-      map('n', '<leader>aa', vim.diagnostic.setqflist)
+      map('n', '<leader>mla', vim.diagnostic.setqflist, { desc = 'show [A]ll messages' })
 
       -- all workspace errors
-      map('n', '<leader>ae', function()
+      map('n', '<leader>mle', function()
         vim.diagnostic.setqflist { severity = 'E' }
-      end)
+      end, { desc = 'show [E]rrors' })
 
       -- all workspace warnings
-      map('n', '<leader>aw', function()
+      map('n', '<leader>mlw', function()
         vim.diagnostic.setqflist { severity = 'W' }
-      end)
-
-      -- buffer diagnostics only
-      map('n', '<leader>d', vim.diagnostic.setloclist)
+      end, { desc = 'show [W]arnings' })
 
       map('n', '[c', function()
         vim.diagnostic.goto_prev { wrap = false }
@@ -114,52 +112,90 @@ return {
 
       -- Example mappings for usage with nvim-dap. If you don't use that, you can
       -- skip these
-      map('n', '<leader>dc', function()
-        require('dap').continue()
-      end)
+
+      require('dap').listeners.after['event_terminated']['nvim-metals'] = function()
+        vim.notify 'dap finished!'
+        --dap.repl.open()
+      end
+
+      -- REPL
+
+      -- map('n', '<leader>dR', function()
+      --   require('dap').repl.open()
+      -- end, { desc = '[D]ap REPL open' })
 
       map('n', '<leader>dr', function()
         require('dap').repl.toggle()
-      end)
+      end, { desc = '[D]ap REPL toggle' })
 
-      map('n', '<leader>dK', function()
-        require('dap.ui.widgets').hover()
-      end)
+      -- Breakpoints
 
-      map('n', '<leader>do', function()
-        require('dap').repl.open()
-      end)
-
-      map('n', '<leader>dt', function()
+      map('n', '<leader>db', function()
         require('dap').toggle_breakpoint()
-      end)
+      end, { desc = '[D]ap toggle [B]reakpoint' })
 
-      map('n', '<leader>dso', function()
+      map('n', '<leader>dB', function()
+        require('dap').clear_breakpoints()
+      end, { desc = '[D]ap clear all [B]reakpoints' })
+
+      -- Debug control
+      map('n', '<leader>dc', function()
+        require('dap').continue()
+      end, { desc = '[D]ap [C]ontinue' })
+
+      map('n', '<leader>dv', function()
         require('dap').step_over()
-      end)
+      end, { desc = '[D]ap step o[V]er' })
 
-      map('n', '<leader>dsi', function()
+      map('n', '<leader>di', function()
         require('dap').step_into()
-      end)
+      end, { desc = '[D]ap step [I]nto' })
+
+      map('n', '<leader>du', function()
+        require('dap').step_out()
+      end, { desc = '[D]ap step [O]ut' })
 
       map('n', '<leader>dl', function()
         require('dap').run_last()
-      end)
+      end, { desc = '[D]ap [L]ast run' })
 
-      map({ 'n', 'v' }, '<Leader>dp', function()
+      -- DAP UI
+      map('n', '<leader>dp', function()
+        require('dap.ui.widgets').hover()
+      end, { desc = '[D]ap short [P]review' })
+
+      map({ 'n', 'v' }, '<Leader>dP', function()
         require('dap.ui.widgets').preview()
-      end)
+      end, { desc = '[D]ap [P]review in buffer' })
+
+      map({ 'n' }, '<Leader>dLb', function()
+        require('dap').list_breakpoints()
+      end, { desc = '[D]ap [L]ist [B]reakpoints' })
+
       map('n', '<Leader>df', function()
         local widgets = require 'dap.ui.widgets'
         widgets.centered_float(widgets.frames)
-      end)
-      map('n', '<Leader>dS', function()
+      end, { desc = '[D]ap [F]rames' })
+
+      map('n', '<Leader>dt', function()
+        local widgets = require 'dap.ui.widgets'
+        widgets.centered_float(widgets.threads)
+      end, { desc = '[D]ap [T]hreads' })
+
+      map('n', '<Leader>dv', function()
         local widgets = require 'dap.ui.widgets'
         widgets.centered_float(widgets.scopes)
-      end)
-      map('n', '<Leader>di', function()
-        require('dapui').toggle()
-      end)
+      end, { desc = '[D]ap [V]ariables' })
+
+      map('n', '<Leader>ds', function()
+        local widgets = require 'dap.ui.widgets'
+        widgets.centered_float(widgets.sessions)
+      end, { desc = '[D]ap [S]essions' })
+
+      map('n', '<Leader>de', function()
+        local widgets = require 'dap.ui.widgets'
+        widgets.centered_float(widgets.expression)
+      end, { desc = '[D]ap [E]xpressions' })
     end
 
     return metals_config
