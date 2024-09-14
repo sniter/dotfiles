@@ -15,8 +15,8 @@ xcode-select --install
 ```shell 
 brew install \
     neovim helix \
-    fzf ag ripgrep fd \
-    eza bat tmux stow aria2c 
+    fzf the_silver_searcher ripgrep fd \
+    aria2c bat eza stow tmux 
 ```
 
 * [Macports](https://www.macports.org/install.php) (if homebrew is not a choice)
@@ -24,8 +24,8 @@ brew install \
 ```shell 
 sudo port install \
     neovim helix \
-    the_silver_searcher fzf ripgrep fd \
-    bat eza tmux stow aria2 \
+    fzf the_silver_searcher ripgrep fd \
+    aria2 bat eza stow tmux 
     
 ```
 
@@ -37,10 +37,20 @@ brew install font-fira-mono-nerd-font
 
 ### Terminal emulator
 
+**In Homebrew**
+
 ```shell
 brew install --cask alacritty
 brew install --cask wezterm
 brew install --cask kitty
+```
+
+**In MacPorts**
+
+```shell
+sudo port install alacritty
+sudo port install alacritty
+sudo port install kitty
 ```
 
 ### Programming languages
