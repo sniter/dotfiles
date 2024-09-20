@@ -14,7 +14,18 @@ opacity = 0.8
 blur = true
 
 option_as_alt = "Both"
+startup_mode = "Maximized"
 
 [font]
 normal.family = "FiraCode Nerd Font Mono"
 size = 13
+
+[keyboard]
+
+bindings = [
+  {key = "k", mods = "Super", mode = "~Vi|~Search", chars = "\u000c"},
+  {key = "k", mods = "Super", mode = "~Vi|~Search", action = "ClearHistory"},
+  {key = "Escape", mods = "Control|Shift", action="ToggleViMode"},
+  # {key = "Escape", mods = "Control|Shift", mode = "", action="ToggleViMode"},
+
+]

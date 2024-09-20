@@ -49,7 +49,7 @@ brew install --cask kitty
 
 ```shell
 sudo port install alacritty
-sudo port install alacritty
+sudo port install wezterm
 sudo port install kitty
 ```
 

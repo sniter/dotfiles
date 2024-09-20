@@ -16,6 +16,21 @@
 	lg = !"git lg1"
 	commit-merge = !head -1 $(git rev-parse --git-dir)/MERGE_MSG | git commit -F -
 
+[diff]
+	algorithm = patience
+	compactionHeuristic = true
+	tool = nvimdiff
+
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+
+[merge]
+	tool = nvimdiff4
+	prompt = false
+
+[mergetool "nvimdiff4"]
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [color]
 	diff = auto
 	status = auto

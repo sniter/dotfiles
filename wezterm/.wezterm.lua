@@ -42,6 +42,9 @@ config.mouse_bindings = {
 	-- NOTE that binding only the 'Up' event can give unexpected behaviors.
 	-- Read more below on the gotcha of binding an 'Up' event only.
 }
-
+config.keys = {
+	-- CTRL-SHIFT-l activates the debug overlay
+	{ key = "L", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
+}
 -- and finally, return the configuration to wezterm
 return config
