@@ -76,3 +76,14 @@ sudo port install \
 ```
 Coursier should be installed [manually](https://get-coursier.io/docs/cli-installation#macos).
 
+**In Linux**
+
+```shell
+sudo pacman -S\
+    stow git \
+    alacritty aria2 bat eza fd fzf htop less starship tmux \
+    sway wofi waybar\
+    firefox chromium \
+    noto-fonts-emoji ttf-font-awesome ttf-firacode-nerd\
+    brightnessctl bluez bluez-utils
+```
