@@ -76,7 +76,16 @@ sudo port install \
 ```
 Coursier should be installed [manually](https://get-coursier.io/docs/cli-installation#macos).
 
-**In Linux**
+## Emacs
+
+```shell
+brew tap d12frosted/emacs-plus
+brew install emacs-plus \
+    --with-native-comp \
+    --with-savchenkovaleriy-big-sur-3d-icon
+```
+
+## Linux Setup
 
 ```shell
 sudo pacman -S\
