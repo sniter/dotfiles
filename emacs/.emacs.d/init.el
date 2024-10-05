@@ -12,8 +12,14 @@
 (set-face-attribute 'default t :font "FiraCode Nerd Font Mono" )
 
 ;; MacOS
-(setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'super)
+;(setq mac-option-modifier 'meta)
+;(setq mac-command-modifier 'super)
+
+;; iDo
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-use-filename-at-point 'guess)
+(ido-mode 1)
 
 ;; Theme
 (load-theme 'wombat)

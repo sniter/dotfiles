@@ -234,4 +234,5 @@ bar {
     swaybar_command waybar
 }
 
+include config.d/*
 include /etc/sway/config.d/*
