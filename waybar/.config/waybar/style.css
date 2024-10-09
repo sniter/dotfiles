@@ -1,7 +1,9 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     /*font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;*/
-    font-family: "FiraCode Nerd Font Propo", FontAwesome; /*, Roboto, Helvetica, Arial, sans-serif;*/
+    font-family: "FiraCode Nerd Font Propo", FontAwesome; 
+    /*font-family: "Iosevka Term Extended", FontAwesome; */
+    /*font-family: "FantasqueSansM Nerd Font Propo", FontAwesome, Roboto; */
     font-size: 16px;
 }
 
