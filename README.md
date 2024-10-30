@@ -94,5 +94,9 @@ sudo pacman -S\
     sway wofi waybar\
     firefox chromium \
     noto-fonts-emoji ttf-font-awesome ttf-firacode-nerd\
-    brightnessctl bluez bluez-utils
+    brightnessctl bluez bluez-utils\
+    jdk21-openjdk openjdk21-src\
+    hyprland wl-clipboard\
+    unzip
+
 ```
