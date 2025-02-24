@@ -88,11 +88,11 @@ brew install emacs-plus \
 ## Linux Setup
 
 ```shell
-sudo pacman -S\
-    stow git openssh \
+sudo pacman -S \
+    stow git openssh neovim\
     alacritty aria2 bat eza fd fzf jq htop less ripgrep starship tmux \
     firefox chromium \
-    noto-fonts-emoji ttf-font-awesome ttf-firacode-nerd \
+    noto-fonts-emoji ttc-iosevka-nerd ttf-font-awesome ttf-firacode-nerd \
     jdk21-openjdk openjdk21-src \
 
 ```
