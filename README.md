@@ -90,13 +90,9 @@ brew install emacs-plus \
 ```shell
 sudo pacman -S\
     stow git openssh \
-    alacritty aria2 bat eza fd fzf htop less ripgrep starship tmux \
-    sway wofi waybar\
+    alacritty aria2 bat eza fd fzf jq htop less ripgrep starship tmux \
     firefox chromium \
-    noto-fonts-emoji ttf-font-awesome ttf-firacode-nerd\
-    brightnessctl bluez bluez-utils\
-    jdk21-openjdk openjdk21-src\
-    hyprland wl-clipboard\
-    unzip
+    noto-fonts-emoji ttf-font-awesome ttf-firacode-nerd \
+    jdk21-openjdk openjdk21-src \
 
 ```
