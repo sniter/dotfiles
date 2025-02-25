@@ -89,10 +89,18 @@ brew install emacs-plus \
 
 ```shell
 sudo pacman -S \
-    stow git openssh neovim\
-    alacritty aria2 bat eza fd fzf jq htop less ripgrep starship tmux \
-    firefox chromium \
-    noto-fonts-emoji ttc-iosevka-nerd ttf-font-awesome ttf-firacode-nerd \
-    jdk21-openjdk openjdk21-src \
+    chromium \
+    zsh alacritty kitty neovim \
+    stow git openssh \
+    aria2 bat eza fd fzf jq htop less ripgrep starship tmux \
+    noto-fonts-emoji ttc-iosevka ttf-iosevkaterm-nerd ttf-font-awesome ttf-firacode-nerd \
+    jdk21-openjdk openjdk21-src
 
+mkdir -p ~/.local/share && \
+    cd ~/.local/share/ && \
+    git clone https://github.com/junegunn/fzf-git.sh.git && \
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git
+
+mkdir -p ~/.tmux/plugins && \
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
