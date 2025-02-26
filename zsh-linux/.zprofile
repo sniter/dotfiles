@@ -16,6 +16,8 @@ setopt hist_verify
 export PATH="$PATH:/home/ilya/.local/share/coursier/bin"
 # <<< coursier install directory <<<
 
+# LAZYGIT
+export LG_CONFIG_FILE="${HOME}/.config/lazygit/config.yml,${HOME}/.config/lazygit/themes/catppuccin-mocha-blue.yml"
 # BAT
 export BAT_THEME="Catppuccin Mocha"
 
