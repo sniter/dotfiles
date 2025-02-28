@@ -49,8 +49,10 @@ cursor-style = "block"
 background-opacity = 0.9
 background-blur = 60
 
-keybind = alt+shift+V=new_split:right
-keybind = alt+shift+S=new_split:down
+keybind = ctrl+shift+right=new_split:right
+keybind = ctrl+shift+down=new_split:down
+keybind = ctrl+shift+left=new_split:left
+keybind = ctrl+shift+right=new_split:right
 keybind = alt+shift+up=resize_split:up,10
 keybind = alt+shift+down=resize_split:down,10
 keybind = alt+shift+left=resize_split:left,10
