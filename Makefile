@@ -7,7 +7,17 @@ arch:
 	noto-fonts-emoji ttc-iosevka ttf-iosevkaterm-nerd ttf-font-awesome ttf-firacode-nerd \
 	jdk21-openjdk openjdk21-src
 
-zsh4humans:
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
+zsh/antidote:
+	git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
 
-linux: arch zsh4humans
+tmux/tpm: 
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+dotfiles/linux:
+	stow \
+	alacritty kitty \
+	emacs nvim vim \
+	git lazygit \
+	ssh starship tmux zsh-linux
+
+linux: arch zsh/antidote tmux/tpm dotfiles/linux
