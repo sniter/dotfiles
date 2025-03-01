@@ -1,5 +1,4 @@
-format = """
-$username\
+format = """$username\
 $hostname\
 $directory\
 $git_branch\
@@ -8,6 +7,8 @@ $git_status\
 $cmd_duration\
 $line_break\
 $python\
+$scala\
+$lua\
 $character"""
 
 [directory]
@@ -41,6 +42,14 @@ style = "bright-black"
 format = "[$duration]($style) "
 style = "yellow"
 
+[scala]
+symbol = " "
+
+[lua]
+symbol = " "
+
 [python]
-format = "[$virtualenv]($style) "
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 style = "bright-black"
+symbol = " "
+pyenv_version_name = true
