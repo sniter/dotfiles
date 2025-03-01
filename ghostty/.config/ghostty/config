@@ -68,8 +68,12 @@ keybind = ctrl+cmd+left=goto_split:left
 keybind = ctrl+cmd+right=goto_split:right
 
 # Copy/Paste
-keybind = cmd+c=copy_to_clipboard
-keybind = cmd+v=paste_from_clipboard
+# keybind = cmd+c=copy_to_clipboard
+# keybind = cmd+v=paste_from_clipboard
+
+# Font size
+# keybind = ctrl+equal=increase_font_size:1
+# keybind = cmd+minus=decrease_font_size:1
 
 keybind = ctrl+shift+tab=toggle_tab_overview
 # keybind = cmd+i=inspector:toggle
@@ -77,7 +81,7 @@ keybind = ctrl+shift+tab=toggle_tab_overview
 
 
 # Fullscreen
-keybind = ctrl+shift+f=toggle_split_zoom
+keybind = ctrl+shift+enter=toggle_split_zoom
 
 
 
