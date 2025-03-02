@@ -11,6 +11,8 @@ $scala\
 $lua\
 $character"""
 
+add_newline = false
+
 [directory]
 style = "blue"
 
