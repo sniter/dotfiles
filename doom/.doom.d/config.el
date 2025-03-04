@@ -74,4 +74,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(after! treemacs
+  (setq treemacs-collapse-dirs      1
+        treemacs-litter-directories '("/node_modules" "/.venv" "/.cask", "target")))
 (load! "metals.el")
