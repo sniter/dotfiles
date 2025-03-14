@@ -22,3 +22,6 @@ dotfiles/linux:
 	ssh starship tmux zsh-linux
 
 linux: arch zsh/antidote tmux/tpm dotfiles/linux
+
+keyboard:
+	dconf write /org/gnome/desktop/input-sources/xkb-options "['grp:caps_toggle','terminate:ctrl_alt_bksp']"

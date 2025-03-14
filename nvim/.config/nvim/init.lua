@@ -152,7 +152,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', leadmultispace = '⎸ ', multispace = '·' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -407,6 +407,23 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          layout_config = {
+            vertical = { width = 0.8 },
+            horizontal = { width = 0.8 },
+            cursor = { width = 0.8 },
+            center = { width = 0.8 },
+            flex = { width = 0.8 },
+            bottom_pane = { width = 0.8 },
+            -- other layout configuration here
+          },
+          mappings = {
+            i = {
+              ['<c-j>'] = require('telescope.actions').cycle_history_next,
+              ['<c-k>'] = require('telescope.actions').cycle_history_prev,
+            },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -437,6 +454,7 @@ require('lazy').setup({
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
           previewer = false,
+          layout_config = { width = 0.8 },
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 

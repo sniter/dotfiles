@@ -19,6 +19,8 @@ return {
           ['\\'] = 'close_window',
         },
       },
+      scan_mode = 'deep',
+      group_empty_dirs = true,
     },
   },
   init = function()
