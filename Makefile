@@ -47,4 +47,6 @@ linux/bluetooth/enable:
 	sudo systemctl enable bluetooth.service
 	sudo systemctl start bluetooth.service
 
-
+ssh/github:
+	mkdir -p ~/.ssh/github.com/git
+	ssh-keygen -t ed25519 -C "sniter@gmail.com" -f ~/.ssh/github.com/git/id_ed25519

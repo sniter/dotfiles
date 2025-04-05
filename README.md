@@ -88,5 +88,5 @@ brew install emacs-plus \
 ## Linux Setup
 
 ```shell
-make linux
+make
 ```
