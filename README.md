@@ -1,92 +1,37 @@
 # Dotfiles
 
-## Prerequisitives
+## Mac OS
 
-### Command Line Developer Tools
+### Prerequisitives
+
+#### Command Line Developer Tools
 
 ```shell
 xcode-select --install
 ```
 
-### Package manager 
+#### Package manager 
 
 * [Homebrew](https://brew.sh/) (for up-to-date Mac OS)
-
-```shell 
-brew install \
-    neovim helix \
-    fzf the_silver_searcher ripgrep fd \
-    aria2c bat eza stow tmux 
-```
-
 * [Macports](https://www.macports.org/install.php) (if homebrew is not a choice)
 
-```shell 
-sudo port install \
-    neovim helix \
-    fzf the_silver_searcher ripgrep fd \
-    aria2 bat eza stow tmux 
-    
-```
-
-### Fonts
+#### Setup
 
 ```shell
-brew install font-fira-mono-nerd-font
+# In case Homebrew
+make mac/brew
+
+# In case Macports
+make mac/ports
 ```
 
-### Terminal emulator
-
-**In Homebrew**
+## Linux 
 
 ```shell
-brew install --cask alacritty
-brew install --cask wezterm
-brew install --cask kitty
+make 
 ```
 
-**In MacPorts**
+### Additional setup
 
-```shell
-sudo port install alacritty
-sudo port install wezterm
-sudo port install kitty
-```
+- [Coursier](https://get-coursier.io/docs/cli-installation)
 
-### Programming languages
-
-**In Homebrew**
-
-```shell
-brew install \
-    rust \
-    opam \
-    haskell-stack \
-    coursier
-brew install --cask oracle-jdk
-```
-**In MacPorts**
-
-```shell
-sudo port install \
-    rust rust-src \
-    opam \
-    stack \
-    openjdk21-oracle
-```
-Coursier should be installed [manually](https://get-coursier.io/docs/cli-installation#macos).
-
-## Emacs
-
-```shell
-brew tap d12frosted/emacs-plus
-brew install emacs-plus \
-    --with-native-comp \
-    --with-savchenkovaleriy-big-sur-3d-icon
-```
-
-## Linux Setup
-
-```shell
-make
-```
