@@ -63,7 +63,24 @@
     fd.enable = true;
     fzf = {
       enable = true;
-      defaultCommand = "";
+      colors = {
+        "bg+"="#414559";
+        bg="#303446";
+        spinner="#F2D5CF";
+        hl="#E78284";
+        fg="#C6D0F5";
+        header="#E78284";
+        info="#CA9EE6";
+        pointer="#F2D5CF";
+        marker="#BABBF1";
+        "fg+"="#C6D0F5";
+        prompt="#CA9EE6";
+        "hl+"="#E78284";
+        "selected-bg"="#51576D";
+        border="#414559";
+        label="#C6D0F5";
+      };
+      defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .gi";
     };
     git = {
       enable = true;
@@ -74,7 +91,6 @@
     jq.enable = true;
     lazygit = {
       enable = true;
-      # TODO: add theme
     };
     less.enable = true;
     oh-my-posh = {
@@ -82,10 +98,20 @@
       useTheme = "catppuccin_frappe";
     };
     ripgrep.enable = true;
+    ssh = {
+      enable = true;
+      matchBlocks.gihub = {
+        host           = "github.com";
+        hostname       = "github.com";
+        identitiesOnly = true;
+        user           = "git";
+        identityFile   = "/home/ilya/.ssh/github.com/git/id_ed25519";
+      };
+    };
     tmux = {
       enable = true;
-      # TODO: Configure
       shell = "${pkgs.zsh}/bin/zsh";
+      mouse = true;
       extraConfig = ''
         bind -n M-0  select-window -t 0
         bind -n M-1 select-window -t 1
@@ -153,6 +179,14 @@
         enable = true;
         highlight = "fg=#ff00ff,bg=#303446";
       };
+      history = {
+        append = true;
+        share =   true;
+        save  = 100000;
+        size  =  99999;
+        ignoreDups = true;
+        expireDuplicatesFirst = true;
+      };
       antidote = {
         enable = true;
         plugins = [
@@ -163,6 +197,13 @@
           "junegunn/fzf-git.sh"
         ];
       };
+      profileExtra = ''
+        export LG_CONFIG_FILE="/home/ilya/.config/lazygit/config.yml,/home/ilya/.config/lazygit/themes/catppuccin/themes-mergable/frappe/blue.yml"
+      '';
+      initContent = ''
+        bindkey '^[[A' history-search-backward
+        bindkey '^[[B' history-search-forward
+      '';
     };
   };
   # This value determines the Home Manager release that your configuration is
@@ -179,8 +220,6 @@
   home.packages = with pkgs; [
     ghostty
     stow
-    tmux zellij
-    openssh
     jdk21_headless coursier
     ibm-plex
     gnumake gcc
@@ -214,6 +253,12 @@
         rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
       };
     };
+    "/home/ilya/.config/lazygit/themes/catppuccin" = {
+      source = builtins.fetchGit {
+        url = "https://github.com/catppuccin/lazygit.git";
+        rev = "c24895902ec2a3cb62b4557f6ecd8e0afeed95d5";
+      };
+    };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -243,7 +288,7 @@
   #  /etc/profiles/per-user/ilya/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
