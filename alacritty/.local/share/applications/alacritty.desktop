@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Alacritty
+Exec=alacritty
+Terminal=false
+Icon=/home/ilya/dotfiles/alacritty/.local/share/applications/alacritty.png
+Type=Application
+Comment=Alacritty terminal emulator

@@ -3,3 +3,4 @@ ssh/.ssh/github.com/
 ssh/.ssh/known_hosts*
 nvim-kickstart/
 .DS_Store
+nohup.out

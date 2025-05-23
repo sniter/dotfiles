@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Ghostty
+Exec=ghostty
+Terminal=false
+Icon=/home/ilya/dotfiles/ghostty/.local/share/applications/ghostty.png
+Type=Application
+Comment=Ghostty terminal emulator

@@ -80,7 +80,9 @@
         border="#414559";
         label="#C6D0F5";
       };
-      defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .gi";
+      # defaultCommand = "fd --type f --hidden --strip-cwd-prefix --exclude .git";
+      fileWidgetCommand = "fd --type f";
+      fileWidgetOptions = ["--preview 'head {}'"];
     };
     git = {
       enable = true;
