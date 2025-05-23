@@ -55,10 +55,36 @@
       };
       config.theme = "Catppuccin Frappe";
     };
+    btop.enable = true;
+    eza = {
+      enable = true;
+      icons = "auto";
+    };
+    fd.enable = true;
+    fzf = {
+      enable = true;
+      defaultCommand = "";
+    };
     git = {
       enable = true;
       userName = "Ilya Babich";
       userEmail = "sniter@gmail.com";
+    };
+    htop.enable = true;
+    jq.enable = true;
+    lazygit = {
+      enable = true;
+      # TODO: add theme
+    };
+    less.enable = true;
+    oh-my-posh = {
+      enable = true;
+      useTheme = "catppuccin_frappe";
+    };
+    ripgrep.enable = true;
+    tmux = {
+      enable = true;
+      # TODO: Configure
     };
     zsh = {
       enable = true;
@@ -78,19 +104,6 @@
         ];
       };
     };
-    eza = {
-      enable = true;
-      icons = "auto";
-    };
-    fd.enable = true;
-    fzf = {
-      enable = true;
-      defaultCommand = "";
-    };
-    oh-my-posh = {
-      enable = true;
-      useTheme = "catppuccin_frappe";
-    };
   };
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -104,18 +117,15 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # hello
     ghostty
-    jq htop less ripgrep stow
+    stow
     tmux zellij
-    lazygit
     openssh
     jdk21_headless coursier
     ibm-plex
     gnumake gcc
     gzdoom
+    unzip
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
