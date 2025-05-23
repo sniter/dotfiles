@@ -85,6 +85,66 @@
     tmux = {
       enable = true;
       # TODO: Configure
+      shell = "${pkgs.zsh}/bin/zsh";
+      extraConfig = ''
+        bind -n M-0  select-window -t 0
+        bind -n M-1 select-window -t 1
+        bind -n M-2 select-window -t 2
+        bind -n M-3 select-window -t 3
+        bind -n M-4 select-window -t 4
+        bind -n M-5 select-window -t 5
+        bind -n M-6 select-window -t 6
+        bind -n M-7 select-window -t 7
+        bind -n M-8 select-window -t 8
+        bind -n M-9 select-window -t 9
+        bind -n M-c new-window
+        bind -n M-. command-prompt -T target { move-window -b -t "%%" } \; move-window -r
+        bind -n M-, command-prompt -I "#W" { rename-window "%%" }
+        bind -n M-d detach-client
+        bind -n M-Q kill-server
+        bind -n M-h split-window -v
+        bind -n M-v split-window -h
+        # Simple navigation between panes
+        bind -n M-Left  select-pane -L
+        bind -n M-Right select-pane -R
+        bind -n M-Up    select-pane -U
+        bind -n M-Down  select-pane -D
+        # select-window
+        bind -n M-w choose-tree -Zw
+        bind -n M-s choose-tree -Zs -O name
+        bind -n M-z resize-pane -Z
+        bind -n M-l clear-history
+      '';
+      plugins = with pkgs; [
+        tmuxPlugins.cpu
+        {
+          plugin = tmuxPlugins.resurrect;
+          # extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+        }
+        # TODO: missing tmux-plugins/tmux-which-key
+        {
+          plugin = tmuxPlugins.catppuccin;
+          extraConfig = ''
+            set -g @catppuccin_flavor 'frappe'
+            set -g @catppuccin_window_status_style 'basic'
+            set -g status-left ""
+            set -g status-right "#{E:@catppuccin_status_application}"
+            # set -agF status-right "#{E:@catppuccin_status_cpu}"
+            set -ag status-right "#{E:@catppuccin_status_session}"
+            set -ogq @catppuccin_window_text " #W"
+            set -ogq @catppuccin_window_current_text " #W"
+            # set -ag status-right "#{E:@catppuccin_status_uptime}"
+            # set -agF status-right "#{E:@catppuccin_status_battery}"
+          '';
+        }
+        # {
+        #   plugin = tmuxPlugins.continuum;
+        #   extraConfig = ''
+        #     set -g @continuum-restore 'on'
+        #     set -g @continuum-save-interval '60' # minutes
+        #   '';
+        # }
+      ];
     };
     zsh = {
       enable = true;
