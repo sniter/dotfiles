@@ -20,6 +20,15 @@ alias lg="ls -la --git"
 alias lt="ls -T --git-ignore"
 alias utor='aria2c --seed-time=0'
 
+# Only source this once
+if [[ -z "$__HM_ZSH_SESS_VARS_SOURCED" ]]; then
+  export __HM_ZSH_SESS_VARS_SOURCED=1
+fi
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/home/ilya/.local/share/coursier/bin"
+# <<< coursier install directory <<<
+
 # LAZYGIT
 export LG_CONFIG_FILE="${HOME}/.config/lazygit/config.yml,${HOME}/.config/lazygit/themes/catppuccin-mocha-blue.yml"
 

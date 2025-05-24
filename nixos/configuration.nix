@@ -48,7 +48,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -75,7 +75,7 @@
     packages = with pkgs; [
       git lazygit
       alacritty ghostty
-      aria2 openssh
+      aria2 wget openssh
       bat less jq
       eza fd fzf ripgrep
       btop htop
@@ -83,15 +83,30 @@
       stow gnumake gcc unzip
       gzdoom 
       ibm-plex
-      jdk21_headless coursier
+      python3 sqlite
+      jdk21_headless coursier tree-sitter
+      sqlite luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
     ];
+  };
+
+  home-manager.users.ilya = {
+    programs.alacritty.enable = true;
+    programs.ghostty.enable = true;
+    # programs.zsh.enable = true;
+    home.packages = with pkgs; [
+      sqlite luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
+    ];
+    home.sessionVariables = {
+      # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
+      LD_LIBRARY_PATH =
+        "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
+    };
+    home.stateVersion = "25.05";
   };
 
   # Install firefox.
   programs.firefox.enable   = true;
   programs.zsh.enable       = true;
-  programs.alacritty.enable = true;
-  programs.ghostty.enable   = true;
 
   # Install neovim
   programs.neovim = {

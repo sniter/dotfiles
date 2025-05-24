@@ -62,6 +62,7 @@ path=(~/bin $path)
 export GPG_TTY=$TTY
 
 # Source additional local files if they exist.
+z4h source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 z4h source ~/.env.zsh
 z4h source ~/.git.zsh
 
