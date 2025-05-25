@@ -4,3 +4,5 @@ ssh/.ssh/known_hosts*
 nvim-kickstart/
 .DS_Store
 nohup.out
+# Ignoring enabled as this part is modifiable
+enabled/

@@ -35,8 +35,15 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+
+  # Enable KDE Plasma6
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  # Enable bluetooth (by default not included into KDE)
+  hardware.bluetooth.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -72,10 +79,16 @@
     description = "Ilya Babich";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
+  };
+
+  home-manager.users.ilya = {
+    programs.alacritty.enable = true;
+    programs.ghostty.enable = true;
+    # programs.zsh.enable = true;
+    home.packages = with pkgs; [ 
       git lazygit
       alacritty ghostty
-      aria2 wget openssh
+      aria2 posting wget openssh
       bat less jq
       eza fd fzf ripgrep
       btop htop
@@ -83,18 +96,9 @@
       stow gnumake gcc unzip
       gzdoom 
       ibm-plex
-      python3 sqlite
-      jdk21_headless coursier tree-sitter
-      sqlite luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
-    ];
-  };
-
-  home-manager.users.ilya = {
-    programs.alacritty.enable = true;
-    programs.ghostty.enable = true;
-    # programs.zsh.enable = true;
-    home.packages = with pkgs; [
-      sqlite luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
+      python3 jdk21_headless coursier tree-sitter nodejs cargo
+      luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
+      sqlite 
     ];
     home.sessionVariables = {
       # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
