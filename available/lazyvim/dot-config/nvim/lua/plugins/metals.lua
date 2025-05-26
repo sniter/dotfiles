@@ -1,19 +1,4 @@
 return {
-  recommended = function()
-    return LazyVim.extras.wants({
-      ft = "scala",
-      root = { "build.sbt", "build.sc", "build.gradle", "pom.xml" },
-    })
-  end,
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = { ensure_installed = { "scala" } },
-  },
-  {
-    "scalameta/nvim-metals",
-    ft = { "scala", "sbt" },
-    config = function() end,
-  },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -23,80 +8,70 @@ return {
             {
               "<leader>me",
               function()
-                require("telescope").extensions.metals.commands()
+                -- require("telescope").extensions.metals.commands()
+                local commands = require("metals.commands").commands_table
+                local opts = {
+                  prompt = 'Metals:',
+                  format_item = function(item)
+                      return item.label
+                  end,
+                }
+                local picker = function(choice)
+                  pcall(require("metals")[choice.id])
+                end
+
+                vim.ui.select(commands, opts, picker)
               end,
               desc = "Metals commands",
             },
             {
-              "<leader>mc",
+              "<leader>mi",
               function()
-                require("metals").compile_cascade()
+                require("metals").import_build()
               end,
-              desc = "Metals compile cascade",
+              desc = "Metals import build",
             },
             {
-              "<leader>mh",
+              "<leader>mt",
               function()
-                require("metals").hover_worksheet()
+                require("metals.tvp").toggle_tree_view()
               end,
-              desc = "Metals hover worksheet",
+              desc = "Metals toggle tree view",
+            },
+            {
+              "<leader>mr",
+              function()
+                require("metals.tvp").reveal_in_tree()
+              end,
+              desc = "Metals reveal in tree",
             },
           },
-          init_options = {
-            statusBarProvider = "off",
-          },
           settings = {
-            showImplicitArguments = true,
-            excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
             testUserInterface = "Test Explorer",
           },
+          tvp = {
+            panel_alignment = "right",
+            icons = {
+              enabled = true,
+              symbols = {
+                project = "",
+                package = "",
+                target = "󰩷",
+                ["symbol-field"] = "",
+                ["symbol-folder"] = "󰉋",
+                ["symbol-object"] = "",
+                ["symbol-trait"] = "󰆼",
+                ["symbol-class"] = "󰆧",
+                ["symbol-interface"] = "",
+                ["symbol-val"] = "󰏿",
+                ["symbol-var"] = "󰀫",
+                ["symbol-method"] = "󰊕",
+                ["symbol-enum"] = "",
+              },
+            },
+          }
         },
-      },
-      setup = {
-        metals = function(_, opts)
-          local metals = require("metals")
-          local metals_config = vim.tbl_deep_extend("force", metals.bare_config(), opts)
-          metals_config.on_attach = LazyVim.has("nvim-dap") and metals.setup_dap or nil
-
-          local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-          vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "scala", "sbt" },
-            callback = function()
-              metals.initialize_or_attach(metals_config)
-            end,
-            group = nvim_metals_group,
-          })
-          return true
-        end,
       },
     },
-  },
-
-  {
-    "mfussenegger/nvim-dap",
-    optional = true,
-    opts = function()
-      -- Debug settings
-      local dap = require("dap")
-      dap.configurations.scala = {
-        {
-          type = "scala",
-          request = "launch",
-          name = "RunOrTest",
-          metals = {
-            runType = "runOrTestFile",
-            --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
-          },
-        },
-        {
-          type = "scala",
-          request = "launch",
-          name = "Test Target",
-          metals = {
-            runType = "testTarget",
-          },
-        },
-      }
-    end,
   },
 }

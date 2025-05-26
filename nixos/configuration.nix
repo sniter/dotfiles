@@ -99,6 +99,11 @@
       python3 jdk21_headless coursier tree-sitter nodejs cargo
       luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
       sqlite 
+      imagemagick
+      tectonic
+      mermaid-cli
+      ghostscript
+
     ];
     home.sessionVariables = {
       # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
@@ -124,13 +129,12 @@
   fonts.packages = with pkgs; [
     nerd-fonts.blex-mono
   ];
-
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    # imagemagick_light
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
