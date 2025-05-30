@@ -1,40 +1,44 @@
 linux/arch: \
 	linux/arch/packages \
-	linux/gnome/keyboard \
-	linux/gdm/enable \
+	linux/arch/kde \
 	linux/bluetooth/enable \
 	zsh/antidote \
-	zsh/default \
-	tmux/tpm \
-	linux/dotfiles
+	linux/zsh/default \
+	linux/dotfiles \
+	ssh/github
 
 linux/arch/packages:
 	sudo pacman -S \
-	wl-clipboard chromium bitwarden \
-	zsh ghostty \
+	wl-clipboard firefox bitwarden \
+	zsh alacritty ghostty \
 	emacs-nox neovim \
 	stow git lazygit openssh \
 	aria2 bat eza fd fzf jq htop less ripgrep starship tmux \
-	noto-fonts-emoji ttc-iosevka ttf-iosevkaterm-nerd ttf-font-awesome ttf-firacode-nerd \
+	noto-fonts-emoji ttc-iosevka ttf-iosevkaterm-nerd ttf-font-awesome ttf-firacode-nerd ttf-ibmplex-mono-nerd\
 	jdk21-openjdk openjdk21-src
 
-linux/dotfiles:
-	stow \
-	ghostty \
-	emacs nvim vim \
-	git lazygit \
-	ssh starship tmux zsh-linux
-
-linux/gnome/keyboard:
+linux/arch/gnome:
+	sudo pacman -S gnome
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['grp:caps_toggle','terminate:ctrl_alt_bksp']"
-
-linux/gdm/enable:
 	sudo systemctl enable gdm.service
-	sudo systemctl start gdm.service
+	# sudo systemctl start gdm.service
+
+linux/arch/kde:
+	sudo pacman -S plasma-desktop
+	sudo systemctl enable sddm.service
+	sudo systemctl start sddm.service
 
 linux/bluetooth/enable:
 	sudo systemctl enable bluetooth.service
 	sudo systemctl start bluetooth.service
+
+linux/dotfiles:
+	mkdir enabled 
+	stow -d available -t enabled \
+		alacritty bat ghostty \
+		git lazygit lazyvim \
+		ssh tmux vim zsh4humans
+	stow --dotfiles enabled
 
 mac/brew: \
 	mac/brew/packages \
@@ -76,15 +80,10 @@ ssh/github:
 	mkdir -p ~/.ssh/github.com/git
 	ssh-keygen -t ed25519 -C "sniter@gmail.com" -f ~/.ssh/github.com/git/id_ed25519
 
-tmux/tpm: 
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-zsh/default:
+linux/zsh/default:
 	@ZSH_PATH=$$(which zsh) && \
 	echo "Changing shell to $$ZSH_PATH" && \
 	chsh -s $$ZSH_PATH
 
 zsh/antidote:
 	git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
-
-
