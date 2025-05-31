@@ -58,14 +58,13 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    jack.enable = true;
+    # jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
 
-  virtualisation.docker.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -74,7 +73,7 @@
   users.users.ilya = {
     isNormalUser = true;
     description = "Ilya Babich";
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker"];
+    extraGroups = [ "networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -93,20 +92,22 @@
         alacritty ghostty
         aria2 posting wget openssh
         bat less jq
-        eza fd fzf ripgrep
-        btop htop
-        tmux zellij
-        stow gnumake gcc unzip
+        eza fd fzf ripgrep zoxide 
+        atop btop htop
+        tmux zellij sesh
+        stow unzip
         gzdoom 
         ibm-plex
-        python3 jdk21_headless coursier tree-sitter nodejs cargo
+        python3 jdk21_headless coursier nodejs cargo gnumake gcc
+        # Neovim
+        tree-sitter 
         luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
         sqlite 
         imagemagick
         tectonic
         mermaid-cli
         ghostscript
-        #
+        # Multimedia
         picard yt-dlp kew
       ];  
       home.sessionVariables = {
@@ -122,7 +123,12 @@
   # Install firefox.
   programs.firefox.enable   = true;
   programs.zsh.enable       = true;
-
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+    lua-language-server
+  ];
   # Install neovim
   programs.neovim = {
     enable = true;
@@ -170,8 +176,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-  # nixpkgs.config.permittedInsecurePackages = [
-  #   "freeimage-unstable-2021-11-01"
-  # ]; 
-
 }
