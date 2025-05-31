@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       <home-manager/nixos>
     ];
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -65,6 +65,8 @@
     #media-session.enable = true;
   };
 
+  virtualisation.docker.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -72,11 +74,12 @@
   users.users.ilya = {
     isNormalUser = true;
     description = "Ilya Babich";
-    extraGroups = [ "networkmanager" "wheel" ""];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker"];
     packages = with pkgs; [
       kdePackages.kate
     ];
     #  thunderbird
+    shell = pkgs.zsh;
   };
   home-manager = {
     backupFileExtension = "bak.nix";
@@ -104,7 +107,7 @@
         mermaid-cli
         ghostscript
         #
-        picard
+        picard yt-dlp kew
       ];  
       home.sessionVariables = {
         # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
