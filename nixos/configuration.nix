@@ -100,7 +100,7 @@
         ibm-plex
         python3 jdk21_headless coursier nodejs cargo gnumake gcc
         # Neovim
-        tree-sitter 
+        tree-sitter wl-clipboard 
         luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
         sqlite 
         imagemagick

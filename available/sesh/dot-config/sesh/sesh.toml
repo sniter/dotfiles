@@ -1,0 +1,5 @@
+[[session]]
+name = "lazyvim"
+path = "~/dotfiles/available/lazyvim/dot-config/nvim"
+startup_command = "NVIM || v"
+preview_command = "eza --tree ~/dotfiles/available/lazyvim/dot-config/nvim"
