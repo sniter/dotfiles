@@ -24,9 +24,8 @@ export EDITOR=nvim
 export GIT_EDITOR=vim
 
 # NixOS session vars
-. "/home/ilya/.nix-profile/etc/profile.d/hm-session-vars.sh"
+# . "/home/ilya/.nix-profile/etc/profile.d/hm-session-vars.sh"
 # Only source this once
-if [[ -z "$__HM_ZSH_SESS_VARS_SOURCED" ]]; then
-  export __HM_ZSH_SESS_VARS_SOURCED=1
-
-fi
+# if [[ -z "$__HM_ZSH_SESS_VARS_SOURCED" ]]; then
+#   export __HM_ZSH_SESS_VARS_SOURCED=1
+# fi
