@@ -220,7 +220,8 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    # status_command while swaymsg -t get_inputs | jq '.[0].xkb_active_layout_name'; date +'%Y-%m-%d %X'; do sleep 5; done
+    status_command while swaymsg -t get_inputs | jq '.[0].xkb_active_layout_name '; do sleep 5; done
 
     colors {
         statusline #ffffff
@@ -229,4 +230,4 @@ bar {
     }
 }
 
-include /etc/sway/config.d/*
+include /home/ilya/.config/sway/config.d/*
