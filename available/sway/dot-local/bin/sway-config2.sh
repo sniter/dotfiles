@@ -34,7 +34,7 @@ weather() {
 
 weather_render() {
   jq -n -c \
-    --arg name "Layout" \
+    --arg name "Weather" \
     --arg full_text "$(weather)" \
     '{name:$name,full_text:$full_text}'
 }
@@ -63,7 +63,7 @@ layout_init() {
   LAYOUT="$(layout $(swaymsg -t get_inputs | jq '.[].xkb_active_layout_name' | grep -v null | head -n1 | cut -d '"' -f 2))"
 }
 layout_update() {
-  LAYOUT="$(layout $(echo "$1" | jq '.input.xkb_active_layout_name' | cut -d '"' -f 2)) "
+  LAYOUT="$(layout $(echo "$1" | jq '.input.xkb_active_layout_name' | cut -d '"' -f 2))"
 }
 layout_render() {
   jq -n -c \
@@ -182,28 +182,30 @@ ticking() {
 main() {
   # ticking
   # 1>/dev/null 2>/dev/null
-  echo '{"version": 1, "click_events": false}'
-  echo "["
+  # echo '{"version": 1, "click_events": false}'
+  # echo "["
   # set -x
+  #
+  swaymsg -t subscribe -m '["tick","input"]' -r | /home/ilya/.local/bin/sway-status
 
-  swaymsg -t subscribe -m '["tick","input"]' -r | while read -r event; do
-    case $(echo "$event" | jq -r '.change // .first' | cut -d '"' -f 2) in
-    true)
-      layout_init
-      ;&
-    false)
-      echo "$(render)"
-      ;;
-    xkb_layout)
-      layout_update "$event"
-      echo "$(render)"
-      ;;
-    libinput_config | xkb_keymap) ;;
-    *)
-      echo "$(render_error "$(echo "$event" | jq -r '.first // .change')")"
-      ;;
-    esac
-  done
+  # swaymsg -t subscribe -m '["tick","input"]' -r | while read -r event; do
+  #   case $(echo "$event" | jq -r '.change // .first' | cut -d '"' -f 2) in
+  #   true)
+  #     layout_init
+  #     ;&
+  #   false)
+  #     echo "$(render)"
+  #     ;;
+  #   xkb_layout)
+  #     layout_update "$event"
+  #     echo "$(render)"
+  #     ;;
+  #   libinput_config | xkb_keymap) ;;
+  #   *)
+  #     echo "$(render_error "$(echo "$event" | jq -r '.first // .change')")"
+  #     ;;
+  #   esac
+  # done
 
   # set +x
   echo "[],]"
