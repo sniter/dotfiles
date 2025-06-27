@@ -1,0 +1,12 @@
+[[session]]
+name = "lazyvim"
+path = "~/dotfiles/available/lazyvim/dot-config/nvim"
+startup_command = "nvim"
+preview_command = "eza --tree ~/dotfiles/available/lazyvim/dot-config/nvim"
+
+
+[[session]]
+name = "Music"
+path = "~/Music/"
+startup_command = "kew"
+preview_command = "eza --tree ~/Music/"

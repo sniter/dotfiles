@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       <home-manager/nixos>
     ];
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -32,17 +32,12 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # Enable KDE Plasma6
+  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
-  # Enable bluetooth (by default not included into KDE)
   hardware.bluetooth.enable = true;
 
   # Configure keymap in X11
@@ -63,12 +58,13 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    # jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -77,64 +73,81 @@
   users.users.ilya = {
     isNormalUser = true;
     description = "Ilya Babich";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel"];
+    packages = with pkgs; [
+      kdePackages.kate
+    ];
+    #  thunderbird
     shell = pkgs.zsh;
   };
-
-  home-manager.users.ilya = {
-    programs.alacritty.enable = true;
-    programs.ghostty.enable = true;
-    # programs.zsh.enable = true;
-    home.packages = with pkgs; [ 
-      git lazygit
-      alacritty ghostty
-      aria2 posting wget openssh
-      bat less jq
-      eza fd fzf ripgrep
-      btop htop
-      tmux zellij
-      stow gnumake gcc unzip
-      gzdoom 
-      ibm-plex
-      python3 jdk21_headless coursier tree-sitter nodejs cargo
-      luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
-      sqlite 
-      imagemagick
-      tectonic
-      mermaid-cli
-      ghostscript
-
-    ];
-    home.sessionVariables = {
-      # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
-      LD_LIBRARY_PATH =
+  home-manager = {
+    backupFileExtension = "bak.nix";
+    users.ilya = {
+      programs.alacritty.enable = true;
+      programs.ghostty.enable = true;
+      # programs.zsh.enable = true;
+      home.packages = with pkgs; [
+        bitwarden
+        git lazygit
+        alacritty ghostty
+        aria2 posting wget openssh
+        bat less jq
+        eza fd fzf ripgrep zoxide 
+        atop btop htop
+        tmux zellij sesh
+        stow unzip
+        gzdoom 
+        ibm-plex
+        python3 jdk21_headless coursier nodejs cargo gnumake gcc
+        # Neovim
+        tree-sitter wl-clipboard 
+        luajit luajitPackages.sqlite luajitPackages.luasql-sqlite3 luajitPackages.luarocks
+        sqlite 
+        imagemagick
+        tectonic
+        mermaid-cli
+        ghostscript
+        # Multimedia
+        picard yt-dlp kew
+      ];  
+      home.sessionVariables = {
+        # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
+        LD_LIBRARY_PATH =
         "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
+      };
+      home.stateVersion = "25.05";
     };
-    home.stateVersion = "25.05";
   };
-
+  
+  
   # Install firefox.
   programs.firefox.enable   = true;
   programs.zsh.enable       = true;
-
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+    lua-language-server
+  ];
   # Install neovim
   programs.neovim = {
     enable = true;
     defaultEditor = true;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
+  # Install firefox.
+  #programs.firefox.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.blex-mono
   ];
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    # imagemagick_light
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -163,5 +176,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }

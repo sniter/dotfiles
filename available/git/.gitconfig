@@ -38,3 +38,5 @@
 	interactive = auto
 	ui = true
 	pager = true
+[init]
+	defaultBranch = main

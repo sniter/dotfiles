@@ -11,10 +11,11 @@ linux/arch/packages:
 	sudo pacman -S \
 	wl-clipboard firefox bitwarden \
 	zsh alacritty ghostty \
-	emacs-nox neovim \
+	neovim \
 	stow git lazygit openssh \
-	aria2 bat eza fd fzf jq htop less ripgrep starship tmux \
-	noto-fonts-emoji ttc-iosevka ttf-iosevkaterm-nerd ttf-font-awesome ttf-firacode-nerd ttf-ibmplex-mono-nerd\
+	atop btop htop \
+	wget aria2 yt-dlp atomicparsley \
+	bat eza fd fzf jq less ripgrep tmux zoxide \
 	jdk21-openjdk openjdk21-src
 
 linux/arch/gnome:
@@ -28,16 +29,36 @@ linux/arch/kde:
 	sudo systemctl enable sddm.service
 	sudo systemctl start sddm.service
 
-linux/bluetooth/enable:
+linux/arch/bluetooth/enable:
+	sudo pacman -S bluez bluez-tools
 	sudo systemctl enable bluetooth.service
 	sudo systemctl start bluetooth.service
 
+linux/arch/lazyvim/enable:
+	sudo pacman -S neovim lazygit unzip
+
+linux/arch/fonts:
+	sudo pacman -S \
+		noto-fonts-emoji \
+		ttc-iosevka \
+		ttf-iosevkaterm-nerd \
+		ttf-font-awesome \
+		ttf-firacode-nerd \
+		ttf-ibmplex-mono-nerd
+
+linux/arch/sway/enable: \
+	linux/arch/bluetooth/enable
+	sudo pacman -S sway swaylock swayidle swaybg lemurs brightnessctl
+	sudo systemctl enable lemurs.service
+	sudo systemctl enable lemurs.service
+
+# TODO: yay + kew
 linux/dotfiles:
 	mkdir enabled 
 	stow -d available -t enabled \
-		alacritty bat ghostty \
+		alacritty bat \
 		git lazygit lazyvim \
-		ssh tmux vim zsh4humans
+		ssh sway tmux vim zsh4humans
 	stow --dotfiles enabled
 
 mac/brew: \

@@ -1,5 +1,5 @@
-Host github.com
-	HostName	github.com
+Host              github.com
+	HostName	      github.com
 	IdentitiesOnly	yes
-	User		git
-	IdentityFile	~/.ssh/github.com/git/id_ed25519
+	User		        git
+	IdentityFile	  ~/.ssh/github.com/git/id_ed25519

@@ -11,9 +11,9 @@ return {
                 -- require("telescope").extensions.metals.commands()
                 local commands = require("metals.commands").commands_table
                 local opts = {
-                  prompt = 'Metals:',
+                  prompt = "Metals:",
                   format_item = function(item)
-                      return item.label
+                    return item.label
                   end,
                 }
                 local picker = function(choice)
@@ -69,9 +69,24 @@ return {
                 ["symbol-enum"] = "",
               },
             },
-          }
+          },
         },
       },
     },
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "stevanmilic/neotest-scala",
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = {
+          require("neotest-scala")({
+            framework = "munit",
+          }),
+        },
+      })
+    end,
   },
 }
