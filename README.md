@@ -34,11 +34,7 @@ make
 ## WSL 
 
 ```shell
-sudo zypper install \
-    zsh tmux neovim helix \
-		stow git lazygit \
-		bat eza fd fzf jq ripgrep \
-    curl wget aria2 
+sudo zypper install  zsh tmux neovim helix stow git lazygit bat eza fd fzf jq ripgrep curl wget aria2 
 ```
 
 ### Additional setup
