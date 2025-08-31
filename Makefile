@@ -113,12 +113,13 @@ zsh/antidote:
 
 wsl/tumbleweed/packages:
 	sudo zypper install \
-		 zsh stow tmux make \
+		 zsh stow tmux \
 		 neovim helix vim \
 		 git lazygit \
 		 bat eza yazi \
 		 fd fzf jq ripgrep \
-		 curl wget aria2
+		 curl wget aria2 \
+		 binutils tar cmake make gcc
 
 wsl/tumbleweed/dotfiles: enabled
 	stow -d available -t enabled \
@@ -130,5 +131,3 @@ wsl/tumbleweed/dotfiles: enabled
 wsl/tumbleweed: \
 	ssh/github \
 	wsl/tumbleweed/packages
-
-	
