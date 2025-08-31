@@ -6,6 +6,9 @@ linux/arch: \
 	linux/zsh/default \
 	linux/dotfiles \
 	ssh/github
+# COMMON
+enabled:
+	mkdir -p enabled
 
 linux/arch/packages:
 	sudo pacman -S \
@@ -53,8 +56,7 @@ linux/arch/sway/enable: \
 	sudo systemctl enable lemurs.service
 
 # TODO: yay + kew
-linux/dotfiles:
-	mkdir enabled 
+linux/dotfiles: enabled
 	stow -d available -t enabled \
 		alacritty bat \
 		git lazygit lazyvim \
@@ -108,3 +110,25 @@ linux/zsh/default:
 
 zsh/antidote:
 	git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+
+wsl/tumbleweed/packages:
+	sudo zypper install \
+		 zsh stow tmux make \
+		 neovim helix vim \
+		 git lazygit \
+		 bat eza yazi \
+		 fd fzf jq ripgrep \
+		 curl wget aria2
+
+wsl/tumbleweed/dotfiles: enabled
+	stow -d available -t enabled \
+		alacritty bat \
+		git lazygit lazyvim \
+		ssh sway tmux vim zsh4humans
+	stow --dotfiles enabled
+
+wsl/tumbleweed: \
+	ssh/github \
+	wsl/tumbleweed/packages
+
+	
