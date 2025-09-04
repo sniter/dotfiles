@@ -102,6 +102,7 @@ mac/ports/packages:
 ssh/github:
 	mkdir -p ~/.ssh/github.com/git
 	ssh-keygen -t ed25519 -C "sniter@gmail.com" -f ~/.ssh/github.com/git/id_ed25519
+	cat ~/.ssh/github.com/git/id_ed25519.pub
 
 linux/zsh/default:
 	@ZSH_PATH=$$(which zsh) && \
@@ -156,7 +157,8 @@ wsl/tumbleweed/dotfiles: enabled
 	stow -d available -t enabled \
 		alacritty bat \
 		git lazygit lazyvim \
-		ssh sway tmux vim zsh4humans
+		ssh sway tmux vim \
+		zsh-commons zsh-antidote
 	stow --dotfiles enabled
 
 wsl/tumbleweed: \
