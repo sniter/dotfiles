@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -108,7 +108,19 @@
     defaultEditor = true;
   };
 
-
+  programs.dconf.profiles.user.databases = [
+    {
+      lockAll = true; # prevents overriding
+      settings = {
+        "org/gnome/desktop/input-sources" = {
+          xkb-options = [ "grp:caps_toggle" "terminate:ctrl_alt_bksp" ];
+        };
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+        };
+      };
+    }
+  ];
   # Install firefox.
   programs.firefox.enable = true;
 

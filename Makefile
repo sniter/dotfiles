@@ -6,9 +6,6 @@ linux/arch: \
 	linux/zsh/default \
 	linux/dotfiles \
 	ssh/github
-# COMMON
-enabled:
-	mkdir -p enabled
 
 linux/arch/packages:
 	sudo pacman -S \
@@ -99,19 +96,23 @@ mac/ports/packages:
 		aria2 bat eza fd fzf jq ripgrep starship tmux \
 		rust tust-src opam stack openjdk21-oracle 
 
-ssh/github:
-	mkdir -p ~/.ssh/github.com/git
-	ssh-keygen -t ed25519 -C "sniter@gmail.com" -f ~/.ssh/github.com/git/id_ed25519
-	cat ~/.ssh/github.com/git/id_ed25519.pub
-
 linux/zsh/default:
 	@ZSH_PATH=$$(which zsh) && \
 	echo "Changing shell to $$ZSH_PATH" && \
 	chsh -s $$ZSH_PATH
+########################################################################################
+# 
+# COMMON
+#
+########################################################################################
+common/ssh/github:
+	mkdir -p ~/.ssh/github.com/git
+	ssh-keygen -t ed25519 -C "sniter@gmail.com" -f ~/.ssh/github.com/git/id_ed25519
+	cat ~/.ssh/github.com/git/id_ed25519.pub
 
-zsh/antidote:
-	git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
-
+enabled:
+	mkdir -p enabled
+	
 ########################################################################################
 # 
 # Nixos
@@ -135,6 +136,7 @@ nixos/dotfiles: enabled
 	stow --dotfiles enabled
 
 nixos/25.05: \
+	common/ssh/github \
 	nixos/hardware-configuration.nix \
 	nixos/dotfiles
 
