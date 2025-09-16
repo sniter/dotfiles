@@ -38,6 +38,11 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+  # # services.displayManager.sddm.settings.General.DisplayServer = "wayland";
+  # services.desktopManager.plasma6.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -66,14 +71,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  services.flatpak.enable = true;  # Define a user account. Don't forget to set a password with ‘passwd’.
+
   users.users.ilya = {
     isNormalUser = true;
     description = "ilya";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
-        bitwarden kew
         vim neovim helix
         zsh git lazygit
         alacritty ghostty kitty
@@ -89,7 +94,12 @@
         tree-sitter wl-clipboard 
         luajit luajitPackages.luarocks
         # Multimedia
-        picard yt-dlp kew
+        yt-dlp atomicparsley mutagen
+        picard kew
+        # Others
+        bitwarden
+        gnome-tweaks whitesur-cursors
+        anki-bin
     ];
     shell = pkgs.zsh;
   };
