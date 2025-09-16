@@ -94,7 +94,7 @@
         tree-sitter wl-clipboard 
         luajit luajitPackages.luarocks
         # Multimedia
-        yt-dlp atomicparsley mutagen
+        yt-dlp ffmpeg-full atomicparsley mutagen
         picard kew
         # Others
         bitwarden
