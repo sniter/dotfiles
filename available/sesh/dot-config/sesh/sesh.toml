@@ -10,3 +10,15 @@ name = "Music"
 path = "~/Music/"
 startup_command = "kew"
 preview_command = "eza --tree ~/Music/"
+
+#
+# WINDOWS
+#
+
+[[window]]
+name = "nvim"
+startup_script = "nvim"
+
+[[window]]
+name = "helix"
+startup_script = "hx ."

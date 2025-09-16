@@ -1,6 +1,5 @@
-general.import = [
-    "~/.config/alacritty/themes/catppuccin-frappe.toml"
-]
+general.import = ["~/.config/alacritty/themes/catppuccin-frappe.toml"]
+
 [env]
 TERM = "xterm-256color"
 
@@ -11,7 +10,7 @@ padding.y = 5
 decorations = "Buttonless"
 
 opacity = 0.97
-blur = true # MacOS and KDE only
+blur = true    # MacOS and KDE only
 
 option_as_alt = "Both"
 startup_mode = "Maximized"
@@ -19,18 +18,18 @@ startup_mode = "Maximized"
 [font]
 # normal.family    = "Iosevka Term Extended"
 # normal.family    = "Iosevka Term Nerd Font Mono"
-normal.family      = "BlexMono Nerd Font Mono"
-bold.family        = "BlexMono Nerd Font Mono"
-italic.family      = "BlexMono Nerd Font Mono"
+normal.family = "BlexMono Nerd Font Mono"
+bold.family = "BlexMono Nerd Font Mono"
+italic.family = "BlexMono Nerd Font Mono"
 bold_italic.family = "BlexMono Nerd Font Mono"
 size = 13
 
 [keyboard]
-
 bindings = [
-  {key = "k", mods = "Super", mode = "~Vi|~Search", chars = "\u000c"},
-  {key = "k", mods = "Super", mode = "~Vi|~Search", action = "ClearHistory"},
-  {key = "Escape", mods = "Control|Shift", action="ToggleViMode"},
+  { key = "k", mods = "Super", mode = "~Vi|~Search", chars = "\u000c" },
+  { key = "k", mods = "Super", mode = "~Vi|~Search", action = "ClearHistory" },
+  { key = "Escape", mods = "Control|Shift", action = "ToggleViMode" },
   # {key = "Escape", mods = "Control|Shift", mode = "", action="ToggleViMode"},
-
+  { key = "Home", chars = "\u001b[H" },
+  { key = "End", chars = "\u001b[F" },
 ]
