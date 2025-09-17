@@ -27,7 +27,7 @@
 # font_family "FiraCode Nerd Font Mono"
 # font_family "Iosevka Term Nerd Font Mono"
 # font_family "Iosevka Term Extended"
-font_size 10.0
+font_size 13.0
 
 #: Font size (in pts).
 
@@ -1187,7 +1187,7 @@ background_opacity 0.9
 #: this option when reloading the config will only work if
 #: dynamic_background_opacity was enabled in the original config.
 
-background_blur 0
+background_blur 80
 
 #: Set to a positive value to enable background blur (blurring of the
 #: visuals behind a transparent window) on platforms that support it.
@@ -2535,7 +2535,7 @@ wayland_enable_ime yes
 
 
 # BEGIN_KITTY_FONTS
-font_family      family="BlexMono Nerd Font Mono"
+font_family      family='Iosevka Term' style=Extended
 bold_font        auto
 italic_font      auto
 bold_italic_font auto

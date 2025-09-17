@@ -35,13 +35,13 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
-  # services.displayManager.sddm.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-  # # services.displayManager.sddm.settings.General.DisplayServer = "wayland";
-  # services.desktopManager.plasma6.enable = true;
+  # KDE
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -95,10 +95,10 @@
         luajit luajitPackages.luarocks
         # Multimedia
         yt-dlp ffmpeg-full atomicparsley mutagen
-        picard kew
+        kew
         # Others
         bitwarden
-        gnome-tweaks whitesur-cursors
+        # gnome-tweaks whitesur-cursors
         anki-bin
     ];
     shell = pkgs.zsh;
@@ -118,19 +118,21 @@
     defaultEditor = true;
   };
 
-  programs.dconf.profiles.user.databases = [
-    {
-      lockAll = true; # prevents overriding
-      settings = {
-        "org/gnome/desktop/input-sources" = {
-          xkb-options = [ "grp:caps_toggle" "terminate:ctrl_alt_bksp" ];
-        };
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-        };
-      };
-    }
-  ];
+  # GNOME SETTINGS
+  # programs.dconf.profiles.user.databases = [
+  #   {
+  #     lockAll = true; # prevents overriding
+  #     settings = {
+  #       "org/gnome/desktop/input-sources" = {
+  #         xkb-options = [ "grp:caps_toggle" "terminate:ctrl_alt_bksp" ];
+  #       };
+  #       "org/gnome/desktop/interface" = {
+  #         color-scheme = "prefer-dark";
+  #       };
+  #     };
+  #   }
+  # ];
+  
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -143,6 +145,24 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   wget curl less vim neovim helix
+  # KDE
+  kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
+  kdePackages.kcalc # Calculator
+  kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
+  kdePackages.kclock # Clock app
+  kdePackages.kcolorchooser # A small utility to select a color
+  kdePackages.kolourpaint # Easy-to-use paint program
+  kdePackages.ksystemlog # KDE SystemLog Application
+  kdePackages.sddm-kcm # Configuration module for SDDM
+  kdiff3 # Compares and merges 2 or 3 files or directories
+  kdePackages.isoimagewriter # Optional: Program to write hybrid ISO files onto USB disks
+  kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
+  # Non-KDE graphical packages
+  hardinfo2 # System information and benchmarks for Linux systems
+  vlc # Cross-platform media player and streaming server
+  wayland-utils # Wayland utilities
+  wl-clipboard # Command-line copy/paste utilities for Wayland
+  xclip # Tool to access the X clipboard from a console application
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

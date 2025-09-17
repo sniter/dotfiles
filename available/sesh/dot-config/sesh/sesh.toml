@@ -4,12 +4,18 @@ path = "~/dotfiles/available/lazyvim/dot-config/nvim"
 startup_command = "nvim"
 preview_command = "eza --tree ~/dotfiles/available/lazyvim/dot-config/nvim"
 
+[[session]]
+name = "DOT"
+path = "~/dotfiles/"
+# startup_command = "lazygit"
+preview_command = "eza --icons=always --color=always --long --header --time modified --git --git-ignore --no-user --no-permissions --group-directories-first ~/dotfiles"
+windows = ["helix"]
 
 [[session]]
 name = "Music"
 path = "~/Music/"
-startup_command = "kew"
-preview_command = "eza --tree ~/Music/"
+startup_command = "yatzi"
+preview_command = "eza --icons=always --color=always --long --header --time modified --git --git-ignore --no-user --no-permissions --group-directories-first ~/Music/"
 
 #
 # WINDOWS
