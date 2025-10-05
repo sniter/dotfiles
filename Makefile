@@ -1,22 +1,30 @@
 linux/arch: \
 	linux/arch/packages \
-	linux/arch/kde \
-	linux/bluetooth/enable \
-	zsh/antidote \
-	linux/zsh/default \
-	linux/dotfiles \
-	ssh/github
+	linux/arch/package/xorg \
+	linux/arch/bluetooth/enable \
+	common/zsh/default \
+	linux/arch/dotfiles \
+	common/ssh/github
 
 linux/arch/packages:
 	sudo pacman -S \
-	wl-clipboard firefox bitwarden \
-	zsh alacritty ghostty \
-	neovim \
-	stow git lazygit openssh \
-	atop btop htop \
-	wget aria2 yt-dlp atomicparsley \
-	bat eza fd fzf jq less ripgrep tmux zoxide \
-	jdk21-openjdk openjdk21-src
+		firefox bitwarden \
+		zsh alacritty kitty ghostty \
+		helix neovim vim \
+		stow git lazygit openssh \
+		atop btop htop \
+		wget aria2 yt-dlp atomicparsley \
+		bat eza fd fzf jq less ripgrep tmux zoxide \
+		
+
+linux/arch/package/java:
+	sudo pacman -S \
+		jdk21-openjdk openjdk21-src
+
+# linux/arch/package/xorg:
+	sudo pacman -S \
+		xorg xorg xorg-apps xorg-xinit feh \
+		brightnessctl xbindkeys
 
 linux/arch/gnome:
 	sudo pacman -S gnome
@@ -53,25 +61,28 @@ linux/arch/sway/enable: \
 	sudo systemctl enable lemurs.service
 
 # TODO: yay + kew
-linux/dotfiles: enabled
+linux/arch/dotfiles: common/dotfiles/enabled
 	stow -d available -t enabled \
-		alacritty bat \
-		git lazygit lazyvim \
-		ssh sway tmux vim zsh4humans
+		alacritty kitty ghostty bat \
+		git lazygit lazyvim vim \
+		ssh tmux sesh \
+		zsh-commons zsh-antidote
 	stow --dotfiles enabled
+
+########################################################################################
+# 
+# MAC OS
+#
+########################################################################################
 
 mac/brew: \
 	mac/brew/packages \
-	zsh/antidote \
-	zsh/default \
-	tmux/tpm \
+	common/zsh/default \
 	mac/dotfiles
 
 mac/ports: \
 	mac/ports/packages \
-	zsh/antidote \
-	zsh/default \
-	tmux/tpm \
+	common/zsh/default \
 	mac/dotfiles
 
 mac/brew/packages:
@@ -96,21 +107,22 @@ mac/ports/packages:
 		aria2 bat eza fd fzf jq ripgrep starship tmux \
 		rust tust-src opam stack openjdk21-oracle 
 
-linux/zsh/default:
-	@ZSH_PATH=$$(which zsh) && \
-	echo "Changing shell to $$ZSH_PATH" && \
-	chsh -s $$ZSH_PATH
 ########################################################################################
 # 
 # COMMON
 #
 ########################################################################################
+common/zsh/default:
+	@ZSH_PATH=$$(which zsh) && \
+	echo "Changing shell to $$ZSH_PATH" && \
+	chsh -s $$ZSH_PATH
+
 common/ssh/github:
 	mkdir -p ~/.ssh/github.com/git
 	ssh-keygen -t ed25519 -C "sniter@gmail.com" -f ~/.ssh/github.com/git/id_ed25519
 	cat ~/.ssh/github.com/git/id_ed25519.pub
 
-enabled:
+common/dotfiles/enabled:
 	mkdir -p enabled
 	
 ########################################################################################
@@ -125,7 +137,7 @@ nixos/hardware-configuration.nix:
 	sudo cp /etc/nixos/hardware-configuration.nix nixos/
 	sudo nixos-rebuild switch
 	
-nixos/dotfiles: enabled
+nixos/dotfiles: common/dotfiles/enabled
 	stow -d available -t enabled \
 		alacritty ghostty kitty \
 		bat \
@@ -155,7 +167,7 @@ wsl/tumbleweed/packages:
 		 curl wget aria2 \
 		 binutils tar cmake make gcc
 
-wsl/tumbleweed/dotfiles: enabled
+wsl/tumbleweed/dotfiles: common/dotfiles/enabled
 	stow -d available -t enabled \
 		alacritty bat \
 		git lazygit lazyvim \

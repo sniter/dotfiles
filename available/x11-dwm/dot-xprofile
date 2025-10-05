@@ -1,0 +1,4 @@
+xbindkeys
+feh --bg-fill ~/Downloads/Images/ameer-basheer-gV6taBJuBTk-unsplash.jpg
+exec slstatus &
+exec dwm
