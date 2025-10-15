@@ -1,9 +1,12 @@
 export GTK_THEME=Adwaita:dark
 export XDG_CURRENT_DESKTOP=GNOME
 export XDG_SESSION_TYPE=x11
+export DWM_BACKGROUND=~/Downloads/Images/ameer-basheer-gV6taBJuBTk-unsplash.jpg
 xbindkeys
-feh --bg-fill ~/Downloads/Images/ameer-basheer-gV6taBJuBTk-unsplash.jpg
+feh --bg-fill "$DWM_BACKGROUND"
+wal -i "$DWM_BACKGROUND"
 dunst &
+exec picom &
 exec slstatus &
 #exec dwmblocks &
 exec dwm
