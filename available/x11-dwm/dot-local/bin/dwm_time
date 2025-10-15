@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "$(timedatectl | grep "Time zone" | awk -F ":" '{$1=""; sub(/ \(.*$/,""); sub(/^\s+\w+\//,""); print $1}'): $(date +%H:%M) | UTC $(date -u +%H:%M)"
+

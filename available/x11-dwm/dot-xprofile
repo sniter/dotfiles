@@ -1,4 +1,9 @@
+export GTK_THEME=Adwaita:dark
+export XDG_CURRENT_DESKTOP=GNOME
+export XDG_SESSION_TYPE=x11
 xbindkeys
 feh --bg-fill ~/Downloads/Images/ameer-basheer-gV6taBJuBTk-unsplash.jpg
+dunst &
 exec slstatus &
+#exec dwmblocks &
 exec dwm

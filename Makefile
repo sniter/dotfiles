@@ -13,18 +13,25 @@ linux/arch/packages:
 		helix neovim vim \
 		stow git lazygit openssh \
 		atop btop htop \
-		wget aria2 yt-dlp atomicparsley \
+		wget aria2 yt-dlp \
 		bat eza fd fzf jq less ripgrep tmux zoxide \
+		base-devel
 		
 
 linux/arch/package/java:
 	sudo pacman -S \
 		jdk21-openjdk openjdk21-src
 
-# linux/arch/package/xorg:
+linux/arch/package/xorg:
 	sudo pacman -S \
 		xorg xorg xorg-apps xorg-xinit feh \
-		brightnessctl xbindkeys
+		brightnessctl xbindkeys \
+		mesa xf86-video-intel vulkan-intel libva-intel-driver intel-media-driver mesa-utils vulkan-utls libva-utils \
+		picom
+
+linux/arch/kew:
+	yay -S kew
+	sudo pacman -S libnotify dunst playerctl
 
 linux/arch/gnome:
 	sudo pacman -S gnome

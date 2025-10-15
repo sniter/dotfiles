@@ -1,0 +1,3 @@
+#!/bin/sh
+# playerctl metadata --player=kew --format '{{artist}} - {{title}}'
+echo ""

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+TEMP_FILE=/tmp/dwm-cpu-usage
+
+if [[ -f "$TEMP_FILE" ]]; then
+  read cpu <"$TEMP_FILE"
+else
+  cpu="0 0 0 0 0 0 0 0 0 0 0 0"
+fi
+cpu2=$(grep -m1 'cpu ' /proc/stat)
+
+# Разница между двумя измерениями
+cpu1_total=$(echo $cpu | awk '{print $2+$3+$4+$5+$6+$7+$8}')
+cpu1_idle=$(echo $cpu | awk '{print $5}')
+cpu2_total=$(echo $cpu2 | awk '{print $2+$3+$4+$5+$6+$7+$8}')
+cpu2_idle=$(echo $cpu2 | awk '{print $5}')
+
+cpu_usage=$((100 * ($cpu2_total - $cpu1_total - ($cpu2_idle - $cpu1_idle)) / ($cpu2_total - $cpu1_total)))
+
+echo "$cpu2" >$TEMP_FILE
+
+echo " ${cpu_usage}%"
