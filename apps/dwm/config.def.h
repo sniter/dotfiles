@@ -8,7 +8,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
-#include "../../.cache/wal/dwm_colors_simple.h"
+#include "../../../.cache/wal/dwm_colors_simple.h"
 
 // static const char col_gray1[]       = "#222222";
 // static const char col_gray2[]       = "#444444";
@@ -31,7 +31,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "player",   NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -66,7 +67,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 static const char *browser[]     = { "firefox", NULL };
-static const char *musicplayer[] = { "st", "-e", "kew", NULL };
+static const char *musicplayer[] = { "st", "-c", "player", "-e", "kew", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
