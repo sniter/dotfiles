@@ -24,10 +24,16 @@ linux/arch/package/java:
 
 linux/arch/package/xorg:
 	sudo pacman -S \
-		xorg xorg xorg-apps xorg-xinit feh \
+		xorg xorg xorg-apps xorg-xinit \
 		brightnessctl xbindkeys \
 		mesa xf86-video-intel vulkan-intel libva-intel-driver intel-media-driver mesa-utils vulkan-utls libva-utils \
-		picom
+
+linux/arch/package/dwm:
+	# TODO: Git glone for suckless projects
+	sudo pacman -S \
+		picom nsxiv imagemagick feh nitrogen python-pipx
+	pipx install pywal16
+
 
 linux/arch/kew:
 	yay -S kew
