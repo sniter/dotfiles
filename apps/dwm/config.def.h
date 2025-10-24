@@ -8,27 +8,26 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "BlexMono Nerd Font Propo:size=12" };
 static const char dmenufont[]       = "BlexMono Nerd Font Propo:size=12";
 
-// #include "../../../.cache/wal/dwm_colors_simple.h"
+#include "../../../.cache/wal/dwm_colors_simple.h"
 
 // static const char col_gray1[]       = "#222222";
 // static const char col_gray2[]       = "#444444";
 // static const char col_gray3[]       = "#bbbbbb";
 // static const char col_gray4[]       = "#eeeeee";
 // static const char col_cyan[]        = "#005577";
-static const char normbgcolor[]       = "#222222";
-static const char normfgcolor[]       = "#444444";
-static const char normbordercolor[]   = "#bbbbbb";
-static const char selfgcolor[]        = "#444444";
-static const char selbordercolor[]    = "#bbbbbb";
-static const char selbgcolor[]        = "#eeeeee";
-// static const char col_cyan[]          = "#005577";
-
+// static const char normbgcolor[]       = "#222222";
+// static const char normfgcolor[]       = "#444444";
+// static const char normbordercolor[]   = "#bbbbbb";
+// static const char selfgcolor[]        = "#444444";
+// static const char selbordercolor[]    = "#bbbbbb";
+// static const char selbgcolor[]        = "#eeeeee";
+//
 
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-	[SchemeSel]  = { selbgcolor,  selfgcolor,  selbordercolor  },
+	[SchemeNorm] = { norm_fg, norm_bg, norm_border},
+	[SchemeSel]  = { sel_fg,  sel_bg,  sel_border},
 };
 
 /* tagging */
@@ -43,6 +42,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "player",   NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Onedriver",NULL,       NULL,       1 << 1,       1,           -1 },
 };
 
 /* layout(s) */
@@ -72,7 +72,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_border, "-sf", sel_fg, NULL };
 static const char *termcmd[]  = { "st", NULL };
 

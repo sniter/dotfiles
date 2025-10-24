@@ -44,6 +44,10 @@ linux/arch/package/kew: linux/arch/package/yay
 	yay -S kew
 	sudo pacman -S libnotify dunst playerctl
 
+linux/arch/X11:
+	sudo rm /etc/X11/xorg.conf.d/00-keyboard.conf
+	sudo stow -t / arch
+
 linux/arch/gnome:
 	sudo pacman -S gnome
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['grp:caps_toggle','terminate:ctrl_alt_bksp']"
