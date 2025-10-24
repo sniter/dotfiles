@@ -8,13 +8,23 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "BlexMono Nerd Font Propo:size=12" };
 static const char dmenufont[]       = "BlexMono Nerd Font Propo:size=12";
 
-#include "../../../.cache/wal/dwm_colors_simple.h"
+// #include "../../../.cache/wal/dwm_colors_simple.h"
 
 // static const char col_gray1[]       = "#222222";
 // static const char col_gray2[]       = "#444444";
 // static const char col_gray3[]       = "#bbbbbb";
 // static const char col_gray4[]       = "#eeeeee";
 // static const char col_cyan[]        = "#005577";
+static const char normbgcolor[]       = "#222222";
+static const char normfgcolor[]       = "#444444";
+static const char normbordercolor[]   = "#bbbbbb";
+static const char selfgcolor[]        = "#444444";
+static const char selbordercolor[]    = "#bbbbbb";
+static const char selbgcolor[]        = "#eeeeee";
+// static const char col_cyan[]          = "#005577";
+
+
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },

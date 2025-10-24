@@ -26,7 +26,8 @@ linux/arch/package/xorg:
 	sudo pacman -S \
 		xorg xorg xorg-apps xorg-xinit \
 		brightnessctl xbindkeys \
-		mesa xf86-video-intel vulkan-intel libva-intel-driver intel-media-driver mesa-utils vulkan-utls libva-utils \
+		ttf-ibmplex-mono-nerd ttf-ibm-plex \
+		mesa xf86-video-intel vulkan-intel libva-intel-driver intel-media-driver mesa-utils vulkan-tools libva-utils
 
 linux/arch/package/dwm:
 	# TODO: Git glone for suckless projects
@@ -34,8 +35,12 @@ linux/arch/package/dwm:
 		picom nsxiv imagemagick feh nitrogen python-pipx
 	pipx install pywal16
 
+linux/arch/package/yay:
+	sudo pacman -S --needed git base-devel
+ 	git clone https://aur.archlinux.org/yay.git ~/apps/yay
+	cd ~/apps/yay && makepkg -si
 
-linux/arch/kew:
+linux/arch/package/kew: linux/arch/package/yay
 	yay -S kew
 	sudo pacman -S libnotify dunst playerctl
 
