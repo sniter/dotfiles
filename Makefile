@@ -82,8 +82,8 @@ linux/arch/sway/enable: \
 linux/arch/dotfiles: common/dotfiles/enabled
 	stow -d available -t enabled \
 		alacritty kitty ghostty bat \
-		git lazygit lazyvim vim \
-		ssh tmux sesh \
+		git lazygit lazyvim vim helix  \
+		ssh tmux sesh x11-dwm wal picom \
 		zsh-commons zsh-antidote
 	stow --dotfiles enabled
 
