@@ -15,6 +15,7 @@ linux/arch/packages:
 		atop btop htop \
 		wget aria2 yt-dlp \
 		bat eza fd fzf jq less ripgrep tmux zoxide \
+		rclone \
 		base-devel
 		
 
@@ -32,8 +33,8 @@ linux/arch/package/xorg:
 linux/arch/package/dwm:
 	# TODO: Git glone for suckless projects
 	sudo pacman -S \
-		picom nsxiv imagemagick feh nitrogen python-pipx
-	pipx install pywal16
+		picom nsxiv imagemagick feh nitrogen python-pywal
+	
 
 linux/arch/package/yay:
 	sudo pacman -S --needed git base-devel
