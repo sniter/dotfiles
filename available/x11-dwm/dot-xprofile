@@ -4,6 +4,7 @@ export XDG_SESSION_TYPE=x11
 # export DWM_BACKGROUND=~/Downloads/Images/ameer-basheer-gV6taBJuBTk-unsplash.jpg
 xbindkeys
 wal -i "$(< "${HOME}/.cache/wal/wal")"
+cat ~/.cache/wal/xrdb_extra | xrdb -merge
 feh --bg-scale "$(<"${HOME}/.cache/wal/wal")"
 dunst &
 exec picom &
