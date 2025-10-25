@@ -17,10 +17,6 @@ menu() {
   esac
 }
 
-set_wallpaper() {
-  wal -i "$1" -o "wallpaper refresh"
-}
-
 refresh() {
   dwm_rebuild
 }
@@ -31,11 +27,5 @@ refresh() {
 
 case "$#" in
 0) menu ;;
-*) echo ">$@<" ;;
-esac
-
-case $1 in
-menu) menu ;;
-refresh) refresh ;;
-*) echo "Invalid arguments :( $1 $@" && exit 1 ;;
+*) exit 1 ;;
 esac
