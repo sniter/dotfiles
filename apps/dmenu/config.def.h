@@ -20,9 +20,9 @@ static const char *colors[SchemeLast][2] = {
 };
 
 static const unsigned int alphas[SchemeLast][2] = {
-	[SchemeNorm] = { OPAQUE, alpha },
-	[SchemeSel] = { OPAQUE, alpha },
-	[SchemeOut] = { OPAQUE, alpha },
+	[SchemeNorm]   = { OPAQUE, alpha },
+	[SchemeSel]    = { OPAQUE, alpha },
+	[SchemeOut]    = { OPAQUE, alpha },
 	[SchemeBorder] = { OPAQUE, alpha },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
@@ -35,5 +35,5 @@ static unsigned int lines      = 15;
 static const char worddelimiters[] = " ";
 
 /* Size of the window border */
-static unsigned int border_width = 4;
+static unsigned int border_width = 0;
 
