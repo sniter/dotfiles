@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+# Restart dwm
+cat ~/.cache/wal/xrdb_extra | xrdb -merge
+feh --bg-scale "$(<"${HOME}/.cache/wal/wal")"
+kill -HUP $(ps aux | grep dwm | grep -v grep | awk '{print $2}')
