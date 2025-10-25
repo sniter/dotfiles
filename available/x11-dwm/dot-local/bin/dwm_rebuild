@@ -4,12 +4,8 @@ function run_install() {
   DESTDIR=~/.local make clean install
 }
 
-set +x
-
 APPSDIR=~/dotfiles/apps
 BASEDIR=$(realpath $APPSDIR)
-
-feh --bg-scale "$(<"${HOME}/.cache/wal/wal")"
 
 cd "${BASEDIR}/dmenu" && run_install
 cd "${BASEDIR}/slock" && run_install
@@ -18,6 +14,6 @@ cd "${BASEDIR}/st" && run_install
 cd "${BASEDIR}/dwm" && run_install
 
 # Restart dwm
+feh --bg-scale "$(<"${HOME}/.cache/wal/wal")"
+cat ~/.cache/wal/xrdb_extra | xrdb -merge
 kill -HUP $(ps aux | grep dwm | grep -v grep | awk '{print $2}')
-
-set -x
