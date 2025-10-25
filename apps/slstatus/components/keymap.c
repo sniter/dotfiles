@@ -82,5 +82,8 @@ end:
 	if (XCloseDisplay(dpy))
 		warn("XCloseDisplay: Failed to close display");
 
+  for (char *p = layout; *p; p++) {
+    *p = toupper((unsigned char)*p);
+  }
 	return layout;
 }
