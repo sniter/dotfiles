@@ -2242,7 +2242,7 @@ main(int argc, char *argv[])
 		die("dwm: cannot open display");
 	checkotherwm();
   XrmInitialize();
-  loadxrmdb();
+  loadxrdb();
 	setup();
 #ifdef __OpenBSD__
 	if (pledge("stdio rpath proc exec", NULL) == -1)

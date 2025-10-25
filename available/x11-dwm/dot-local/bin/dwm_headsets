@@ -1,0 +1,9 @@
+#/bin/env bash
+
+BT_INFO=$(bluetoothctl info)
+BT_NAME=$(echo "$BT_INFO" | grep Name | awk -F': ' '{print $2}')
+BT_ICON=$(echo "$BT_INFO" | grep Icon | awk -F': ' '{print $2}')
+
+case "$BT_ICON" in 
+  "audio-headphones") echo "$BT_NAME" ;;
+  *) echo "$BT_NAME" ;;
