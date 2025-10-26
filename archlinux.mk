@@ -57,6 +57,9 @@ define run-once
 endef
 
 if-command = command -v $(1) >/dev/null 2>&1 && mkdir -p $(dir $(2)) && echo "$(1)" > $(2) 
+service-enable = sudo systemctl enable $(1).service
+service-disable = sudo systemctl disable $(1).service
+service-start = sudo systemctl start $(1).service
 
 suckless/%:
 	cd apps/$* && DESTDIR=~/.local make clean install
@@ -78,14 +81,14 @@ $(TOOL).X11: xorg xorg-apps
 
 $(TOOL).ly: ly
 	$(pacman-install)
-	sudo systemctl enable ly.service
-	sudo systemctl disable getty@.service
+	$(call service-enable,$<)
+	$(call service-disable,getty@)
 	$(run-once)
 
 $(TOOL).bluetooth: bluez bluez-tools
 	$(pacman-install)
-	sudo systemctl enable bluetooth.service
-	sudo systemctl start bluetooth.service
+	$(call service-enable,bluetooth)
+	$(call service-start,bluetooth)
 	$(run-once)
 
 $(TOOL).aur: $(ARCH_AUR_TOOLS)
@@ -111,13 +114,13 @@ $(TOOL).dwm.pacman: \
 $(TOOL).gnome: gnome
 	$(pacman-install)
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['grp:caps_toggle','terminate:ctrl_alt_bksp']"
-	sudo systemctl enable gdm.service
+	$(call service-enable,gdm)
 	$(run-once)
 
 $(TOOL).kde: plasma-desktop
 	$(pacman-install)
-	sudo systemctl enable sddm.service
-	sudo systemctl start sddm.service
+	$(call service-enable,sddm)
+	$(call service-start,sddm)
 	$(run-once)
 
 $(TOOL).sway: $(addprefix $(TOOL).,yay ly X11 sway.pacman dwm.aur dwm.dotfiles)
