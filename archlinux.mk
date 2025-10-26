@@ -107,18 +107,22 @@ $(TOOL).dwm.pacman: \
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)
 	$(pacman-install)
+	$(run-once)
 
 $(TOOL).gnome: gnome
 	$(pacman-install)
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['grp:caps_toggle','terminate:ctrl_alt_bksp']"
 	sudo systemctl enable gdm.service
+	$(run-once)
 
 $(TOOL).kde: plasma-desktop
 	$(pacman-install)
 	sudo systemctl enable sddm.service
 	sudo systemctl start sddm.service
+	$(run-once)
 
 $(TOOL).sway: $(addprefix $(TOOL).,yay ly X11 sway.pacman dwm.aur dwm.dotfiles)
+	$(run-once)
 
 $(TOOL).sway.pacman: sway swaylock swayidle swaybg brightnessctl
 	$(pacman-install)
