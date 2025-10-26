@@ -6,3 +6,4 @@ nvim-kickstart/
 nohup.out
 # Ignoring enabled as this part is modifiable
 enabled/
+.tools/
