@@ -1,8 +1,6 @@
 include config.mk
 zsh:
-	@ZSH_PATH=/bin/zsh && \
-	echo "Changing shell to $$ZSH_PATH" && \
-	chsh -s $$ZSH_PATH
+	chsh -s /bin/zsh
 
 ssh: $(addprefix ssh/,github codeberg)
 

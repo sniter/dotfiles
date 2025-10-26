@@ -8,14 +8,13 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "BlexMono Nerd Font Propo:size=12" };
 static const char dmenufont[]       = "BlexMono Nerd Font Propo:size=12";
 
-// #include "../../../.cache/wal/dwm_colors_simple.h"
-
 static  char normbgcolor[]       = "#222222";
 static  char normfgcolor[]       = "#444444";
 static  char normbordercolor[]   = "#bbbbbb";
 static  char selfgcolor[]        = "#444444";
 static  char selbordercolor[]    = "#bbbbbb";
 static  char selbgcolor[]        = "#eeeeee";
+
 
 
 static char *colors[][3] = {
@@ -39,6 +38,8 @@ static const Rule rules[] = {
 	{ "Onedriver",      NULL,       NULL,       1 << 1,       1,           -1 },
 	{ "Brave-browser",  NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "player",         NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "player",         NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "mpv",         NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */

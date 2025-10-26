@@ -3,11 +3,11 @@ include config.mk
 TOOL=.tools/archlinux
 
 ARCH_GUI_TOOLS=firefox bitwarden
-ARCH_CLI_TOOLS=rclone yt-dlp
+ARCH_CLI_TOOLS=rclone yt-dlp mpv
 ARCH_DEVEL_TOOLS=coreutils base-devel
 ARCH_JAVA_TOOLS=jdk21-openjdk openjdk21-src
 SUCKLESS_TOOLS=dmenu dwm slock slstatus st
-ARCH_AUR_TOOLS=kew sesh
+ARCH_AUR_TOOLS=kew sesh brave-bin
 ARCH_DWM_DOTFILES=picom x11-dwm wal 
 ARCH_COMMON_DOTFILES=\
 	alacritty ghostty kitty \
@@ -56,16 +56,15 @@ define run-once
 	mkdir -p $(dir $@) && echo "$^" > $@
 endef
 
-if-command = command -v $< >/dev/null 2>&1 && mkdir -p $(dir $@) && echo "$^" > $@ 
-endef
+if-command = command -v $(1) >/dev/null 2>&1 && mkdir -p $(dir $(2)) && echo "$(1)" > $(2) 
 
 suckless/%:
 	cd apps/$* && DESTDIR=~/.local make clean install
 
 suckless: $(addprefix suckless/,$(SUCKLESS_TOOLS))
 
-$(TOOL).yay: yay
-	$(if-command) || \
+$(TOOL).yay:
+	$(call if-command,yay,$@) || \
 		[ -d /tmp/yay ] && rm -fr /tmp/yay && \
 		git clone https://aur.archlinux.org/yay.git /tmp/yay && \
 		cd /tmp/yay && makepkg -si && \
@@ -75,7 +74,7 @@ $(TOOL).X11: xorg xorg-apps
 	$(pacman-install)
 	sudo rm /etc/X11/xorg.conf.d/00-keyboard.conf
 	sudo stow -t / arch
-$(run-once)
+	$(run-once)
 
 $(TOOL).ly: ly
 	$(pacman-install)
