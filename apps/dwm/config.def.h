@@ -37,9 +37,8 @@ static const Rule rules[] = {
 	{ "firefox",        NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Onedriver",      NULL,       NULL,       1 << 1,       1,           -1 },
 	{ "Brave-browser",  NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "player",         NULL,       NULL,       1 << 4,       0,           -1 },
 	{ "player",         NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "mpv",         NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "mpv",            NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
