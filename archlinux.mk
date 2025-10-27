@@ -23,7 +23,11 @@ ARCH_FONTS=\
 	ttf-ibmplex-mono-nerd \
 	ttf-ibm-plex \
 	noto-fonts-emoji \
-	ttf-font-awesome
+	ttf-font-awesome \
+	gnu-free-fonts \
+	ttf-liberation \
+	ttf-input-nerd \
+	noto-fonts
 
 ARCH_VIDEO_DRIVER_TOOLS=\
 	mesa mesa-utils \
