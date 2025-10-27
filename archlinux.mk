@@ -43,23 +43,17 @@ define yay-install
 endef
 
 define pacman-install
-	sudo pacman -Sy $^
+	sudo pacman -Sy $@
 endef
+
+yay = yay -Sy $(1)
+pacman = sudo pacman -Sy $(1)
 
 define dotfiles-install
 	mkdir -p enabled
 	stow -d available -t enabled $^
 	stow --dotfiles enabled
 endef
-
-define run-once
-	mkdir -p $(dir $@) && echo "$^" > $@
-endef
-
-if-command = command -v $(1) >/dev/null 2>&1 && mkdir -p $(dir $(2)) && echo "$(1)" > $(2) 
-service-enable = sudo systemctl enable $(1).service
-service-disable = sudo systemctl disable $(1).service
-service-start = sudo systemctl start $(1).service
 
 suckless/%:
 	cd apps/$* && DESTDIR=~/.local make clean install
@@ -73,65 +67,57 @@ $(TOOL).yay:
 		cd /tmp/yay && makepkg -si && \
 		$(run-once)
 
-$(TOOL).X11: xorg xorg-apps 
-	$(pacman-install)
+$(TOOL).X11:
+	$(call pacman, xorg xorg-apps)
 	sudo rm /etc/X11/xorg.conf.d/00-keyboard.conf
 	sudo stow -t / arch
 	$(run-once)
 
-$(TOOL).ly: ly
-	$(pacman-install)
-	$(call service-enable,$<)
-	$(call service-disable,getty@)
+$(TOOL).ly:
+	$(call pacman, ly)
+	$(call service-enable, ly)
+	$(call service-disable, getty@)
 	$(run-once)
 
-$(TOOL).bluetooth: bluez bluez-tools
-	$(pacman-install)
-	$(call service-enable,bluetooth)
-	$(call service-start,bluetooth)
+$(TOOL).bluetooth:
+	$(call pacman, bluez, bluez-tools)
+	$(call service-enable, bluetooth)
+	$(call service-start, bluetooth)
 	$(run-once)
 
-$(TOOL).aur: $(ARCH_AUR_TOOLS)
-	$(yay-install)
+$(TOOL).aur:
+	$(call yay $(ARCH_AUR_TOOLS))
 	$(run-once)
 
-$(TOOL).dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur dwm.pacman dwm.dotfiles)
-	$(run-once)
-
-$(TOOL).dwm.dotfiles: $(ARCH_COMMON_DOTFILES) $(ARCH_DWM_DOTFILES)
-	$(dotfiles-install)
-	$(run-once)
-
-$(TOOL).dwm.pacman: \
+DWM_DEPS=\
 	$(COMMON_TOOLS) \
   $(COMMON_TERMINALS) \
 	$(ARCH_DWM_TOOLS) \
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)
-	$(pacman-install)
+DWM_DOTFILES=$(ARCH_COMMON_DOTFILES) $(ARCH_DWM_DOTFILES)
+$(TOOL).dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur)
+	$(call pacman, $(DWM_DEPS))
+	$(call dotfiles, $(DWM_DOTFILES))
 	$(run-once)
 
-$(TOOL).gnome: gnome
-	$(pacman-install)
+$(TOOL).gnome:
+	$(call pacman, gnome)
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['grp:caps_toggle','terminate:ctrl_alt_bksp']"
 	$(call service-enable,gdm)
 	$(run-once)
 
-$(TOOL).kde: plasma-desktop
-	$(pacman-install)
+$(TOOL).kde:
+	$(call pacman, plasma-desktop)
 	$(call service-enable,sddm)
 	$(call service-start,sddm)
 	$(run-once)
 
-$(TOOL).sway: $(addprefix $(TOOL).,yay ly X11 sway.pacman dwm.aur dwm.dotfiles)
-	$(run-once)
-
-$(TOOL).sway.pacman: sway swaylock swayidle swaybg brightnessctl
-	$(pacman-install)
-	$(run-once)
-
-$(TOOL).sway.dotfiles: $(ARCH_COMMON_DOTFILES) sway
-	$(dotfiles-install)
+SWAY_DEPS=sway swaylock swayidle swaybg brightnessctl
+SWAY_DOTFILES=$(ARCH_COMMON_DOTFILES) sway
+$(TOOL).sway: $(addprefix $(TOOL).,yay ly aur)
+	$(call pacman, $(SWAY_DEPS))
+	$(call dotfiles, $(SWAY_DOTFILES))
 	$(run-once)
 
 
