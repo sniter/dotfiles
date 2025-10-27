@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export DISPLAY="${DISPLAY:-:0}"
+
+# Dependencies check
+for cmd in xclip import notify-send; do command -v "$cmd" &>/dev/null || {
+  echo "Missing: $cmd" >&2
+  exit 1
+}; done
+
+OUTDIR="$HOME/Screenshots"
+mkdir -p "$OUTDIR"
+FILE="$OUTDIR/$(date +%Y%m%d_%H%M%S).png"
+TMP=$(mktemp --suffix=.png)
+trap 'rm -f "$TMP"' EXIT
+
+copy_to_clipboard() {
+  xclip -selection clipboard -t image/png -i "$FILE" && notify-send -i "$FILE" "Screenshot: $(basename "$FILE")"
+  # command -v imgcliphist && imgcliphist add
+}
+
+# colorpicker() {
+#   command -v magick &>/dev/null || {
+#     notify-send "Missing: magick"
+#     exit 1
+#   }
+#   if command -v slop &>/dev/null; then
+#     import -window root -crop "$(slop --tolerance=0 || exit 1)" "$TMP"
+#   else
+#     import "$TMP"
+#   fi
+#   hex=$(magick "$TMP" -scale 1x1\! -format "#%[hex:p{0,0}]" info: 2>/dev/null || echo "#??????")
+#   echo "$hex" | xclip -selection clipboard -i && notify-send -i "$TMP" "Color: $hex"
+# }
+
+capture_full() {
+  import -window root "$FILE" && copy_to_clipboard
+}
+
+# capture_window() {
+#   command -v xdotool &>/dev/null || {
+#     echo "Missing: xdotool" >&2
+#     exit 1
+#   }
+#   import -window "$(xdotool getwindowfocus -f)" "$FILE" && copy_to_clipboard
+# }
+
+capture_selection() {
+  import "$FILE" && copy_to_clipboard
+}
+
+case "${1:-}" in
+window) capture_window ;;
+selecion) capture_selection ;;
+*) capture_full ;;
+esac
