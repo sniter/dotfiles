@@ -73,6 +73,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 static const char *browser[]     = { "firefox", NULL };
+static const char *brave[]     = { "brave", NULL };
 static const char *musicplayer[] = { "st", "-c", "player", "-e", "kew", NULL };
 
 static const Key keys[] = {
@@ -80,8 +81,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY,                       XK_w,      spawn,          {.v = browser } },
+  { MODKEY,                       XK_b,      spawn,          {.v = brave } },
   { MODKEY,                       XK_m,      spawn,          {.v = musicplayer } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -95,10 +97,10 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_Right,  spawn,          SHCMD("xrandr --output eDP1 --rotate right") },
 	{ MODKEY|ShiftMask,             XK_Up,     spawn,          SHCMD("xrandr --output eDP1 --rotate normal") },
 	{ MODKEY|ShiftMask,             XK_Left,   spawn,          SHCMD("xrandr --output eDP1 --rotate left") },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
