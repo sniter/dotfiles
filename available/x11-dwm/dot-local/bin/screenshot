@@ -11,8 +11,6 @@ for cmd in xclip import notify-send; do command -v "$cmd" &>/dev/null || {
 OUTDIR="$HOME/Screenshots"
 mkdir -p "$OUTDIR"
 FILE="$OUTDIR/$(date +%Y%m%d_%H%M%S).png"
-TMP=$(mktemp --suffix=.png)
-trap 'rm -f "$TMP"' EXIT
 
 copy_to_clipboard() {
   xclip -selection clipboard -t image/png -i "$FILE" && notify-send -i "$FILE" "Screenshot: $(basename "$FILE")"
