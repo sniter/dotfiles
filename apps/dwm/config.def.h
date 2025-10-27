@@ -73,7 +73,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 static const char *browser[]     = { "firefox", NULL };
-static const char *brave[]     = { "brave", NULL };
+static const char *brave[]       = { "brave", NULL };
 static const char *musicplayer[] = { "st", "-c", "player", "-e", "kew", NULL };
 
 static const Key keys[] = {
@@ -83,13 +83,14 @@ static const Key keys[] = {
   { MODKEY,                       XK_w,      spawn,          {.v = browser } },
   { MODKEY,                       XK_b,      spawn,          {.v = brave } },
   { MODKEY,                       XK_m,      spawn,          {.v = musicplayer } },
+  { MODKEY,                       XK_l,     spawn,           SHCMD("xsecurelock") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
