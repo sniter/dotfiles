@@ -48,7 +48,8 @@ capture_selection() {
 }
 
 case "${1:-}" in
-window) capture_window ;;
-selecion) capture_selection ;;
-*) capture_full ;;
+# -w | --window) capture_window ;;
+-s | --selection) capture_selection ;;
+-f | --full) capture_full ;;
+*) exit 0 ;;
 esac
