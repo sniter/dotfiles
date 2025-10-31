@@ -8,6 +8,6 @@ ssh/github:
 	$(call SSH_KEYGEN,github.com,git,ed25519,$(GIT_EMAIL))
 
 ssh/codeberg:
-	$(call SSH_KEYGEN,codeberd.org,git,ed25519,$(GIT_EMAIL))
+	$(call SSH_KEYGEN,codeberg.org,git,ed25519,$(GIT_EMAIL))
 
 

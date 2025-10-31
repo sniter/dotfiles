@@ -8,4 +8,4 @@ Host              codeberg.org
 	HostName	      codeberg.org
 	IdentitiesOnly	yes
 	User		        git
-	IdentityFile	  ~/.ssh/codeberg.org/git/id_ed25519
+	IdentityFile	  /home/ilya/.ssh/codeberg.org/git/id_ed25519
