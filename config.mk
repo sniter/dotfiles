@@ -1,6 +1,6 @@
 COMMON_TOOLS=\
 	zsh \
-	helix neovim vim \
+	helix neovim vim emacs \
 	stow git lazygit \
 	atop btop htop \
 	wget aria2 curl \

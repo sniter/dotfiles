@@ -21,6 +21,8 @@ ARCH_FONTS=\
 	ttc-iosevka \
 	ttf-iosevkaterm-nerd \
 	ttf-ibmplex-mono-nerd \
+	ttf-nerd-fonts-symbols \
+	ttf-nerd-fonts-symbols-mono \
 	ttf-ibm-plex \
 	noto-fonts-emoji \
 	ttf-font-awesome \

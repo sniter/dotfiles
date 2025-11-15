@@ -36,9 +36,10 @@ static const Rule rules[] = {
 	{ "st-256color",    NULL,       NULL,       1 << 0,       0,           -1 },
 	{ "firefox",        NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Onedriver",      NULL,       NULL,       1 << 1,       1,           -1 },
-	{ "Brave-browser",  NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Brave-browser",  NULL,       "Bitwarden",1 << 2,       1,           -1 },
+	{ "Brave-browser",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Brave-browser",  NULL,       "Bitwarden",1 << 1,       1,           -1 },
 	{ "Bitwarden",      NULL,       NULL,       1 << 0,       1,           -1 },
+	{ "Emacs",  NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "player",         NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "mpv",            NULL,       NULL,       1 << 8,       0,           -1 },
 };
@@ -76,7 +77,10 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const char *browser[]     = { "firefox", NULL };
 static const char *brave[]       = { "brave", NULL };
+static const char *emacs[]       = { "emacs", NULL };
+static const char *notes[]       = { "emacs ~/notes/index.org", NULL };
 static const char *musicplayer[] = { "st", "-c", "player", "-e", "kew", NULL };
+static const char *doomemacs[]   = { "st", "-c", "Emacs", "-e", "~/.local/bin/rundoom", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -85,14 +89,16 @@ static const Key keys[] = {
   { MODKEY,                       XK_w,      spawn,          {.v = browser } },
   { MODKEY,                       XK_b,      spawn,          {.v = brave } },
   { MODKEY,                       XK_m,      spawn,          {.v = musicplayer } },
+  { MODKEY,                       XK_e,      spawn,          {.v = emacs } },
+  { MODKEY,                       XK_n,      spawn,          {.v = notes } },
   { MODKEY,                       XK_l,      spawn,          SHCMD("xsecurelock") },
   { MODKEY,                       XK_s,      spawn,          SHCMD("screenshot -f") },
   { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("screenshot -s") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
