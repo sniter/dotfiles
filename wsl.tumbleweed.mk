@@ -4,25 +4,23 @@ include config.mk
 # WSL
 #
 ########################################################################################
-wsl/tumbleweed/packages:
-	sudo zypper install \
-		 zsh stow tmux \
-		 neovim helix vim \
-		 git lazygit \
-		 bat eza yazi \
-		 fd fzf jq ripgrep \
-		 curl wget aria2 \
-		 binutils tar cmake make gcc
+TOOL=.tools/wsl.tumbleweed
 
-wsl/tumbleweed/dotfiles: common/dotfiles/enabled
-	stow -d available -t enabled \
-		alacritty bat \
-		git lazygit lazyvim \
-		ssh sway tmux vim \
-		zsh-commons zsh-antidote
-	stow --dotfiles enabled
+WSL_DEPS=git make gcc cmake tar binutils \
+	$(COMMON_TOOLS)
 
-wsl/tumbleweed: \
-	ssh/github \
-	wsl/tumbleweed/packages
+WSL_DOTFILES=\
+	bat yazi \
+	git lazygit \
+	helix lazyvim vim \
+	tmux sesh ssh \
+	zsh-commons zsh-antidote
 
+zypper = sudo zypper install $(1)
+
+$(TOOL).default:
+	$(call zypper, $(WSL_DEPS))
+	$(call dotfiles, $(WSL_DOTFILES))
+	$(run-once)
+
+install: $(addprefix $(TOOL).,default)
