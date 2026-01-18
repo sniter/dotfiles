@@ -18,8 +18,6 @@ ARCH_COMMON_DOTFILES=\
 	zsh-commons zsh-antidote
 
 ARCH_FONTS=\
-	ttc-iosevka \
-	ttf-iosevkaterm-nerd \
 	ttf-ibmplex-mono-nerd \
 	ttf-nerd-fonts-symbols \
 	ttf-nerd-fonts-symbols-mono \
@@ -38,7 +36,7 @@ ARCH_VIDEO_DRIVER_TOOLS=\
 	xf86-video-intel intel-media-driver
 
 ARCH_DWM_TOOLS=\
-	xorg-xinit \
+	xorg-xinit imagemagick \
 	xclip brightnessctl xbindkeys libnotify dunst playerctl \
 	picom \
 	nsxiv feh \
@@ -75,17 +73,17 @@ $(TOOL).yay:
 
 $(TOOL).X11:
 	$(call pacman, xorg xorg-apps)
-	sudo rm /etc/X11/xorg.conf.d/00-keyboard.conf
+	sudo rm -fr /etc/X11/xorg.conf.d/00-keyboard.conf
 	sudo stow -t / arch
 	$(run-once)
 
 $(TOOL).ly:
-	$(call pacman, ly)
-	$(call service-enable, ly)
-	$(call service-disable, getty@)
+	# $(call pacman, ly)
+	# $(call service-enable, ly)
+	# $(call service-disable, getty@)
 	$(run-once)
 
-$(TOOL).bluetooth:
+# $(TOOL).bluetooth:
 	$(call pacman, bluez, bluez-tools)
 	$(call service-enable, bluetooth)
 	$(call service-start, bluetooth)
@@ -102,7 +100,7 @@ DWM_DEPS=\
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)
 DWM_DOTFILES=$(ARCH_COMMON_DOTFILES) $(ARCH_DWM_DOTFILES)
-$(TOOL).dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur)
+$(TOOL).dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur) suckless
 	$(call pacman, $(DWM_DEPS))
 	$(call dotfiles, $(DWM_DOTFILES))
 	$(run-once)

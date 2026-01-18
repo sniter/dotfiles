@@ -2,13 +2,13 @@ export GTK_THEME=Adwaita:dark
 export XDG_CURRENT_DESKTOP=GNOME
 export XDG_SESSION_TYPE=x11
 export XSECURELOCK_SAVER=saver_mpv
-# export DWM_BACKGROUND=~/Downloads/Images/ameer-basheer-gV6taBJuBTk-unsplash.jpg
 xbindkeys
-wal -i "$(< "${HOME}/.cache/wal/wal")"
+wal -i "$(<"${HOME}/.cache/wal/wal")"
 cat ~/.cache/wal/xrdb_extra | xrdb -merge
 feh --bg-scale "$(<"${HOME}/.cache/wal/wal")"
 dunst &
 exec picom &
 exec slstatus &
 # #exec dwmblocks &
-exec setsid dwm
+# exec setsid dwm
+exec dwm
