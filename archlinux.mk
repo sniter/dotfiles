@@ -13,7 +13,7 @@ ARCH_COMMON_DOTFILES=\
 	alacritty ghostty kitty \
 	bat yazi \
 	git lazygit \
-	helix lazyvim vim \
+	helix lazyvim vim oxwm \
 	tmux sesh ssh \
 	zsh-commons zsh-antidote
 
@@ -96,6 +96,7 @@ $(TOOL).aur:
 DWM_DEPS=\
 	$(COMMON_TOOLS) \
   $(COMMON_TERMINALS) \
+	$(ARCH_CLI_TOOLS)
 	$(ARCH_DWM_TOOLS) \
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)

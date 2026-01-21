@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/ilya/Documents/wallpaper.jpg"
+let background = "#020817"
+let foreground = "#94c7d4"
+let cursor     = "#94c7d4"
+
+" Colors
+let color0  = "#020817"
+let color1  = "#574648"
+let color2  = "#B07F3D"
+let color3  = "#17438B"
+let color4  = "#03508E"
+let color5  = "#156498"
+let color6  = "#026EA9"
+let color7  = "#94c7d4"
+let color8  = "#678b94"
+let color9  = "#574648"
+let color10 = "#B07F3D"
+let color11 = "#17438B"
+let color12 = "#03508E"
+let color13 = "#156498"
+let color14 = "#026EA9"
+let color15 = "#94c7d4"

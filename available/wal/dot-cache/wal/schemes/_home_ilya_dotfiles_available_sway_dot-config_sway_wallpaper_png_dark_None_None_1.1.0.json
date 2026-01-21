@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ilya/dotfiles/available/sway/dot-config/sway/wallpaper.png",
+    "alpha": "100",
+    "special": {
+        "background": "#000514",
+        "foreground": "#9ca7b5",
+        "cursor": "#9ca7b5"
+    },
+    "colors": {
+        "color0": "#000514",
+        "color1": "#192E47",
+        "color2": "#243851",
+        "color3": "#2D425C",
+        "color4": "#344C67",
+        "color5": "#44454F",
+        "color6": "#445B76",
+        "color7": "#9ca7b5",
+        "color8": "#6d747e",
+        "color9": "#192E47",
+        "color10": "#243851",
+        "color11": "#2D425C",
+        "color12": "#344C67",
+        "color13": "#44454F",
+        "color14": "#445B76",
+        "color15": "#9ca7b5"
+    }
+}

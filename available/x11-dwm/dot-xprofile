@@ -7,8 +7,9 @@ wal -i "$(<"${HOME}/.cache/wal/wal")"
 cat ~/.cache/wal/xrdb_extra | xrdb -merge
 feh --bg-scale "$(<"${HOME}/.cache/wal/wal")"
 dunst &
-exec picom &
-exec slstatus &
+#exec picom &
+#exec slstatus &
 # #exec dwmblocks &
 # exec setsid dwm
-exec dwm
+#exec dwm
+exec oxwm 
