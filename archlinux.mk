@@ -139,7 +139,7 @@ $(TOOL).dwm-deps:
 #
 # WAYLAND + HYPRLAND
 # 
-HYPRLAND_DEPS=hyprland xorg-xwayland hyprpaper wofi waybar dolphin wl-clipboard
+HYPRLAND_DEPS=hyprland xorg-xwayland hyprpaper kyprlock hypridle wofi waybar dolphin wl-clipboard grim slurp
 HYPRLAND_DOTFILES=$(ARCH_COMMON_DOTFILES) arch_hyprland wallpapers
 $(TOOL).hyprland: $(addprefix $(TOOL).,yay ly aur)
 	$(call pacman, $(HYPRLAND_DEPS))
