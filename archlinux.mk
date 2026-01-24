@@ -3,12 +3,10 @@ include config.mk
 TOOL=.tools/archlinux
 
 ARCH_GUI_TOOLS=firefox bitwarden
-ARCH_CLI_TOOLS=xsecurelock rclone yt-dlp mpv markdownlint-cli2
+ARCH_CLI_TOOLS=xsecurelock rclone yt-dlp mpv
 ARCH_DEVEL_TOOLS=coreutils base-devel
 ARCH_JAVA_TOOLS=jdk21-openjdk openjdk21-src
-SUCKLESS_TOOLS=dmenu dwm slock slstatus st
-ARCH_AUR_TOOLS=kew sesh brave-bin
-ARCH_DWM_DOTFILES=picom x11-dwm wal 
+ARCH_AUR_TOOLS=kew sesh brave-bin oxwm-git
 ARCH_COMMON_DOTFILES=\
 	alacritty ghostty kitty \
 	bat yazi \
@@ -35,20 +33,12 @@ ARCH_VIDEO_DRIVER_TOOLS=\
 	libva-intel-driver libva-utils \
 	xf86-video-intel intel-media-driver
 
-ARCH_DWM_TOOLS=\
+ARCH_X11_TOOLS=\
 	xorg-xinit imagemagick \
 	xclip brightnessctl xbindkeys libnotify dunst playerctl \
 	picom \
 	nsxiv feh \
 	python-pywal
-
-define yay-install
-	yay -Sy $^
-endef
-
-define pacman-install
-	sudo pacman -Sy $@
-endef
 
 yay = yay -Sy $(1)
 pacman = sudo pacman -Sy $(1)
@@ -58,11 +48,6 @@ define dotfiles-install
 	stow -d available -t enabled $^
 	stow --dotfiles enabled
 endef
-
-suckless/%:
-	cd apps/$* && DESTDIR=~/.local make clean install
-
-suckless: $(addprefix suckless/,$(SUCKLESS_TOOLS))
 
 $(TOOL).yay:
 	$(call if-command,yay,$@) || \
@@ -77,13 +62,15 @@ $(TOOL).X11:
 	sudo stow -t / arch
 	$(run-once)
 
+$(TOOL).X110
+
 $(TOOL).ly:
-	# $(call pacman, ly)
-	# $(call service-enable, ly)
-	# $(call service-disable, getty@)
+	$(call pacman, ly)
+	$(call service-enable, ly)
+	$(call service-disable, getty@)
 	$(run-once)
 
-# $(TOOL).bluetooth:
+$(TOOL).bluetooth:
 	$(call pacman, bluez, bluez-tools)
 	$(call service-enable, bluetooth)
 	$(call service-start, bluetooth)
@@ -93,18 +80,75 @@ $(TOOL).aur:
 	$(call yay $(ARCH_AUR_TOOLS))
 	$(run-once)
 
+#
+# SUCKLESS
+#
+SUCKLESS_TOOLS=dmenu dwm slock slstatus st
+
+SUCKLESS_DEPS=\
+	$(COMMON_TOOLS) \
+  $(COMMON_TERMINALS) \
+	$(ARCH_CLI_TOOLS)
+	$(ARCH_X11_TOOLS) \
+	$(ARCH_FONTS) \
+	$(ARCH_VIDEO_DRIVER_TOOLS)
+
+suckless/%:
+	cd apps/$* && DESTDIR=~/.local make clean install
+
+$(TOOL).suckless-build: $(addprefix suckless/,$(SUCKLESS_TOOLS))
+
+$(TOOL).suckless-deps:
+	$(call pacman, $(SUCKLESS_DEPS))
+	$(run-once)
+
+$(TOOL).suckless: $(addprefix $(TOOL).,yay ly X11 aur suckless-deps suckless-build)
+
+#
+# OXWM
+# 
+OXWM_DOTFILES = $(ARCH_COMMON_DOTFILES) $(ARCH_DWM_DOTFILES)
+
+$(TOOL).oxwm: $(addprefix $(TOOL).,bluetooth suckless)
+	$(call pacman, $(DWM_DEPS))
+	$(MAKE) suckless
+	$(call dotfiles, $(DWM_DOTFILES))
+	$(run-once)
+
+#
+# DWM
+#
+ARCH_DWM_DOTFILES=picom x11-dwm wal 
+
 DWM_DEPS=\
 	$(COMMON_TOOLS) \
   $(COMMON_TERMINALS) \
 	$(ARCH_CLI_TOOLS)
-	$(ARCH_DWM_TOOLS) \
+	$(ARCH_X11_TOOLS) \
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)
 DWM_DOTFILES=$(ARCH_COMMON_DOTFILES) $(ARCH_DWM_DOTFILES)
-$(TOOL).dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur) suckless
-	$(call pacman, $(DWM_DEPS))
+
+$(TOOL).dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur dwm-deps) suckless
 	$(call dotfiles, $(DWM_DOTFILES))
 	$(run-once)
+
+$(TOOL).dwm-deps:
+	$(call pacman, $(DWM_DEPS))
+
+#
+# WAYLAND + HYPRLAND
+# 
+HYPRLAND_DEPS=hyprland xorg-xwayland hyprpaper wofi waybar dolphin wl-clipboard
+HYPRLAND_DOTFILES=$(ARCH_COMMON_DOTFILES) arch_hyprland wallpapers
+$(TOOL).hyprland: $(addprefix $(TOOL).,yay ly aur)
+	$(call pacman, $(HYPRLAND_DEPS))
+	$(call dotfiles, $(HYPRLAND_DOTFILES))
+	$(run-once)
+
+#
+# Gnome
+# 
 
 $(TOOL).gnome:
 	$(call pacman, gnome)
