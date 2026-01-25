@@ -2,7 +2,7 @@ include config.mk
 
 TOOL=.tools/archlinux
 
-ARCH_GUI_TOOLS=firefox bitwarden
+ARCH_GUI_TOOLS=firefox bitwarden vlc vlc-plugins-all
 ARCH_CLI_TOOLS=xsecurelock rclone yt-dlp mpv
 ARCH_DEVEL_TOOLS=coreutils base-devel
 ARCH_JAVA_TOOLS=jdk21-openjdk openjdk21-src
@@ -118,7 +118,7 @@ $(TOOL).oxwm: $(addprefix $(TOOL).,bluetooth suckless)
 #
 # DWM
 #
-ARCH_DWM_DOTFILES=picom x11-dwm wal 
+ARCH_DWM_DOTFILES=picom x11-dwm wal
 
 DWM_DEPS=\
 	$(COMMON_TOOLS) \
