@@ -44,7 +44,8 @@
 
 font-family = "BlexMono Nerd Font Mono"
 font-size = 10
-theme = "catppuccin-mocha"
+# theme = "catppuccin-mocha"
+theme = "dankcolors"
 shell-integration-features = no-cursor
 cursor-style = "block"
 background-opacity = 0.9

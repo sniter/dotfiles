@@ -1,4 +1,7 @@
-general.import = ["~/.config/alacritty/themes/catppuccin-frappe.toml"]
+general.import = [
+  # "~/.config/alacritty/themes/catppuccin-frappe.toml"
+  "~/.config/alacritty/themes/dank-theme.toml",
+]
 
 [env]
 TERM = "xterm-256color"
