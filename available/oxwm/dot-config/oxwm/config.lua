@@ -334,6 +334,11 @@ oxwm.key.chord({
 -- Commands to run once when OXWM starts
 -- Uncomment and modify these examples, or add your own
 
+oxwm.autostart("xbindkeys")
+oxwm.autostart("wal -i \"$(<'$HOME/.cache/wal/wal')\"")
+oxwm.autostart("cat ~/.cache/wal/xrdb_extra | xrdb -merge")
+oxwm.autostart("feh --bg-scale \"$(<'${HOME}/.cache/wal/wal')\"")
+oxwm.autostart("dunst")
 -- oxwm.autostart("picom")
 -- oxwm.autostart("xwallpaper --zoom ~/walls/dune.jpg")
 -- oxwm.autostart("dunst")
