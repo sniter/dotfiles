@@ -25,7 +25,7 @@ normal.family = "BlexMono Nerd Font Mono"
 bold.family = "BlexMono Nerd Font Mono"
 italic.family = "BlexMono Nerd Font Mono"
 bold_italic.family = "BlexMono Nerd Font Mono"
-size = 13
+size = 7.5
 
 [keyboard]
 bindings = [
