@@ -1,7 +1,6 @@
 {
     "wallpaper": "/home/ilya/.config/sway/wallpaper.png",
     "alpha": "100",
-
     "special": {
         "background": "#000514",
         "foreground": "#9ca7b5",

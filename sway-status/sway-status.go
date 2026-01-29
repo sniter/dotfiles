@@ -25,7 +25,7 @@ const (
 	weatherCachePath  = "/tmp/wttr_cache"
 	weatherTTL        = 1200 * time.Second
 	layoutFormat      = " | %s"
-	batteryFormat     = " %s"
+	batteryFormat     = " | %s"
 	clockFormat       = " | %s"
 	clockStyle        = "2006-01-02 15:04"
 )
@@ -276,15 +276,15 @@ func getClock() string {
 }
 
 func main() {
-	temp := fmt.Sprintf(temperatureFormat, getTemperature())
-	diskUsage := fmt.Sprintf(disksFormat, getDiskUsage())
+	// temp := fmt.Sprintf(temperatureFormat, getTemperature())
 	cpuUsage := fmt.Sprintf(cpuFormat, getCPUUsage())
 	memoryUsage := fmt.Sprintf(memFormat, getMemoryUsage())
-	swapUsage := fmt.Sprintf(swapFormat, getSwapUsage())
-	weather := fmt.Sprintf(weatherFormat, getWeather())
+	diskUsage := fmt.Sprintf(disksFormat, getDiskUsage())
+	// swapUsage := fmt.Sprintf(swapFormat, getSwapUsage())
+	// weather := fmt.Sprintf(weatherFormat, getWeather())
 	layout := fmt.Sprintf(layoutFormat, getLayout())
 	battery := fmt.Sprintf(batteryFormat, getBattery())
 	clock := fmt.Sprintf(clockFormat, getClock())
 
-	fmt.Println(temp + diskUsage + cpuUsage + memoryUsage + swapUsage + weather + layout + battery + clock)
+	fmt.Println(cpuUsage + memoryUsage + diskUsage + layout + battery + clock)
 }

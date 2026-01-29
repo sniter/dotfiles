@@ -1,0 +1,64 @@
+#!/bin/env bash
+
+function cpu_load(){
+  TEMP_FILE=/tmp/sway-cpu-usage
+  NEW_TS=$(date +%s)
+  OLD_TS=$($NEW_TS-3)
+  if [[ -f "$TEMP_FILE" ]]; then
+    read cpu <"$TEMP_FILE"
+    OLD_TS=$(stat -c %Y /tmp/sway-cpu-usage)
+  else
+    cpu="0 0 0 0 0 0 0 0 0 0 0 0"
+  fi
+  cpu2=$(grep -m1 'cpu ' /proc/stat)
+
+# Разница между двумя измерениями
+  cpu1_total=$(echo $cpu | awk '{print $2+$3+$4+$5+$6+$7+$8}')
+  cpu1_idle=$(echo $cpu | awk '{print $5}')
+  cpu2_total=$(echo $cpu2 | awk '{print $2+$3+$4+$5+$6+$7+$8}')
+  cpu2_idle=$(echo $cpu2 | awk '{print $5}')
+
+  cpu_usage=$((100 * ($cpu2_total - $cpu1_total - ($cpu2_idle - $cpu1_idle)) / ($cpu2_total - $cpu1_total) / ($NEW_TS - $OLD_TS)))
+
+  echo "$cpu2" >$TEMP_FILE
+
+  echo "Cpu: ${cpu_usage}%"
+}
+
+function layout(){
+  la=$(swaymsg -t get_inputs | jq '.[].xkb_active_layout_name' | grep -v null | head -n1 | awk -F \" '{print $2}')
+  echo $la
+}
+
+function mem_free(){
+  mem=$(awk '/MemFree/{free=$2} /MemTotal/{total=$2} END{print int(((total-free)*100)/total)}' /proc/meminfo)
+  echo "Mem: ${mem}%"
+}
+
+function wclock_riga(){
+  echo "$(timedatectl | grep "Time zone" | awk -F ":" '{$1=""; sub(/ \(.*$/,""); sub(/^\s+\w+\//,""); print $1}') $(date +%H:%M)"
+}
+
+function wclock_utc(){
+  echo "UTC $(date -u +%H:%M)"
+}
+
+function calendar(){
+  echo "󰸘 $(date "+%a, %d %b ")"
+}
+
+
+function loop(){
+  echo "["
+  echo "{\"full_text\":\"$(cpu_load)\", \"color\":\"#f7768e\"},"
+  echo "{\"full_text\":\"$(mem_free)\", \"color\":\"#e0af68\"},"
+  echo "{\"full_text\":\"$(layout)\", \"color\":\"#9ece6a\"}",
+  echo "{\"full_text\":\"$(wclock_riga)\", \"color\":\"#7aa2f7\"},"
+  echo "{\"full_text\":\"$(wclock_utc)\", \"color\":\"#0db9d7\"},"
+  echo "{\"full_text\":\"$(calendar)\", \"color\":\"#a9b1d6\"}"
+  echo "],"
+}
+
+
+echo -e "{ \"version\": 1 }\n["
+while loop; do sleep 3; done 

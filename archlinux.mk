@@ -167,10 +167,11 @@ $(TOOL).kde:
 	$(run-once)
 
 SWAY_DEPS=sway swaylock swayidle swaybg brightnessctl
-SWAY_DOTFILES=$(ARCH_COMMON_DOTFILES) sway
+SWAY_DOTFILES=$(ARCH_COMMON_DOTFILES) arch_sway
 $(TOOL).sway: $(addprefix $(TOOL).,yay ly aur)
 	$(call pacman, $(SWAY_DEPS))
 	$(call dotfiles, $(SWAY_DOTFILES))
+	# TODO: Build sway-status
 	$(run-once)
 
 

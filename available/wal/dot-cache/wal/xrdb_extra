@@ -1,6 +1,6 @@
-dwm.normbordercolor: #020207
-dwm.normbgcolor: #020207
-dwm.normfgcolor: #1F5B98
-dwm.selbordercolor: #748596
-dwm.selbgcolor: #1F5B98
-dwm.selfgcolor:  #020207
+dwm.normbordercolor: #000514
+dwm.normbgcolor: #000514
+dwm.normfgcolor: #344C67
+dwm.selbordercolor: #6d747e
+dwm.selbgcolor: #344C67
+dwm.selfgcolor:  #000514

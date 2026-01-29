@@ -1,7 +1,7 @@
-static char norm_bg[]           = "#020207";
-static char norm_border[]       = "#020207";
-static char norm_fg[]           = "#214872";
-static char sel_fg[]            = "#020207";
-static char sel_border[]        = "#214872";
-static char sel_bg[]            = "#214872";
+static char norm_bg[]           = "#000514";
+static char norm_border[]       = "#000514";
+static char norm_fg[]           = "#243851";
+static char sel_fg[]            = "#000514";
+static char sel_border[]        = "#243851";
+static char sel_bg[]            = "#243851";
 

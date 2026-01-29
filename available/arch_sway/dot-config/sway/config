@@ -14,8 +14,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
-set $browser firefox
+set $term ghostty
+set $browser brave
 # Your preferred application launcher
 # set $menu wmenu-run
 set $menu wofi --show drun
@@ -35,10 +35,11 @@ output * bg /home/ilya/.config/sway/wallpaper.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec sway-tick.sh
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -66,13 +67,13 @@ output * bg /home/ilya/.config/sway/wallpaper.png fill
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
 
     # Start your browser
-    bindsym $mod+q exec $browser
+    bindsym $mod+b exec $browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -82,7 +83,7 @@ output * bg /home/ilya/.config/sway/wallpaper.png fill
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -143,11 +144,11 @@ output * bg /home/ilya/.config/sway/wallpaper.png fill
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
+    bindsym $mod+s splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    bindsym $mod+t layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -218,14 +219,19 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
+    # mode invisible
+    # swaybar_command sway-status
     # font BlexMono Nerd Font 12
-    # font BlexMono Nerd Font Propo 12
-    font SauceCodePro Nerd Font 12
+    font BlexMono Nerd Font Propo Bold 12
+    # font SauceCodePro Nerd Font 12
     height 26
+    separator_symbol |
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %X'; do sleep 5; done
-    status_command /home/ilya/.local/bin/sway-config2.sh
+    # status_command while date +'%Y-%m-%d %X'; do sleep 5; done
+    # status_command /home/ilya/.local/bin/sway-config2.sh
+    status_command /home/ilya/.local/bin/swayst
     # status_command /home/ilya/.local/bin/sway-status
 
     colors {
