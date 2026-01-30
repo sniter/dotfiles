@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+while swaymsg -t send_tick; do sleep 3; done
+
+
+

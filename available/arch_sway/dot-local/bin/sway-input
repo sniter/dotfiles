@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+LAYOUT_FILE="/tmp/sway-layout"
+swaymsg -t subscribe -m '["tick","input"]' -r | while IFS= read -r line; do
+  if [[ "$line" =~ \"first\" ]]; then
+    swaymsg -t get_inputs | jq -r '.[].xkb_active_layout_name' | grep -v null | head -n1 >"$LAYOUT_FILE"
+  elif [[ "$line" =~ xkb_active_layout_name && "$line" =~ 1:1:AT_Translated_Set_2_keyboard ]]; then
+    echo "$line" | jq -r '.input.xkb_active_layout_name' >"$LAYOUT_FILE"
+  fi
+done
