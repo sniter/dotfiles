@@ -111,6 +111,17 @@ function layout() {
   fmt "󰌓 $country" "$color"
 }
 
+bt_status() {
+  status=$(bluetoothctl show | awk -F \:\  '/Powered/{print $2}')
+  if [[ "$status" == yes ]]; then
+    color="#0082FC"
+  else
+    color="#a9b1d6"
+  fi
+
+  fmt "" "$color"
+}
+
 bt_headset() {
   devices=$(bluetoothctl devices Connected)
   if [[ -n "$devices" ]]; then
@@ -119,9 +130,15 @@ bt_headset() {
     path="/org/bluez/hci0/dev_${mac//:/_}"
     bat=$(busctl get-property org.bluez "$path" org.bluez.Battery1 Percentage | awk '{print $2}')
 
-    fmt " $alias $bat%" "$(color_grad_desc bat)"
-  else
-    echo ""
+    fmt "󰋎 $alias $bat%" "$(color_grad_desc bat)"
+  fi
+}
+
+wifi_status() {
+  wifi_ssid=$(iwctl station wlan0 show | awk -F 'Connected network' '/Connected network/{print $2}')
+  ssid="${wifi_ssid##+([[:space:]])}"
+  if [[ -n "$ssid" ]]; then
+    fmt "󰖩 $ssid" "#a9b1d6"
   fi
 }
 
@@ -135,7 +152,17 @@ function calendar() {
 
 # cached wclock_utc 100
 function loop() {
-  panel=("$(cached cpu_load 10)" "$(cached mem_free 3)" "$(cached disk_stat 60)" "$(cached bat_stat 60)" "$(cached bt_headset 10)" "$(layout)" "$(cached calendar 10)")
+  panel=(
+    "$(cached cpu_load 10)"
+    "$(cached mem_free 3)"
+    "$(cached disk_stat 60)"
+    "$(cached bat_stat 60)"
+    "$(cached wifi_status 10)"
+    "$(cached bt_status 10)"
+    "$(cached bt_headset 10)"
+    "$(layout)"
+    "$(cached calendar 10)"
+  )
   echo "[{\"full_text\":\"\"}"
   for indicator in "${panel[@]}"; do
     if [[ -n "$indicator" ]]; then
@@ -152,5 +179,4 @@ swaymsg -t subscribe -m '["tick","input"]' -r | while IFS= read -r line; do
   elif [[ "$line" =~ xkb_active_layout_name && "$line" =~ 1:1:AT_Translated_Set_2_keyboard ]]; then
     loop
   fi
-
 done
