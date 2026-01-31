@@ -134,11 +134,40 @@ bt_headset() {
   fi
 }
 
-wifi_status() {
-  wifi_ssid=$(iwctl station wlan0 show | awk -F 'Connected network' '/Connected network/{print $2}')
-  ssid="${wifi_ssid##+([[:space:]])}"
+function trim() {
+  var="$1"
+  # trim leading whitespace
+  var="${var#"${var%%[![:space:]]*}"}"
+  # trim trailing whitespace
+  var="${var%"${var##*[![:space:]]}"}"
+  echo "$var"
+}
+
+function wifi_status() {
+  wifi=$(iwctl station wlan0 show)
+  ssid=$(echo "$wifi" | awk -F 'Connected network' '/Connected network/{print $2}')
+  ssid=$(trim "$ssid")
+
+  rssi=$(echo "$wifi" | awk -F 'AverageRSSI' '/AverageRSSI/{print $2}' | tr -d 'dBm')
+  rssi=$(trim "$rssi")
+
+  color=$(
+    if ((rssi >= -30)); then
+      echo "#a9b1d6"
+    elif ((rssi >= -40)); then
+      echo "#7aa2f7"
+    elif ((rssi >= -50)); then
+      echo "#0db9d7"
+    elif ((rssi >= -60)); then
+      echo "#9ece6a"
+    elif ((rssi >= -70)); then
+      echo "#e0af68"
+    else
+      echo "#f7768e"
+    fi
+  )
   if [[ -n "$ssid" ]]; then
-    fmt "󰖩 $ssid" "#a9b1d6"
+    fmt "󰖩 $ssid" "$color"
   fi
 }
 
@@ -154,11 +183,11 @@ function calendar() {
 function loop() {
   panel=(
     "$(cached cpu_load 10)"
-    "$(cached mem_free 3)"
+    "$(cached mem_free 30)"
     "$(cached disk_stat 60)"
     "$(cached bat_stat 60)"
     "$(cached wifi_status 10)"
-    "$(cached bt_status 10)"
+    # "$(cached bt_status 10)"
     "$(cached bt_headset 10)"
     "$(layout)"
     "$(cached calendar 10)"
