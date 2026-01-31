@@ -62,12 +62,12 @@ function color_grad_desc() {
 
 function cpu_load() {
   load=$(cat /proc/loadavg | awk '{printf "%i", $1 / 8 * 100}')
-  fmt "Load: ${load}%" "$(color_grad_asc "$load")"
+  fmt "Cpu: ${load}%" "$(color_grad_asc "$load")"
 }
 
 function mem_free() {
   mem_usage=$(awk '/MemFree/{free=$2} /MemTotal/{total=$2} END{print int(((total-free)*100)/total)}' /proc/meminfo)
-  echo $(fmt "Mem: ${mem_usage}%" "$(color_grad_asc "$mem_usage")")
+  fmt "Mem: ${mem_usage}%" "$(color_grad_asc "$mem_usage")"
 }
 
 function bat_stat() {
@@ -87,7 +87,13 @@ function bat_stat() {
       echo ""
       ;;
     esac)
-  echo $(fmt "Bat: ${bat_st}${capacity}%" "$(color_grad_desc "$capacity")")
+  fmt "Bat: ${bat_st}${capacity}%" "$(color_grad_desc "$capacity")"
+}
+
+function disk_stat() {
+  load=$(df | grep nvme0n1p2 | head -n1 | awk '{print $5}' | tr -d '%')
+  fmt "Disk: ${load}%" "$(color_grad_asc "$load")"
+
 }
 
 LAYOUT_FILE="/tmp/sway-layout"
@@ -129,7 +135,7 @@ function calendar() {
 
 # cached wclock_utc 100
 function loop() {
-  panel=("$(cached cpu_load 10)" "$(cached mem_free 3)" "$(cached bat_stat 60)" "$(cached bt_headset 10)" "$(layout)" "$(cached calendar 10)")
+  panel=("$(cached cpu_load 10)" "$(cached mem_free 3)" "$(cached disk_stat 60)" "$(cached bat_stat 60)" "$(cached bt_headset 10)" "$(layout)" "$(cached calendar 10)")
   echo "[{\"full_text\":\"\"}"
   for indicator in "${panel[@]}"; do
     if [[ -n "$indicator" ]]; then
