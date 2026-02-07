@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ilya/walls/sven-van-der-pluijm-W7EgqYJdQOE-unsplash.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#090000",
+        "foreground": "#d2bab2",
+        "cursor": "#d2bab2"
+    },
+    "colors": {
+        "color0": "#090000",
+        "color1": "#633D40",
+        "color2": "#6F4B4B",
+        "color3": "#8F3205",
+        "color4": "#A33B08",
+        "color5": "#AC4617",
+        "color6": "#BA5933",
+        "color7": "#d2bab2",
+        "color8": "#93827c",
+        "color9": "#633D40",
+        "color10": "#6F4B4B",
+        "color11": "#8F3205",
+        "color12": "#A33B08",
+        "color13": "#AC4617",
+        "color14": "#BA5933",
+        "color15": "#d2bab2"
+    }
+}

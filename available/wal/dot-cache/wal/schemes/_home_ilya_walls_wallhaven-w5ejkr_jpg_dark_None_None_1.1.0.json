@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ilya/walls/wallhaven-w5ejkr.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#221b12",
+        "foreground": "#dee5e8",
+        "cursor": "#dee5e8"
+    },
+    "colors": {
+        "color0": "#221b12",
+        "color1": "#58B9CA",
+        "color2": "#72C5D4",
+        "color3": "#9FABA2",
+        "color4": "#B3C2B8",
+        "color5": "#94CAD3",
+        "color6": "#B1D0D6",
+        "color7": "#dee5e8",
+        "color8": "#9ba0a2",
+        "color9": "#58B9CA",
+        "color10": "#72C5D4",
+        "color11": "#9FABA2",
+        "color12": "#B3C2B8",
+        "color13": "#94CAD3",
+        "color14": "#B1D0D6",
+        "color15": "#dee5e8"
+    }
+}

@@ -2,9 +2,11 @@
 set -euo pipefail
 trap 'kill 0' SIGINT
 trap 'kill 0' SIGSTOP
+COLOR="${1:-#ffffff}"
 
 function fmt() {
-  echo "{\"full_text\":\"$1\", \"color\":\"$2\"}"
+  # echo "{\"full_text\":\"$1\", \"color\":\"$2\"}"
+  echo "{\"full_text\":\"$1\"}"
 }
 
 function cached() {
@@ -62,12 +64,14 @@ function color_grad_desc() {
 
 function cpu_load() {
   load=$(cat /proc/loadavg | awk '{printf "%i", $1 / 8 * 100}')
-  fmt "Cpu: ${load}%" "$(color_grad_asc "$load")"
+  # fmt "Cpu: ${load}%" "$(color_grad_asc "$load")"
+  fmt "Cpu: ${load}%" "$COLOR"
 }
 
 function mem_free() {
   mem_usage=$(awk '/MemFree/{free=$2} /MemTotal/{total=$2} END{print int(((total-free)*100)/total)}' /proc/meminfo)
-  fmt "Mem: ${mem_usage}%" "$(color_grad_asc "$mem_usage")"
+  # fmt "Mem: ${mem_usage}%" "$(color_grad_asc "$mem_usage")"
+  fmt "Mem: ${mem_usage}%" "$COLOR"
 }
 
 function bat_stat() {
@@ -87,12 +91,14 @@ function bat_stat() {
       echo ""
       ;;
     esac)
-  fmt "Bat: ${bat_st}${capacity}%" "$(color_grad_desc "$capacity")"
+  # fmt "Bat: ${bat_st}${capacity}%" "$(color_grad_desc "$capacity")"
+  fmt "Bat: ${bat_st}${capacity}%" "$COLOR"
 }
 
 function disk_stat() {
   load=$(df | grep nvme0n1p2 | head -n1 | awk '{print $5}' | tr -d '%')
-  fmt "Disk: ${load}%" "$(color_grad_asc "$load")"
+  # fmt "Disk: ${load}%" "$(color_grad_asc "$load")"
+  fmt "Disk: ${load}%" "$COLOR"
 
 }
 
@@ -100,7 +106,7 @@ LAYOUT_FILE="/tmp/sway-layout"
 function layout() {
   read layout <"$LAYOUT_FILE"
 
-  color="#ffffff"
+  color="$COLOR"
   country=$(if [[ "$layout" == Eng* ]]; then
     echo "U.S."
   elif [[ "$layout" == Latv* ]]; then
@@ -113,13 +119,14 @@ function layout() {
 
 bt_status() {
   status=$(bluetoothctl show | awk -F \:\  '/Powered/{print $2}')
-  if [[ "$status" == yes ]]; then
-    color="#0082FC"
-  else
-    color="#a9b1d6"
-  fi
-
-  fmt "" "$color"
+  # if [[ "$status" == yes ]]; then
+  #   color="#0082FC"
+  # else
+  #   color="#a9b1d6"
+  # fi
+  #
+  # fmt "" "$color"
+  fmt "" "$COLOR"
 }
 
 bt_headset() {
@@ -130,7 +137,8 @@ bt_headset() {
     path="/org/bluez/hci0/dev_${mac//:/_}"
     bat=$(busctl get-property org.bluez "$path" org.bluez.Battery1 Percentage | awk '{print $2}')
 
-    fmt "󰋎 $alias $bat%" "$(color_grad_desc bat)"
+    # fmt "󰋎 $alias $bat%" "$(color_grad_desc bat)"
+    fmt "󰋎 $alias $bat%" "$COLOR"
   fi
 }
 
@@ -151,32 +159,37 @@ function wifi_status() {
   rssi=$(echo "$wifi" | awk -F 'AverageRSSI' '/AverageRSSI/{print $2}' | tr -d 'dBm')
   rssi=$(trim "$rssi")
 
-  color=$(
-    if ((rssi >= -30)); then
-      echo "#a9b1d6"
-    elif ((rssi >= -40)); then
-      echo "#7aa2f7"
-    elif ((rssi >= -50)); then
-      echo "#0db9d7"
-    elif ((rssi >= -60)); then
-      echo "#9ece6a"
-    elif ((rssi >= -70)); then
-      echo "#e0af68"
-    else
-      echo "#f7768e"
-    fi
-  )
+  # color=$(
+  #   if ((rssi >= -30)); then
+  #     echo "#a9b1d6"
+  #   elif ((rssi >= -40)); then
+  #     echo "#7aa2f7"
+  #   elif ((rssi >= -50)); then
+  #     echo "#0db9d7"
+  #   elif ((rssi >= -60)); then
+  #     echo "#9ece6a"
+  #   elif ((rssi >= -70)); then
+  #     echo "#e0af68"
+  #   else
+  #     echo "#f7768e"
+  #   fi
+  # )
+  color="$COLOR"
   if [[ -n "$ssid" ]]; then
     fmt "󰖩 $ssid" "$color"
   fi
 }
 
 function wclock_utc() {
-  fmt "UTC $(date -u +%H:%M)" "#e0af68"
+  color="#e0af68"
+
+  fmt "UTC $(date -u +%H:%M)" "$COLOR"
 }
 
 function calendar() {
-  fmt "󰸘 $(date "+%a, %d %b 󰢗 %H:%M ")" "#a9b1d6"
+  # color="#a9b1d6"
+  color="$COLOR"
+  fmt "󰸘 $(date "+%a, %d %b 󰢗 %H:%M ")" "$COLOR"
 }
 
 # cached wclock_utc 100
@@ -201,7 +214,7 @@ function loop() {
   echo "],"
 }
 
-echo -e "{ \"version\": 1 }\n["
+echo -e "{ \"version\": 1, \"click_events\": true }\n["
 swaymsg -t subscribe -m '["tick","input"]' -r | while IFS= read -r line; do
   if [[ "$line" =~ \"first\" ]]; then
     loop

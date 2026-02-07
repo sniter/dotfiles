@@ -23,7 +23,8 @@ set $menu wofi --show drun
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ilya/.config/sway/wallpaper.png fill
+# output * bg /home/ilya/.config/sway/wallpaper.png fill
+# exec swaybg -i "$(cat ~/.cache/wal/wal)"
 #
 # Example configuration:
 #
@@ -35,8 +36,6 @@ output * bg /home/ilya/.config/sway/wallpaper.png fill
 #
 # Example configuration:
 #
-exec sway-input
-exec sway-tick
 # exec swayidle -w \
 #          timeout 300 'hyprlock' \
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -217,33 +216,6 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-    # mode invisible
-    # swaybar_command sway-status
-    # font BlexMono Nerd Font 12
-    font BlexMono Nerd Font Propo Bold 12
-    # font SauceCodePro Nerd Font 12
-    height 26
-    separator_symbol |
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %X'; do sleep 5; done
-    # status_command while date +'%Y-%m-%d %X'; do sleep 5; done
-    # status_command /home/ilya/.local/bin/sway-config2.sh
-    status_command /home/ilya/.local/bin/swayst
-    # status_command /home/ilya/.local/bin/sway-status
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 include /home/ilya/.config/sway/config.d/*
 include /etc/sway/config.d/*

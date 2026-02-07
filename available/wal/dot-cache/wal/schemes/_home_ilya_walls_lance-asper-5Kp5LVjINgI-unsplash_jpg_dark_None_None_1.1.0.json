@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ilya/walls/lance-asper-5Kp5LVjINgI-unsplash.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0a191b",
+        "foreground": "#a8c1c8",
+        "cursor": "#a8c1c8"
+    },
+    "colors": {
+        "color0": "#0a191b",
+        "color1": "#CC8639",
+        "color2": "#B98551",
+        "color3": "#CF8E4E",
+        "color4": "#DB9F68",
+        "color5": "#1D738E",
+        "color6": "#2D93B1",
+        "color7": "#a8c1c8",
+        "color8": "#75878c",
+        "color9": "#CC8639",
+        "color10": "#B98551",
+        "color11": "#CF8E4E",
+        "color12": "#DB9F68",
+        "color13": "#1D738E",
+        "color14": "#2D93B1",
+        "color15": "#a8c1c8"
+    }
+}

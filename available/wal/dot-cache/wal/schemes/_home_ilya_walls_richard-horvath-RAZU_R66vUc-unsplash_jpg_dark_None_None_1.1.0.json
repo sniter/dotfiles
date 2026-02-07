@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ilya/walls/richard-horvath-RAZU_R66vUc-unsplash.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#010000",
+        "foreground": "#e390c0",
+        "cursor": "#e390c0"
+    },
+    "colors": {
+        "color0": "#010000",
+        "color1": "#CF4F27",
+        "color2": "#E36824",
+        "color3": "#9F1C53",
+        "color4": "#D62556",
+        "color5": "#E89F25",
+        "color6": "#F7C02F",
+        "color7": "#e390c0",
+        "color8": "#9e6486",
+        "color9": "#CF4F27",
+        "color10": "#E36824",
+        "color11": "#9F1C53",
+        "color12": "#D62556",
+        "color13": "#E89F25",
+        "color14": "#F7C02F",
+        "color15": "#e390c0"
+    }
+}
