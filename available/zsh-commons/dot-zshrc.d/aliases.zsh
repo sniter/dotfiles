@@ -8,4 +8,3 @@ alias lg="ls -la --git"
 alias lt="ls -T --git-ignore"
 alias ..="cd .."
 alias hx=helix
-alias v=nvim
