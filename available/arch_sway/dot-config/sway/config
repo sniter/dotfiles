@@ -19,6 +19,11 @@ set $browser brave
 # Your preferred application launcher
 # set $menu wmenu-run
 set $menu wofi --show drun
+set $screen_file grim $(xdg-user-dir PICTURES)/$(date +'%s_screnshot.png')
+set $screen_region grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%s_screnshot.png')
+set $screen_region_clip grim -g "$(slurp)" - | wl-copy
+set $rotate_right swaymsg output "eDP-1" transform 270
+set $rotate_normal swaymsg output "eDP-1" transform 0
 
 ### Output configuration
 #
@@ -74,6 +79,14 @@ set $menu wofi --show drun
 
     # Start your browser
     bindsym $mod+b exec $browser
+    
+    bindsym $mod+s exec $screen_file
+    bindsym $mod+Shift+s exec $screen_region_clip
+
+    bindsym $mod+Shift+v $rotate_right
+    bindsym $mod+Shift+n $rotate_normal
+
+
 
 
     bindsym $mod+l exec hyprlock
@@ -147,8 +160,8 @@ set $menu wofi --show drun
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+s splith
-    bindsym $mod+v splitv
+    # bindsym $mod+s splith
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+t layout stacking
