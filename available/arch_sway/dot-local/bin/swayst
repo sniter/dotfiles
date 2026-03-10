@@ -201,7 +201,7 @@ function loop() {
     "$(cached bat_stat 60)"
     "$(cached wifi_status 10)"
     # "$(cached bt_status 10)"
-    "$(cached bt_headset 10)"
+    # "$(cached bt_headset 10)"
     "$(layout)"
     "$(cached calendar 10)"
   )
