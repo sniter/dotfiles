@@ -3,7 +3,7 @@ include config.mk
 TOOL=.tools/archlinux
 
 ARCH_GUI_TOOLS=firefox bitwarden vlc vlc-plugins-all
-ARCH_CLI_TOOLS=xsecurelock rclone yt-dlp mpv
+ARCH_CLI_TOOLS=xsecurelock rclone yt-dlp mpv bluetui
 ARCH_DEVEL_TOOLS=coreutils base-devel
 ARCH_JAVA_TOOLS=jdk21-openjdk openjdk21-src
 ARCH_AUR_TOOLS=kew sesh brave-bin oxwm-git

@@ -4,7 +4,7 @@ COMMON_TOOLS=\
 	stow git lazygit \
 	atop btop htop \
 	wget aria2 curl \
-	bat eza fd fzf jq less ripgrep tmux zoxide
+	bat eza fd fzf jq less ripgrep tmux zoxide atuin direnv
 
 COMMON_TERMINALS=alacritty kitty ghostty
 
