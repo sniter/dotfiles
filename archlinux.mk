@@ -49,34 +49,32 @@ define dotfiles-install
 	stow --dotfiles enabled
 endef
 
-$(TOOL).yay:
+yay:
 	$(call if-command,yay,$@) || \
 		[ -d /tmp/yay ] && rm -fr /tmp/yay && \
 		git clone https://aur.archlinux.org/yay.git /tmp/yay && \
 		cd /tmp/yay && makepkg -si && \
 		$(run-once)
 
-$(TOOL).X11:
+X11:
 	$(call pacman, xorg xorg-apps)
 	sudo rm -fr /etc/X11/xorg.conf.d/00-keyboard.conf
 	sudo stow -t / arch
 	$(run-once)
 
-$(TOOL).X110
-
-$(TOOL).ly:
+ly:
 	$(call pacman, ly)
 	$(call service-enable, ly)
 	$(call service-disable, getty@)
 	$(run-once)
 
-$(TOOL).bluetooth:
+bluetooth:
 	$(call pacman, bluez, bluez-tools)
 	$(call service-enable, bluetooth)
 	$(call service-start, bluetooth)
 	$(run-once)
 
-$(TOOL).aur:
+aur:
 	$(call yay $(ARCH_AUR_TOOLS))
 	$(run-once)
 
@@ -87,8 +85,8 @@ SUCKLESS_TOOLS=dmenu dwm slock slstatus st
 
 SUCKLESS_DEPS=\
 	$(COMMON_TOOLS) \
-  $(COMMON_TERMINALS) \
-	$(ARCH_CLI_TOOLS)
+	$(COMMON_TERMINALS) \
+	$(ARCH_CLI_TOOLS) \
 	$(ARCH_X11_TOOLS) \
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)
@@ -96,20 +94,20 @@ SUCKLESS_DEPS=\
 suckless/%:
 	cd apps/$* && DESTDIR=~/.local make clean install
 
-$(TOOL).suckless-build: $(addprefix suckless/,$(SUCKLESS_TOOLS))
+suckless-build: $(addprefix suckless/,$(SUCKLESS_TOOLS))
 
-$(TOOL).suckless-deps:
+suckless-deps:
 	$(call pacman, $(SUCKLESS_DEPS))
 	$(run-once)
 
-$(TOOL).suckless: $(addprefix $(TOOL).,yay ly X11 aur suckless-deps suckless-build)
+suckless: $(addprefix $(TOOL).,yay ly X11 aur suckless-deps suckless-build)
 
 #
 # OXWM
 # 
 OXWM_DOTFILES = $(ARCH_COMMON_DOTFILES) $(ARCH_DWM_DOTFILES)
 
-$(TOOL).oxwm: $(addprefix $(TOOL).,bluetooth suckless)
+oxwm: $(addprefix $(TOOL).,bluetooth suckless)
 	$(call pacman, $(DWM_DEPS))
 	$(MAKE) suckless
 	$(call dotfiles, $(DWM_DOTFILES))
@@ -123,17 +121,17 @@ ARCH_DWM_DOTFILES=picom x11-dwm wal
 DWM_DEPS=\
 	$(COMMON_TOOLS) \
   $(COMMON_TERMINALS) \
-	$(ARCH_CLI_TOOLS)
+	$(ARCH_CLI_TOOLS) \
 	$(ARCH_X11_TOOLS) \
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)
 DWM_DOTFILES=$(ARCH_COMMON_DOTFILES) $(ARCH_DWM_DOTFILES)
 
-$(TOOL).dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur dwm-deps) suckless
+dwm: $(addprefix $(TOOL).,yay ly X11 bluetooth aur dwm-deps) suckless
 	$(call dotfiles, $(DWM_DOTFILES))
 	$(run-once)
 
-$(TOOL).dwm-deps:
+dwm-deps:
 	$(call pacman, $(DWM_DEPS))
 
 #
@@ -144,7 +142,7 @@ HYPRLAND_DEPS=hyprland xorg-xwayland \
 							wofi waybar dolphin wl-clipboard cliphist \
 							grim slurp matugen
 HYPRLAND_DOTFILES=$(ARCH_COMMON_DOTFILES) arch_hyprland wallpapers
-$(TOOL).hyprland: $(addprefix $(TOOL).,yay ly aur)
+hyprland: yay ly aur
 	$(call pacman, $(HYPRLAND_DEPS))
 	$(call yay, dms-shell-bin)
 	$(call dotfiles, $(HYPRLAND_DOTFILES))
@@ -154,21 +152,26 @@ $(TOOL).hyprland: $(addprefix $(TOOL).,yay ly aur)
 # Gnome
 # 
 
-$(TOOL).gnome:
+gnome:
 	$(call pacman, gnome)
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['grp:caps_toggle','terminate:ctrl_alt_bksp']"
 	$(call service-enable,gdm)
 	$(run-once)
 
-$(TOOL).kde:
-	$(call pacman, plasma-desktop)
+kde:
+	$(call pacman, plasma)
 	$(call service-enable,sddm)
 	$(call service-start,sddm)
 	$(run-once)
 
+dot: yay aur
+	$(call pacman, $(SUCKLESS_DEPS))
+	$(call dotfiles, $(ARCH_COMMON_DOTFILES))
+
+
 SWAY_DEPS=sway swaylock swayidle swaybg brightnessctl
 SWAY_DOTFILES=$(ARCH_COMMON_DOTFILES) arch_sway
-$(TOOL).sway: $(addprefix $(TOOL).,yay ly aur)
+sway: yay ly aur
 	$(call pacman, $(SWAY_DEPS))
 	$(call dotfiles, $(SWAY_DOTFILES))
 	# TODO: Build sway-status

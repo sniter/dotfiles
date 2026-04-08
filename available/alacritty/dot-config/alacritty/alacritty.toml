@@ -12,8 +12,8 @@ padding.y = 5
 
 decorations = "Buttonless"
 
-opacity = 0.87
-blur = true    # MacOS and KDE only
+opacity = 0.6
+blur = true   # MacOS and KDE only
 
 option_as_alt = "Both"
 startup_mode = "Maximized"
