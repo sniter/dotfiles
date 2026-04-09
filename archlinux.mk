@@ -6,12 +6,12 @@ ARCH_GUI_TOOLS=firefox bitwarden vlc vlc-plugins-all
 ARCH_CLI_TOOLS=xsecurelock rclone yt-dlp mpv bluetui
 ARCH_DEVEL_TOOLS=coreutils base-devel
 ARCH_JAVA_TOOLS=jdk21-openjdk openjdk21-src
-ARCH_AUR_TOOLS=kew sesh brave-bin oxwm-git
+ARCH_AUR_TOOLS=kew sesh brave-bin
 ARCH_COMMON_DOTFILES=\
-	alacritty ghostty kitty \
-	bat yazi \
+	alacritty \
+	bat \
 	git lazygit \
-	helix lazyvim vim oxwm \
+	lazyvim vim \
 	tmux sesh ssh \
 	zsh-commons zsh-antidote
 
@@ -120,7 +120,7 @@ ARCH_DWM_DOTFILES=picom x11-dwm wal
 
 DWM_DEPS=\
 	$(COMMON_TOOLS) \
-  $(COMMON_TERMINALS) \
+	$(COMMON_TERMINALS) \
 	$(ARCH_CLI_TOOLS) \
 	$(ARCH_X11_TOOLS) \
 	$(ARCH_FONTS) \
@@ -163,6 +163,14 @@ kde:
 	$(call service-enable,sddm)
 	$(call service-start,sddm)
 	$(run-once)
+
+GENERIC_DEPS=\
+	$(COMMON_TOOLS) \
+	$(COMMON_TERMINALS) \
+	$(ARCH_CLI_TOOLS) \
+	$(ARCH_X11_TOOLS) \
+	$(ARCH_FONTS) \
+	$(ARCH_VIDEO_DRIVER_TOOLS)
 
 dot: yay aur
 	$(call pacman, $(SUCKLESS_DEPS))

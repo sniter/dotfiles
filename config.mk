@@ -1,12 +1,12 @@
 COMMON_TOOLS=\
 	zsh \
-	helix neovim vim emacs \
+	neovim vim \
 	stow git lazygit \
 	atop btop htop \
 	wget aria2 curl \
-	bat eza fd fzf jq less ripgrep tmux zoxide atuin direnv
+	bat eza fd fzf jq less ripgrep tmux zoxide 
 
-COMMON_TERMINALS=alacritty kitty ghostty
+COMMON_TERMINALS=alacritty
 
 GIT_EMAIL=$(shell echo c25pdGVyQGdtYWlsLmNvbQo= | base64 -d)
 

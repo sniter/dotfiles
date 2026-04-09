@@ -36,3 +36,6 @@ bindings = [
   { key = "Home", chars = "\u001b[H" },
   { key = "End", chars = "\u001b[F" },
 ]
+
+[terminal]
+shell = "/bin/zsh"
