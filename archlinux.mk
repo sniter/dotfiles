@@ -172,8 +172,14 @@ GENERIC_DEPS=\
 	$(ARCH_FONTS) \
 	$(ARCH_VIDEO_DRIVER_TOOLS)
 
+DOTFILE_DEPS=\
+	$(COMMON_TOOLS) \
+	$(COMMON_TERMINALS) \
+	$(ARCH_CLI_TOOLS) \
+	$(ARCH_FONTS) \
+	$(ARCH_VIDEO_DRIVER_TOOLS)
 dot: yay aur
-	$(call pacman, $(SUCKLESS_DEPS))
+	$(call pacman, $(DOTFILE_DEPS))
 	$(call dotfiles, $(ARCH_COMMON_DOTFILES))
 
 
