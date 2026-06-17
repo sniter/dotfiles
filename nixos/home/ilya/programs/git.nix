@@ -1,26 +1,23 @@
 { ... }:
 
 {
-  programs.git = {
-    enable = true;
+  programs.git.enable = true;
 
-    userName = "Ilya Babich";
-    userEmail = "sniter@gmail.com";
+  programs.git.settings = {
 
-    extraConfig = {
-      init.defaultBranch = "main";
-
-      pull.rebase = true;
-      rebase.autoStash = true;
-
-      core.editor = "nvim";
-
-      diff.colorMoved = "default";
-
-      merge.conflictstyle = "diff3";
+    user = {
+    	name = "Ilya Babich";
+        email = "sniter@gmail.com";
     };
 
-    aliases = {
+    init.defaultBranch = "main";
+    pull.rebase = true;
+    rebase.autoStash = true;
+    core.editor = "nvim";
+    diff.colorMoved = "default";
+    merge.conflictstyle = "diff3";
+
+    alias = {
       st = "status";
       co = "checkout";
       br = "branch";

@@ -6,7 +6,8 @@
     bat less jq
     eza fd fzf ripgrep zoxide yazi
     btop htop atop
-    tmux zellij sesh
+    tmux zellij sesh rclone
+    vim neovim helix
     unzip wget aria2
   ];
 }

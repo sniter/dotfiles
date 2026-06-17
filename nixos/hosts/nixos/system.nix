@@ -25,4 +25,11 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  users.users.ilya = {
+    isNormalUser = true;
+    home = "/home/ilya";
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
+
 }

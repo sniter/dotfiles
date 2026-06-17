@@ -1,2 +1,35 @@
 hardware-configuration.nix
+# === Nix build outputs ===
+result
+result-*
+
+# Nix store symlinks from nix build --out-link
+*.drv
+
+# === Flake lock ===
+# flake.lock
+
+# === direnv ===
+.direnv/
+.envrc
+
+# === Nix shells ===
+.nix-profile/
+.nix-defexpr/
+.nix-channels/
+
+# === editor junk ===
+*~
+*.swp
+*.swo
+
+# === logs ===
+*.log
+
+# === VSCode / editors ===
+.vscode/
+.idea/
+
+# === temporary files ===
+*.tmp
 

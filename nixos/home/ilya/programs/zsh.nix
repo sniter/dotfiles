@@ -1,0 +1,42 @@
+{ pkgs, ... }:
+
+{
+  programs.zsh = {
+    enable = true;
+
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    history = {
+      size = 100000;
+      save = 100000;
+      share = true;
+      ignoreDups = true;
+      ignoreSpace = true;
+    };
+
+    shellAliases = {
+      ll = "eza -lah";
+      ls = "eza";
+      la = "eza -la";
+
+      cat = "bat";
+      grep = "rg";
+
+      gs = "git status";
+      ga = "git add";
+      gc = "git commit";
+    };
+
+    initExtra = ''
+      export EDITOR=nvim
+      export VISUAL=nvim
+
+      # nicer prompt behavior
+      setopt PROMPT_SUBST
+      setopt HIST_IGNORE_ALL_DUPS
+      setopt AUTO_CD
+    '';
+  };
+}

@@ -24,8 +24,16 @@
         home-manager.nixosModules.home-manager
 
         {
-          home-manager.users.ilya = import ./home/ilya;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+
+            users.ilya = import ./home/ilya;
+          };
         }
+	# {
+        #   home-manager.users.ilya = import ./home/ilya;
+        # }
       ];
     };
   };
