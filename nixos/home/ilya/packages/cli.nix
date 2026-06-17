@@ -1,4 +1,6 @@
 # cli.nix
+{ pkgs, ... }:
+
 {
   home.packages = with pkgs; [
     bat less jq

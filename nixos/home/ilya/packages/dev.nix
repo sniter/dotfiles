@@ -1,4 +1,6 @@
 # dev.nix
+{ pkgs, ... }:
+
 {
   home.packages = with pkgs; [
     git lazygit
