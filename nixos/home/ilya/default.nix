@@ -17,5 +17,6 @@
     ./programs/lazyvim.nix
     ./programs/ssh.nix
     ./programs/tmux.nix
+    ./programs/rclone.nix
   ];
 }
