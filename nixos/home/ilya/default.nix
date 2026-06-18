@@ -16,5 +16,6 @@
     ./programs/zsh.nix
     ./programs/lazyvim.nix
     ./programs/ssh.nix
+    ./programs/tmux.nix
   ];
 }
