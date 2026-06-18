@@ -14,5 +14,6 @@
 
     ./programs/git.nix
     ./programs/zsh.nix
+    ./programs/lazyvim.nix
   ];
 }

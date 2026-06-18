@@ -12,7 +12,8 @@
   # };
 
   xdg.configFile = {
-    "nvim-lazy".source = ../../../../../available/lazyvim/dot-config/nvim-lazy
+    "nvim-lazy".source = ../../../../../available/lazyvim/dot-config/nvim-lazy;
+  };
       # config.lib.file.mkOutOfStoreSymlink
       #   "${config.home.homeDirectory}/dotfiles/lazyvim";
 

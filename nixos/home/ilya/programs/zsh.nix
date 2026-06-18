@@ -43,8 +43,9 @@
       source ${pkgs.antidote}/share/antidote/antidote.zsh
       antidote load ${../../../../available/zsh-antidote/dot-zsh_plugins.txt}
 
-      # твой кастомный конфиг
-      source ${./custom.zsh}
+      if [[ -o interactive ]]; then
+        source ${ ../../../../available/zsh-commons/dot-p10k.zsh}
+      fi
     '';
   };
 }
