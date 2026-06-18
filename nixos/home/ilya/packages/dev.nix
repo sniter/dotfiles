@@ -7,6 +7,7 @@
     python3
     jdk21_headless
     gcc gnumake
+    tree-sitter
     cargo
     coursier
   ];
