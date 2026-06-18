@@ -30,6 +30,9 @@
     isNormalUser = true;
     home = "/home/ilya";
     extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
 
 }

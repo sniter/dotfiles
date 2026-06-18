@@ -29,14 +29,22 @@
       gc = "git commit";
     };
 
+    # initExtra = ''
+    #   export EDITOR=nvim
+    #   export VISUAL=nvim
+    #
+    #   # nicer prompt behavior
+    #   setopt PROMPT_SUBST
+    #   setopt HIST_IGNORE_ALL_DUPS
+    #   setopt AUTO_CD
+    # '';
     initExtra = ''
-      export EDITOR=nvim
-      export VISUAL=nvim
+      # antidote
+      source ${pkgs.antidote}/share/antidote/antidote.zsh
+      antidote load ${../../../../available/zsh-antidote/dot-zsh_plugins.txt}
 
-      # nicer prompt behavior
-      setopt PROMPT_SUBST
-      setopt HIST_IGNORE_ALL_DUPS
-      setopt AUTO_CD
+      # твой кастомный конфиг
+      source ${./custom.zsh}
     '';
   };
 }

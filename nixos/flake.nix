@@ -31,9 +31,6 @@
             users.ilya = import ./home/ilya;
           };
         }
-	# {
-        #   home-manager.users.ilya = import ./home/ilya;
-        # }
       ];
     };
   };
