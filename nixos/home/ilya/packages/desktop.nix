@@ -6,6 +6,6 @@
     brave
     anki-bin
     bluetui
-    syncthing syncthingtray
+    obsidian
   ];
 }
