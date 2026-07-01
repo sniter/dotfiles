@@ -20,6 +20,9 @@
 
         ./modules/services/pipewire.nix
         ./modules/services/bluetooth.nix
+        ./modules/services/docker.nix
+        ./modules/services/emacs.nix
+        ./modules/services/steam.nix
 
         home-manager.nixosModules.home-manager
 
