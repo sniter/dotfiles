@@ -22,6 +22,7 @@
         ./modules/services/bluetooth.nix
         ./modules/services/docker.nix
         ./modules/services/emacs.nix
+        ./modules/services/syncthing.nix
         # ./modules/services/steam.nix
 
         home-manager.nixosModules.home-manager
@@ -46,6 +47,7 @@
         ./modules/services/bluetooth.nix
         ./modules/services/docker.nix
         ./modules/services/emacs.nix
+        # ./modules/services/syncthing.nix
         # ./modules/services/steam.nix
 
         home-manager.nixosModules.home-manager
