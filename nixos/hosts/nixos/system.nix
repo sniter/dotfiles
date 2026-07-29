@@ -34,6 +34,7 @@
   };
 
   programs.zsh.enable = true;
+  allowUnfree = true;
 
   system.stateVersion = "26.05";
 }
