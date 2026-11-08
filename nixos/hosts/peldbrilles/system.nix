@@ -24,6 +24,13 @@
     nerd-fonts.blex-mono
   ];
 
+  # kpmcore's KAuth helper needs to be installed system-wide so its polkit
+  # action is registered; installing via home.packages leaves partition
+  # actions silently failing.
+  environment.systemPackages = with pkgs; [
+    kdePackages.partitionmanager
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   users.users.ilya = {

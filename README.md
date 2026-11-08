@@ -19,6 +19,20 @@ After this, flakes are enabled system-wide. Subsequent rebuilds:
 sudo nixos-rebuild switch --flake ~/dotfiles/nixos
 ```
 
+### Remove old generations
+
+Remove old generations, keep last N days
+
+```shell
+sudo nix-collect-garbage --delete-older-than 7d
+```
+
+Or delete ALL old generations, keeping only the current one
+
+```shell
+sudo nix-collect-garbage -d
+```
+
 ### SSH Keys
 
 ```shell
