@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     alacritty ghostty
-    # brave 
+    brave 
     tor-browser librewolf
     anki-bin
     bluetui

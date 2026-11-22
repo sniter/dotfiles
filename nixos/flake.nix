@@ -23,6 +23,7 @@
         ./modules/services/docker.nix
         ./modules/services/emacs.nix
         ./modules/services/syncthing.nix
+        ./modules/services/ai.nix
         # ./modules/services/steam.nix
 
         home-manager.nixosModules.home-manager
